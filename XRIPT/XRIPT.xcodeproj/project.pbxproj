@@ -988,6 +988,7 @@
 				8D1107290486CEB800E47090 /* Resources */,
 				8D11072C0486CEB800E47090 /* Sources */,
 				8D11072E0486CEB800E47090 /* Frameworks */,
+				E18E4326117FAC9C00DFE107 /* ShellScript */,
 				0ECA57B10D96BAC60011A348 /* ShellScript */,
 			);
 			buildRules = (
@@ -1050,6 +1051,19 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "cp -Rf \"$BUILT_PRODUCTS_DIR/../../MATLAB\" \"$BUILT_PRODUCTS_DIR/XRIPT.app/Contents/Resources\"\ncp -Rf \"$BUILT_PRODUCTS_DIR/../../Resources/FFOR\" \"$BUILT_PRODUCTS_DIR/XRIPT.app/Contents/Resources\"\ncp -Rf \"$BUILT_PRODUCTS_DIR/../../Resources/NFS\" \"$BUILT_PRODUCTS_DIR/XRIPT.app/Contents/Resources\"\ncp -Rf \"$BUILT_PRODUCTS_DIR/../../Resources/TestData_PapanastassiouPlasticValence.xry\" \"$BUILT_PRODUCTS_DIR/XRIPT.app/Contents/Resources\"\n";
+		};
+		E18E4326117FAC9C00DFE107 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/zsh;
+			shellScript = "# Replace @loader_path with @rpath so the linker will use the runtime search path to find the MATLAB shared libs\n\nexport FULL_NAME=${PRODUCT_NAME}.${WRAPPER_EXTENSION}\n\nfor libname in mat eng mx; do\n  install_name_tool -change \\\n    \"@loader_path/lib${libname}.dylib\" \\\n    \"@rpath/lib${libname}.dylib\" \\\n    \"${BUILT_PRODUCTS_DIR}/${FULL_NAME}/Contents/MacOS/${PRODUCT_NAME}\"\ndone";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1212,18 +1226,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				FRAMEWORK_SEARCH_PATHS = "~/Library/Frameworks";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
-					/Applications/MATLAB_R2008a/extern/include,
+					/Applications/MATLAB/extern/include,
 					/usr/include,
 					/usr/local/include,
 				);
+				LD_RUNPATH_SEARCH_PATHS = /Applications/MATLAB/bin/maci;
 				LIBRARY_SEARCH_PATHS = (
-					/Applications/MATLAB_R2008a/bin/maci,
+					/Applications/MATLAB/bin/maci,
 					/usr/local/lib,
 				);
 				OTHER_LDFLAGS = (
