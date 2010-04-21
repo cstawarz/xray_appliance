@@ -12,7 +12,7 @@
 #ifdef __ppc__
 #define MATLAB_EXECUTABLE_PATH "/Applications/MATLAB7/bin/matlab"
 #else
-#define MATLAB_EXECUTABLE_PATH "/Applications/MATLAB_R2008a/bin/matlab"
+#define MATLAB_EXECUTABLE_PATH "/Applications/MATLAB/bin/matlab -maci"
 #endif
 
 
