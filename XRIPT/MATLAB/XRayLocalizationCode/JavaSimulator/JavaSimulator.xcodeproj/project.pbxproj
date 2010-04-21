@@ -1,0 +1,181 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 44;
+	objects = {
+
+/* Begin PBXFileReference section */
+		0A8B99880B8F55EC003CD01B /* resources */ = {isa = PBXFileReference; lastKnownFileType = folder; path = resources; sourceTree = "<group>"; };
+		0A8B99B20B8F56A4003CD01B /* build.xml */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.xml; path = build.xml; sourceTree = "<group>"; };
+		0A8B99E90B8F5855003CD01B /* jars */ = {isa = PBXFileReference; lastKnownFileType = folder; path = jars; sourceTree = "<group>"; };
+		68816A540DB4F1BC00BDD3D6 /* BasisCollection.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = BasisCollection.java; sourceTree = "<group>"; };
+		68816A550DB4F1BC00BDD3D6 /* CalibMovingStatKnown.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = CalibMovingStatKnown.java; sourceTree = "<group>"; };
+		68816A560DB4F1BC00BDD3D6 /* CalibMovingStatKnown2.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = CalibMovingStatKnown2.java; sourceTree = "<group>"; };
+		68816A570DB4F1BC00BDD3D6 /* CalibMovingStatUnknown.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = CalibMovingStatUnknown.java; sourceTree = "<group>"; };
+		68816A580DB4F1BC00BDD3D6 /* CalibMovingStatUnknown2.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = CalibMovingStatUnknown2.java; sourceTree = "<group>"; };
+		68816A590DB4F1BC00BDD3D6 /* CalibStatStatKnown.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = CalibStatStatKnown.java; sourceTree = "<group>"; };
+		68816A5A0DB4F1BC00BDD3D6 /* CalibStatStatUnknown.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = CalibStatStatUnknown.java; sourceTree = "<group>"; };
+		68816A5B0DB4F1BC00BDD3D6 /* DetectorArray.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = DetectorArray.java; sourceTree = "<group>"; };
+		68816A5C0DB4F1BC00BDD3D6 /* Fiducial.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = Fiducial.java; sourceTree = "<group>"; };
+		68816A5D0DB4F1BC00BDD3D6 /* FiducialCollection.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = FiducialCollection.java; sourceTree = "<group>"; };
+		68816A5E0DB4F1BC00BDD3D6 /* FiducialCollectionHolder.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = FiducialCollectionHolder.java; sourceTree = "<group>"; };
+		68816A5F0DB4F1BC00BDD3D6 /* HeavyFiducial.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = HeavyFiducial.java; sourceTree = "<group>"; };
+		68816A600DB4F1BC00BDD3D6 /* LightFiducial.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = LightFiducial.java; sourceTree = "<group>"; };
+		68816A610DB4F1BC00BDD3D6 /* OutputGenerator.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = OutputGenerator.java; sourceTree = "<group>"; };
+		68816A620DB4F1BC00BDD3D6 /* ParamGuesser.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = ParamGuesser.java; sourceTree = "<group>"; };
+		68816A630DB4F1BC00BDD3D6 /* Ray.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = Ray.java; sourceTree = "<group>"; };
+		68816A640DB4F1BC00BDD3D6 /* ReconStatStatUnknown.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = ReconStatStatUnknown.java; sourceTree = "<group>"; };
+		68816A650DB4F1BC00BDD3D6 /* RotaryStage.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = RotaryStage.java; sourceTree = "<group>"; };
+		68816A660DB4F1BC00BDD3D6 /* Source.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = Source.java; sourceTree = "<group>"; };
+		68816A670DB4F1BC00BDD3D6 /* SourceDetectorPair.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = SourceDetectorPair.java; sourceTree = "<group>"; };
+		68816A680DB4F1BC00BDD3D6 /* TransformCreator.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = TransformCreator.java; sourceTree = "<group>"; };
+		68816A690DB4F1BC00BDD3D6 /* TransformableObject.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = TransformableObject.java; sourceTree = "<group>"; };
+		68816A6A0DB4F1BC00BDD3D6 /* Voxel.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = Voxel.java; sourceTree = "<group>"; };
+		68816A6B0DB4F1BC00BDD3D6 /* XRAYSystem.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = XRAYSystem.java; sourceTree = "<group>"; };
+		68BF5C0F0DB4F7D300D3FF36 /* build */ = {isa = PBXFileReference; lastKnownFileType = folder; path = build; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		00E6828FFEC88D1A11DB9C8B = {
+			isa = PBXGroup;
+			children = (
+				68816A530DB4F1BC00BDD3D6 /* Source */,
+				0A8B99B20B8F56A4003CD01B /* build.xml */,
+				0A8B99880B8F55EC003CD01B /* resources */,
+				68BF5C410DB4F7FE00D3FF36 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		68816A530DB4F1BC00BDD3D6 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				68816A540DB4F1BC00BDD3D6 /* BasisCollection.java */,
+				68816A550DB4F1BC00BDD3D6 /* CalibMovingStatKnown.java */,
+				68816A560DB4F1BC00BDD3D6 /* CalibMovingStatKnown2.java */,
+				68816A570DB4F1BC00BDD3D6 /* CalibMovingStatUnknown.java */,
+				68816A580DB4F1BC00BDD3D6 /* CalibMovingStatUnknown2.java */,
+				68816A590DB4F1BC00BDD3D6 /* CalibStatStatKnown.java */,
+				68816A5A0DB4F1BC00BDD3D6 /* CalibStatStatUnknown.java */,
+				68816A5B0DB4F1BC00BDD3D6 /* DetectorArray.java */,
+				68816A5C0DB4F1BC00BDD3D6 /* Fiducial.java */,
+				68816A5D0DB4F1BC00BDD3D6 /* FiducialCollection.java */,
+				68816A5E0DB4F1BC00BDD3D6 /* FiducialCollectionHolder.java */,
+				68816A5F0DB4F1BC00BDD3D6 /* HeavyFiducial.java */,
+				68816A600DB4F1BC00BDD3D6 /* LightFiducial.java */,
+				68816A610DB4F1BC00BDD3D6 /* OutputGenerator.java */,
+				68816A620DB4F1BC00BDD3D6 /* ParamGuesser.java */,
+				68816A630DB4F1BC00BDD3D6 /* Ray.java */,
+				68816A640DB4F1BC00BDD3D6 /* ReconStatStatUnknown.java */,
+				68816A650DB4F1BC00BDD3D6 /* RotaryStage.java */,
+				68816A660DB4F1BC00BDD3D6 /* Source.java */,
+				68816A670DB4F1BC00BDD3D6 /* SourceDetectorPair.java */,
+				68816A680DB4F1BC00BDD3D6 /* TransformCreator.java */,
+				68816A690DB4F1BC00BDD3D6 /* TransformableObject.java */,
+				68816A6A0DB4F1BC00BDD3D6 /* Voxel.java */,
+				68816A6B0DB4F1BC00BDD3D6 /* XRAYSystem.java */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		68BF5C410DB4F7FE00D3FF36 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0A8B99E90B8F5855003CD01B /* jars */,
+				68BF5C0F0DB4F7D300D3FF36 /* build */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXLegacyTarget section */
+		0A8B99D50B8F57BB003CD01B /* JavaSimulator */ = {
+			isa = PBXLegacyTarget;
+			buildArgumentsString = "-emacs $(ACTION)";
+			buildConfigurationList = 0A8B99E60B8F5847003CD01B /* Build configuration list for PBXLegacyTarget "JavaSimulator" */;
+			buildPhases = (
+			);
+			buildToolPath = /usr/bin/ant;
+			dependencies = (
+			);
+			name = JavaSimulator;
+			passBuildSettingsInEnvironment = 1;
+			productName = JavaSimulator;
+		};
+/* End PBXLegacyTarget section */
+
+/* Begin PBXProject section */
+		00E6828EFEC88D1A11DB9C8B /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 0AE31F6908BBAC2E002AF232 /* Build configuration list for PBXProject "JavaSimulator" */;
+			compatibilityVersion = "Xcode 3.0";
+			hasScannedForEncodings = 1;
+			mainGroup = 00E6828FFEC88D1A11DB9C8B;
+			productRefGroup = 00E6828FFEC88D1A11DB9C8B;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0A8B99D50B8F57BB003CD01B /* JavaSimulator */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin XCBuildConfiguration section */
+		0A8B99E70B8F5847003CD01B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				PRODUCT_NAME = JavaSimulator;
+			};
+			name = Debug;
+		};
+		0A8B99E80B8F5847003CD01B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				PRODUCT_NAME = JavaSimulator;
+			};
+			name = Release;
+		};
+		0AE31F6A08BBAC2E002AF232 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		0AE31F6B08BBAC2E002AF232 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0A8B99E60B8F5847003CD01B /* Build configuration list for PBXLegacyTarget "JavaSimulator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0A8B99E70B8F5847003CD01B /* Debug */,
+				0A8B99E80B8F5847003CD01B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0AE31F6908BBAC2E002AF232 /* Build configuration list for PBXProject "JavaSimulator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0AE31F6A08BBAC2E002AF232 /* Debug */,
+				0AE31F6B08BBAC2E002AF232 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 00E6828EFEC88D1A11DB9C8B /* Project object */;
+}

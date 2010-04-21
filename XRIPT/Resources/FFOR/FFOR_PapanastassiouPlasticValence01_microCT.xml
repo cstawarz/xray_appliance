@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<frame>
+  <name>FFOR_PapanastassiouPlasticValence01_microCT</name>
+  <dateCreated>20070316</dateCreated>
+  <dateLastModified>20080108</dateLastModified>
+  <object>NFS_PapanastassiouPlasticValence01</object>
+  <nativeUnits>
+    <type>element</type>
+    <SI_length>[1 1 1]</SI_length>
+    <SI_units>um</SI_units>
+  </nativeUnits>
+  <points>
+    <point name="CuSO4-1" x="14128" y="27723" z="28188"/>
+    <point name="CuSO4-2" x="14490" y="21675" z="8150"/>
+    <point name="CuSO4-3" x="14266" y="11750" z="28274"/>
+    <point name="CuSO4-4" x="14594" y="7616" z="8253"/>
+    <point name="brass-1" x="13905" y="27671" z="8115"/>
+    <point name="brass-2" x="13646" y="21779" z="28223"/>
+    <point name="brass-5" x="13991" y="13594" z="8184"/>
+    <point name="brass-6" x="13732" y="7736" z="28292"/>
+  </points>
+</frame>

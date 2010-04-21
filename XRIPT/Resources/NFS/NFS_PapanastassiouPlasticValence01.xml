@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<object>
+  <name>NFS_PapanastassiouPlasticValence01</name>
+  <dateLastModified>20080103</dateLastModified>
+  <notes>Inscribed with 'Alex Frame 01'</notes>
+  <fiducials>
+    <fiducial visibility="x" size="1" units="mm" type="brass sphere" name="brass-1"/>
+    <fiducial visibility="x" size="1" units="mm" type="brass sphere" name="brass-2"/>
+    <fiducial visibility="x" size="1" units="mm" type="brass sphere" name="brass-3"/>
+    <fiducial visibility="x" size="1" units="mm" type="brass sphere" name="brass-4"/>
+    <fiducial visibility="x" size="1" units="mm" type="brass sphere" name="brass-5"/>
+    <fiducial visibility="x" size="1" units="mm" type="brass sphere" name="brass-6"/>
+    <fiducial visibility="m" size="2" units="mm" type="CuSO4 cylinder" name="CuSO4-1"/>
+    <fiducial visibility="m" size="2" units="mm" type="CuSO4 cylinder" name="CuSO4-2"/>
+    <fiducial visibility="m" size="2" units="mm" type="CuSO4 cylinder" name="CuSO4-3"/>
+    <fiducial visibility="m" size="2" units="mm" type="CuSO4 cylinder" name="CuSO4-4"/>
+  </fiducials>
+</object>

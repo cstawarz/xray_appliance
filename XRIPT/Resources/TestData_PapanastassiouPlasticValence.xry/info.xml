@@ -1,0 +1,42 @@
+
+<info>
+    <ApplicationVersion>0.1.1 (118)</ApplicationVersion>
+    <Date>2008-01-28</Date>
+    <Time>17:00:05</Time>
+    <Subject>Mack2</Subject>
+    <Experimenter>Benis</Experimenter>
+    <Detector_ID>
+        <Detector_1>0187</Detector_1>
+        <Detector_2>0299</Detector_2>
+    </Detector_ID>
+    <Exposure_Time>
+        <Detector_1 units="us">4000000</Detector_1>
+        <Detector_2 units="us">4000000</Detector_2>
+    </Exposure_Time>
+    <Voltage>
+        <Source_1 units="V">0</Source_1>
+        <Source_2 units="V">0</Source_2>
+    </Voltage>
+    <Current>
+        <Source_1 units="A">0</Source_1>
+        <Source_2 units="A">0</Source_2>
+    </Current>
+    <Lag_Time>
+        <Detector_1 units="us">140000</Detector_1>
+        <Detector_2 units="us">140000</Detector_2>
+    </Lag_Time>
+    <Source_Time>
+        <Source_1 units="ms">4280000</Source_1>
+        <Source_2 units="ms">4280000</Source_2>
+    </Source_Time>
+    <Angle_Between_S1D1_and_S2D2 units="deg">-120</Angle_Between_S1D1_and_S2D2>
+    <Source_Distances_from_Center>
+        <Source_1 units="mm">262000</Source_1>
+        <Source_2 units="mm">240000</Source_2>
+    </Source_Distances_from_Center>
+    <Detector_Distances_from_Center>
+        <Detector_1 units="mm">102000</Detector_1>
+        <Detector_2 units="mm">187000</Detector_2>
+    </Detector_Distances_from_Center>
+    <Comments></Comments>
+</info>

@@ -1,0 +1,11 @@
+{
+    IBClasses = (
+        {
+            ACTIONS = {useCalibration = id; }; 
+            CLASS = CalibrationWindowController; 
+            LANGUAGE = ObjC; 
+            SUPERCLASS = NSWindowController; 
+        }
+    ); 
+    IBVersion = 1; 
+}

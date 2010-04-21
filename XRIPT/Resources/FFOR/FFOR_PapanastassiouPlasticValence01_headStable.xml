@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<frame>
+  <name>FFOR_PapanastassiouPlasticValence01_headStable</name>
+  <dateCreated>20070316</dateCreated>
+  <dateLastModified>20080108</dateLastModified>
+  <object>NFS_PapanastassiouPlasticValence01</object>
+  <nativeUnits>
+    <type>element</type>
+    <SI_length>[1 1 1]</SI_length>
+    <SI_units>um</SI_units>
+  </nativeUnits>
+  <points>
+    <point name="brass-1" x="31131" y="-7652" z="9340"/>
+    <point name="brass-2" x="25868" y="11996" z="4037"/>
+    <point name="brass-3" x="29471" y="-1654" z="5538"/>
+    <point name="brass-4" x="27320" y="6227" z="1811"/>
+    <point name="brass-5" x="30720" y="-7203" z="-4771"/>
+    <point name="brass-6" x="25460" y="12385" z="-10028"/>
+  </points>
+</frame>

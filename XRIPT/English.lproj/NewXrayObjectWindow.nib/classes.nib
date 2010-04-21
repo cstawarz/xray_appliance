@@ -1,0 +1,12 @@
+{
+    IBClasses = (
+        {
+            ACTIONS = {addNewXrayObject = id; }; 
+            CLASS = NewXrayObjectWindowController; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {"color_colorwell" = NSColorWell; "type_button" = NSPopUpButton; }; 
+            SUPERCLASS = NSWindowController; 
+        }
+    ); 
+    IBVersion = 1; 
+}

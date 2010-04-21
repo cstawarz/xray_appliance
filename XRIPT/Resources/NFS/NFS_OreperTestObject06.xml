@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<object>
+  <name>NFS_OreperTestObject06</name>
+  <dateLastModified>20080306</dateLastModified>
+  <notes>Stored in glass jar with testObject06</notes>
+  <fiducials>
+    <fiducial visibility="x" size="508" units="um" type="stainless steel sphere" name="fiducial-1"/>
+    <fiducial visibility="x" size="508" units="um" type="stainless steel sphere" name="fiducial-2"/>
+    <fiducial visibility="x" size="508" units="um" type="stainless steel sphere" name="fiducial-3"/>
+    <fiducial visibility="x" size="508" units="um" type="stainless steel sphere" name="fiducial-4"/>
+    <fiducial visibility="x" size="508" units="um" type="stainless steel sphere" name="fiducial-5"/>
+    <fiducial visibility="x" size="508" units="um" type="stainless steel sphere" name="fiducial-6"/>
+  </fiducials>
+</object>

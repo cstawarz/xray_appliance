@@ -1,0 +1,19 @@
+{
+    IBClasses = (
+        {
+            ACTIONS = {
+                browseForSaveLocationDir = id; 
+                maxCurrentChanged = id; 
+                maxVoltageChanged = id; 
+            }; 
+            CLASS = PreferencesWindowController; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {
+                "max_current_popup_button" = NSPopUpButton; 
+                "max_voltage_popup_button" = NSPopUpButton; 
+            }; 
+            SUPERCLASS = NSWindowController; 
+        }
+    ); 
+    IBVersion = 1; 
+}

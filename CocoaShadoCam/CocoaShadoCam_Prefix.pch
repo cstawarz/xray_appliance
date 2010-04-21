@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'CocoaShadoCam' target in the 'CocoaShadoCam' project.
+//
+
+#ifdef __OBJC__
+    #import <Cocoa/Cocoa.h>
+#endif

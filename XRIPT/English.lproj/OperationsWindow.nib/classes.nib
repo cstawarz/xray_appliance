@@ -1,0 +1,28 @@
+{
+    IBClasses = (
+        {
+            ACTIONS = {
+                addFrame = id; 
+                browseForCRV = id; 
+                browseForOverlay = id; 
+                coregisterToFrames = id; 
+                deleteFrame = id; 
+                findCenters = id; 
+                overlayCheckboxChanged = id; 
+                overlayOpacityChanged = id; 
+                pointToProjectChanged = id; 
+                projectToCRV = id; 
+                reconstruct3D = id; 
+            }; 
+            CLASS = OperationsWindowController; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {
+                "overlay_crv_text_field" = NSTextField; 
+                "possible_projections_popup_button" = NSPopUpButton; 
+                "principle_crv_text_field" = NSTextField; 
+            }; 
+            SUPERCLASS = NSWindowController; 
+        }
+    ); 
+    IBVersion = 1; 
+}

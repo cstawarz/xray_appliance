@@ -1,0 +1,52 @@
+<?xml version="1.0"?> 
+<project name="Simulator" default="all" basedir="."> 
+
+     <property name="package" value ="Simulator"/>
+     <property name="src" value="./Source/"/> 
+     <property name="build" value = "./build/"/>
+     <property name="jars"  value = "./jars"/>
+     
+     <property name="matlabJarRef" value ="../packagedMatlabCode/general"/>
+
+     <target name="init">  
+	  <mkdir dir  = "${build}"/>
+	  <mkdir dir  = "${jars}"/>
+     </target>
+
+     <target name="clean"> 
+          <!-- Compile the java code -->     
+          <delete dir="${build}/"/>
+          <delete dir="${jars}/"/>
+          <delete file="${matlabJarRef}/Simulator.jar"/>
+     </target>
+     
+     <target name="compile" depends="init"> 
+          <!-- Compile the java code --> 
+          <javac srcdir="${src}/"
+		destdir="${build}"
+	   /> 
+     </target>
+     
+     <!-- Form a jar for matlab code's use -->
+     <target name="install" depends="compile">  
+	<!-- Form a jar from class files -->
+     	<jar destfile ="${matlabJarRef}/Simulator.jar"
+	     basedir = "${build}"
+	     includes ="**/*.class"
+           />
+     </target>
+
+     <!-- Form a jar in a separate jars file -->
+     <target name="dist" depends="compile">  
+	<!-- Form a jar from class files -->
+     	<jar destfile ="${jars}/Simulator.jar"
+	     basedir = "${build}"
+	     includes ="**/*.class"
+           />
+     </target>
+
+     <target name = "all" depends = "dist, install, compile, init">
+     </target>
+	
+
+</project>

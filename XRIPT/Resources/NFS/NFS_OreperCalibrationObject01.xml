@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<object>
+  <name>NFS_OreperCalibrationObject01</name>
+  <dateLastModified>20080306</dateLastModified>
+  <notes>Stored in glass jar with testObject06</notes>
+  <fiducials>
+    <fiducial visibility="x" size="508" units="um" type="stainless steel sphere" name="fiducial-1"/>
+    <fiducial visibility="x" size="508" units="um" type="stainless steel sphere" name="fiducial-2"/>
+    <fiducial visibility="x" size="508" units="um" type="stainless steel sphere" name="fiducial-3"/>
+    <fiducial visibility="x" size="508" units="um" type="stainless steel sphere" name="fiducial-4"/>
+    <fiducial visibility="x" size="508" units="um" type="stainless steel sphere" name="fiducial-5"/>
+    <fiducial visibility="x" size="508" units="um" type="stainless steel sphere" name="fiducial-6"/>
+    <fiducial visibility="x" size="508" units="um" type="stainless steel sphere" name="fiducial-7"/>
+    <fiducial visibility="x" size="508" units="um" type="stainless steel sphere" name="fiducial-8"/>
+    <fiducial visibility="x" size="508" units="um" type="stainless steel sphere" name="fiducial-9"/>
+    <fiducial visibility="x" size="508" units="um" type="stainless steel sphere" name="fiducial-10"/>
+    <fiducial visibility="x" size="508" units="um" type="stainless steel sphere" name="fiducial-11"/>
+    <fiducial visibility="x" size="508" units="um" type="stainless steel sphere" name="fiducial-12"/>
+    <fiducial visibility="x" size="508" units="um" type="stainless steel sphere" name="fiducial-13"/>
+    <fiducial visibility="x" size="508" units="um" type="stainless steel sphere" name="fiducial-14"/>
+    <fiducial visibility="x" size="508" units="um" type="stainless steel sphere" name="fiducial-15"/>
+    <fiducial visibility="x" size="508" units="um" type="stainless steel sphere" name="fiducial-16"/>
+    <fiducial visibility="x" size="508" units="um" type="stainless steel sphere" name="fiducial-17"/>
+    <fiducial visibility="x" size="508" units="um" type="stainless steel sphere" name="fiducial-18"/>
+    <fiducial visibility="x" size="508" units="um" type="stainless steel sphere" name="fiducial-19"/>
+    <fiducial visibility="x" size="508" units="um" type="stainless steel sphere" name="fiducial-20"/>
+    <fiducial visibility="x" size="508" units="um" type="stainless steel sphere" name="fiducial-21"/>
+    <fiducial visibility="x" size="508" units="um" type="stainless steel sphere" name="fiducial-22"/>
+    <fiducial visibility="x" size="508" units="um" type="stainless steel sphere" name="fiducial-23"/>
+    <fiducial visibility="x" size="508" units="um" type="stainless steel sphere" name="fiducial-24"/>
+    <fiducial visibility="x" size="508" units="um" type="stainless steel sphere" name="fiducial-25"/>
+    <fiducial visibility="x" size="508" units="um" type="stainless steel sphere" name="fiducial-26"/>
+    <fiducial visibility="x" size="508" units="um" type="stainless steel sphere" name="fiducial-27"/>
+    <fiducial visibility="x" size="508" units="um" type="stainless steel sphere" name="fiducial-28"/>
+    <fiducial visibility="x" size="508" units="um" type="stainless steel sphere" name="fiducial-29"/>
+    <fiducial visibility="x" size="508" units="um" type="stainless steel sphere" name="fiducial-30"/>
+    <fiducial visibility="x" size="508" units="um" type="stainless steel sphere" name="fiducial-31"/>
+    <fiducial visibility="x" size="508" units="um" type="stainless steel sphere" name="fiducial-32"/>
+    <fiducial visibility="x" size="508" units="um" type="stainless steel sphere" name="fiducial-33"/>
+    <fiducial visibility="x" size="508" units="um" type="stainless steel sphere" name="fiducial-34"/>
+    <fiducial visibility="x" size="508" units="um" type="stainless steel sphere" name="fiducial-35"/>
+    <fiducial visibility="x" size="508" units="um" type="stainless steel sphere" name="fiducial-36"/>
+    <fiducial visibility="x" size="508" units="um" type="stainless steel sphere" name="fiducial-37"/>
+    <fiducial visibility="x" size="508" units="um" type="stainless steel sphere" name="fiducial-38"/>
+    <fiducial visibility="x" size="508" units="um" type="stainless steel sphere" name="fiducial-39"/>
+    <fiducial visibility="x" size="508" units="um" type="stainless steel sphere" name="fiducial-40"/>
+    <fiducial visibility="x" size="508" units="um" type="stainless steel sphere" name="fiducial-41"/>
+    <fiducial visibility="x" size="508" units="um" type="stainless steel sphere" name="fiducial-42"/>
+    <fiducial visibility="x" size="508" units="um" type="stainless steel sphere" name="fiducial-43"/>
+    <fiducial visibility="x" size="508" units="um" type="stainless steel sphere" name="fiducial-44"/>
+  </fiducials>
+</object>

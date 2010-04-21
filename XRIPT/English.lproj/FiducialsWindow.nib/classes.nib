@@ -1,0 +1,12 @@
+{
+    IBClasses = (
+        {
+            ACTIONS = {openAddWindow = id; selectedObjectChanged = id; selectedSetChanged = id; }; 
+            CLASS = FiducialWindowController; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {delegate = id; "nfs_titles_popup_button" = NSPopUpButton; }; 
+            SUPERCLASS = NSWindowController; 
+        }
+    ); 
+    IBVersion = 1; 
+}

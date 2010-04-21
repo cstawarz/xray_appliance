@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<frame>
+  <name>FFOR_OreperTestObject_microCT</name>
+  <dateCreated>20080309</dateCreated>
+  <dateLastModified>20080309</dateLastModified>
+  <object>NFS_OreperTestObject06</object>
+  <nativeUnits>
+    <type>element</type>
+    <SI_length>[1 1 1]</SI_length>
+    <SI_units>um</SI_units>
+  </nativeUnits>
+  <points>
+    <point name="fiducial-1" x="-3034.9" y="-462.87" z="3670.8"/>
+    <point name="fiducial-2" x="-724.07" y="-455.56" z="3620.5"/>
+    <point name="fiducial-3" x="742.23" y="-3145.9" z="128.96"/>
+    <point name="fiducial-4" x="2996.8" y="2218.3" z="-1765.1"/>
+    <point name="fiducial-5" x="1323.4" y="1926" z="-2032.7"/>
+    <point name="fiducial-6" x="-1303.5" y="-79.993" z="-3622.5"/>
+  </points>
+</frame>

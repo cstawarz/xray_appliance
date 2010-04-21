@@ -1,0 +1,19 @@
+{
+    IBClasses = (
+        {
+            ACTIONS = {
+                openBundle = id; 
+                openCalibrationWindow = id; 
+                openNewXrayObjectWindow = id; 
+                openSettingsWindow = id; 
+                primeXray = id; 
+                takeXray = id; 
+            }; 
+            CLASS = ApplicationController; 
+            LANGUAGE = ObjC; 
+            SUPERCLASS = NSObject; 
+        }, 
+        {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }
+    ); 
+    IBVersion = 1; 
+}

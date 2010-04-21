@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<frame>
+  <name>FFOR_PapanastassiouPlasticValence01_Jan2MR</name>
+  <dateCreated>20080611</dateCreated>
+  <dateLastModified>20080611</dateLastModified>
+  <object>NFS_PapanastassiouPlasticValence01</object>
+  <nativeUnits>
+    <type>element</type>
+    <SI_length>[1 1 1]</SI_length>
+    <SI_units>um</SI_units>
+  </nativeUnits>
+  <points>
+    <point name="CuSO4-1" x="114279" y="48653" z="83247"/>
+    <point name="CuSO4-2" x="113980" y="66757" z="74462"/>
+    <point name="CuSO4-3" x="115149" y="45405" z="67613"/>
+    <point name="CuSO4-4" x="114046" y="64093" z="59935"/>
+  </points>
+</frame>
