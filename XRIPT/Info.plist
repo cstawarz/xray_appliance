@@ -24,5 +24,10 @@
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
+	<key>LSEnvironment</key>
+	<dict>
+		<key>DYLD_LIBRARY_PATH</key>
+		<string>/Applications/MATLAB/bin/maci:/Applications/MATLAB/bin/maci64</string>
+	</dict>
 </dict>
 </plist>
