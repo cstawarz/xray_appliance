@@ -56,6 +56,10 @@
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
+		E12061CC26AB5D0A00C07099 /* TestData_PapanastassiouPlasticValence.xry in Resources */ = {isa = PBXBuildFile; fileRef = E12061CB26AB5D0A00C07099 /* TestData_PapanastassiouPlasticValence.xry */; };
+		E12061D526AB5EF400C07099 /* NFS in Resources */ = {isa = PBXBuildFile; fileRef = E12061D326AB5EF400C07099 /* NFS */; };
+		E12061D626AB5EF400C07099 /* FFOR in Resources */ = {isa = PBXBuildFile; fileRef = E12061D426AB5EF400C07099 /* FFOR */; };
+		E12061D826AB5F4500C07099 /* MATLAB in Resources */ = {isa = PBXBuildFile; fileRef = E12061D726AB5F4500C07099 /* MATLAB */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -92,186 +96,7 @@
 		0ECA55F70D96B3490011A348 /* CocoaMxArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CocoaMxArray.m; sourceTree = "<group>"; };
 		0ECA55F80D96B3490011A348 /* GlobalMATLABEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalMATLABEngine.h; sourceTree = "<group>"; };
 		0ECA55F90D96B3490011A348 /* GlobalMATLABEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlobalMATLABEngine.m; sourceTree = "<group>"; };
-		0ECA57B40D96BB600011A348 /* centroid.M */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = centroid.M; sourceTree = "<group>"; };
-		0ECA57B50D96BB600011A348 /* extrema.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = extrema.m; sourceTree = "<group>"; };
-		0ECA57B60D96BB600011A348 /* fiducialFinder1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = fiducialFinder1.m; sourceTree = "<group>"; };
-		0ECA57B70D96BB600011A348 /* fiducialFinder1Test.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = fiducialFinder1Test.m; sourceTree = "<group>"; };
-		0ECA57B80D96BB600011A348 /* filtHorLines.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = filtHorLines.m; sourceTree = "<group>"; };
-		0ECA57B90D96BB600011A348 /* filtVertLines.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = filtVertLines.m; sourceTree = "<group>"; };
-		0ECA57BA0D96BB600011A348 /* fitcircle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = fitcircle.m; sourceTree = "<group>"; };
-		0ECA57BB0D96BB600011A348 /* gaussianBlur.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = gaussianBlur.m; sourceTree = "<group>"; };
-		0ECA57BC0D96BB600011A348 /* gaussianMask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = gaussianMask.m; sourceTree = "<group>"; };
-		0ECA57BD0D96BB600011A348 /* getCircumference.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = getCircumference.m; sourceTree = "<group>"; };
-		0ECA57BE0D96BB600011A348 /* getSeedPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = getSeedPoint.m; sourceTree = "<group>"; };
-		0ECA57BF0D96BB600011A348 /* image_normalization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = image_normalization.m; sourceTree = "<group>"; };
-		0ECA57C10D96BB600011A348 /* batchCRVCreation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = batchCRVCreation.m; sourceTree = "<group>"; };
-		0ECA57C20D96BB600011A348 /* createCRV.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = createCRV.m; sourceTree = "<group>"; };
-		0ECA57C30D96BB600011A348 /* DMR2CRV.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMR2CRV.m; sourceTree = "<group>"; };
-		0ECA57C40D96BB600011A348 /* getCRV.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = getCRV.m; sourceTree = "<group>"; };
-		0ECA57C50D96BB600011A348 /* getCRVAnatomicalPlanesGroups.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = getCRVAnatomicalPlanesGroups.m; sourceTree = "<group>"; };
-		0ECA57C60D96BB600011A348 /* getCRVInfoElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = getCRVInfoElement.m; sourceTree = "<group>"; };
-		0ECA57C70D96BB600011A348 /* getCRVNativeUnits.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = getCRVNativeUnits.m; sourceTree = "<group>"; };
-		0ECA57C80D96BB600011A348 /* getCRVProjection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = getCRVProjection.m; sourceTree = "<group>"; };
-		0ECA57C90D96BB600011A348 /* getCRVTransforms.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = getCRVTransforms.m; sourceTree = "<group>"; };
-		0ECA57CA0D96BB600011A348 /* getCRVVolume.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = getCRVVolume.m; sourceTree = "<group>"; };
-		0ECA57CB0D96BB600011A348 /* overlayFunctionalData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = overlayFunctionalData.m; sourceTree = "<group>"; };
-		0ECA57CC0D96BB600011A348 /* struct2xml.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = struct2xml.m; sourceTree = "<group>"; };
-		0ECA57CD0D96BB600011A348 /* viewCRV.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = viewCRV.m; sourceTree = "<group>"; };
-		0ECA57CE0D96BB600011A348 /* raw2mat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = raw2mat.m; sourceTree = "<group>"; };
-		0ECA57CF0D96BB600011A348 /* raw2mat_ppc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = raw2mat_ppc.m; sourceTree = "<group>"; };
-		0ECA57D00D96BB600011A348 /* reconstructBundle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = reconstructBundle.m; sourceTree = "<group>"; };
-		0ECA57D10D96BB600011A348 /* snakedeform2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = snakedeform2.m; sourceTree = "<group>"; };
-		0ECA57D20D96BB600011A348 /* snakeindex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = snakeindex.m; sourceTree = "<group>"; };
-		0ECA57D30D96BB600011A348 /* snakeinterp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = snakeinterp.m; sourceTree = "<group>"; };
-		0ECA57D40D96BB600011A348 /* xconv2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = xconv2.m; sourceTree = "<group>"; };
-		0ECA57D90D96BB600011A348 /* BasisCollection.class */ = {isa = PBXFileReference; lastKnownFileType = compiled.javaclass; path = BasisCollection.class; sourceTree = "<group>"; };
-		0ECA57DA0D96BB600011A348 /* CalibMovingStatKnown.class */ = {isa = PBXFileReference; lastKnownFileType = compiled.javaclass; path = CalibMovingStatKnown.class; sourceTree = "<group>"; };
-		0ECA57DB0D96BB600011A348 /* CalibMovingStatKnown2.class */ = {isa = PBXFileReference; lastKnownFileType = compiled.javaclass; path = CalibMovingStatKnown2.class; sourceTree = "<group>"; };
-		0ECA57DC0D96BB600011A348 /* CalibMovingStatUnknown.class */ = {isa = PBXFileReference; lastKnownFileType = compiled.javaclass; path = CalibMovingStatUnknown.class; sourceTree = "<group>"; };
-		0ECA57DD0D96BB600011A348 /* CalibMovingStatUnknown2.class */ = {isa = PBXFileReference; lastKnownFileType = compiled.javaclass; path = CalibMovingStatUnknown2.class; sourceTree = "<group>"; };
-		0ECA57DE0D96BB600011A348 /* CalibStatStatKnown.class */ = {isa = PBXFileReference; lastKnownFileType = compiled.javaclass; path = CalibStatStatKnown.class; sourceTree = "<group>"; };
-		0ECA57DF0D96BB600011A348 /* CalibStatStatUnknown.class */ = {isa = PBXFileReference; lastKnownFileType = compiled.javaclass; path = CalibStatStatUnknown.class; sourceTree = "<group>"; };
-		0ECA57E00D96BB600011A348 /* DetectorArray.class */ = {isa = PBXFileReference; lastKnownFileType = compiled.javaclass; path = DetectorArray.class; sourceTree = "<group>"; };
-		0ECA57E10D96BB600011A348 /* Fiducial.class */ = {isa = PBXFileReference; lastKnownFileType = compiled.javaclass; path = Fiducial.class; sourceTree = "<group>"; };
-		0ECA57E20D96BB600011A348 /* FiducialCollection.class */ = {isa = PBXFileReference; lastKnownFileType = compiled.javaclass; path = FiducialCollection.class; sourceTree = "<group>"; };
-		0ECA57E30D96BB600011A348 /* FiducialCollectionHolder.class */ = {isa = PBXFileReference; lastKnownFileType = compiled.javaclass; path = FiducialCollectionHolder.class; sourceTree = "<group>"; };
-		0ECA57E40D96BB600011A348 /* HeavyFiducial.class */ = {isa = PBXFileReference; lastKnownFileType = compiled.javaclass; path = HeavyFiducial.class; sourceTree = "<group>"; };
-		0ECA57E50D96BB600011A348 /* LightFiducial.class */ = {isa = PBXFileReference; lastKnownFileType = compiled.javaclass; path = LightFiducial.class; sourceTree = "<group>"; };
-		0ECA57E60D96BB600011A348 /* OutputGenerator.class */ = {isa = PBXFileReference; lastKnownFileType = compiled.javaclass; path = OutputGenerator.class; sourceTree = "<group>"; };
-		0ECA57E70D96BB600011A348 /* ParamGuesser.class */ = {isa = PBXFileReference; lastKnownFileType = compiled.javaclass; path = ParamGuesser.class; sourceTree = "<group>"; };
-		0ECA57E80D96BB600011A348 /* Ray.class */ = {isa = PBXFileReference; lastKnownFileType = compiled.javaclass; path = Ray.class; sourceTree = "<group>"; };
-		0ECA57E90D96BB600011A348 /* ReconStatStatUnknown.class */ = {isa = PBXFileReference; lastKnownFileType = compiled.javaclass; path = ReconStatStatUnknown.class; sourceTree = "<group>"; };
-		0ECA57EA0D96BB600011A348 /* RotaryStage.class */ = {isa = PBXFileReference; lastKnownFileType = compiled.javaclass; path = RotaryStage.class; sourceTree = "<group>"; };
-		0ECA57EB0D96BB600011A348 /* Source.class */ = {isa = PBXFileReference; lastKnownFileType = compiled.javaclass; path = Source.class; sourceTree = "<group>"; };
-		0ECA57EC0D96BB600011A348 /* SourceDetectorPair.class */ = {isa = PBXFileReference; lastKnownFileType = compiled.javaclass; path = SourceDetectorPair.class; sourceTree = "<group>"; };
-		0ECA57ED0D96BB600011A348 /* TransformableObject.class */ = {isa = PBXFileReference; lastKnownFileType = compiled.javaclass; path = TransformableObject.class; sourceTree = "<group>"; };
-		0ECA57EE0D96BB600011A348 /* TransformCreator.class */ = {isa = PBXFileReference; lastKnownFileType = compiled.javaclass; path = TransformCreator.class; sourceTree = "<group>"; };
-		0ECA57EF0D96BB600011A348 /* Voxel.class */ = {isa = PBXFileReference; lastKnownFileType = compiled.javaclass; path = Voxel.class; sourceTree = "<group>"; };
-		0ECA57F00D96BB600011A348 /* XRAYSystem.class */ = {isa = PBXFileReference; lastKnownFileType = compiled.javaclass; path = XRAYSystem.class; sourceTree = "<group>"; };
-		0ECA57F10D96BB600011A348 /* build.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = build.xml; sourceTree = "<group>"; };
-		0ECA57F30D96BB600011A348 /* TransformableObject.doc */ = {isa = PBXFileReference; lastKnownFileType = file; path = TransformableObject.doc; sourceTree = "<group>"; };
-		0ECA57F50D96BB600011A348 /* Simulator.jar */ = {isa = PBXFileReference; lastKnownFileType = archive.jar; path = Simulator.jar; sourceTree = "<group>"; };
-		0ECA57F80D96BB600011A348 /* BasisCollection.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = BasisCollection.java; sourceTree = "<group>"; };
-		0ECA57F90D96BB610011A348 /* CalibMovingStatKnown.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = CalibMovingStatKnown.java; sourceTree = "<group>"; };
-		0ECA57FA0D96BB610011A348 /* CalibMovingStatKnown2.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = CalibMovingStatKnown2.java; sourceTree = "<group>"; };
-		0ECA57FB0D96BB610011A348 /* CalibMovingStatUnknown.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = CalibMovingStatUnknown.java; sourceTree = "<group>"; };
-		0ECA57FC0D96BB610011A348 /* CalibMovingStatUnknown2.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = CalibMovingStatUnknown2.java; sourceTree = "<group>"; };
-		0ECA57FD0D96BB610011A348 /* CalibStatStatKnown.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = CalibStatStatKnown.java; sourceTree = "<group>"; };
-		0ECA57FE0D96BB610011A348 /* CalibStatStatUnknown.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = CalibStatStatUnknown.java; sourceTree = "<group>"; };
-		0ECA57FF0D96BB610011A348 /* DetectorArray.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = DetectorArray.java; sourceTree = "<group>"; };
-		0ECA58000D96BB610011A348 /* Fiducial.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = Fiducial.java; sourceTree = "<group>"; };
-		0ECA58010D96BB610011A348 /* FiducialCollection.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = FiducialCollection.java; sourceTree = "<group>"; };
-		0ECA58020D96BB610011A348 /* FiducialCollectionHolder.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = FiducialCollectionHolder.java; sourceTree = "<group>"; };
-		0ECA58030D96BB610011A348 /* HeavyFiducial.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = HeavyFiducial.java; sourceTree = "<group>"; };
-		0ECA58040D96BB610011A348 /* LightFiducial.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = LightFiducial.java; sourceTree = "<group>"; };
-		0ECA58050D96BB610011A348 /* OutputGenerator.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = OutputGenerator.java; sourceTree = "<group>"; };
-		0ECA58060D96BB610011A348 /* ParamGuesser.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = ParamGuesser.java; sourceTree = "<group>"; };
-		0ECA58070D96BB610011A348 /* Ray.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = Ray.java; sourceTree = "<group>"; };
-		0ECA58080D96BB610011A348 /* ReconStatStatUnknown.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = ReconStatStatUnknown.java; sourceTree = "<group>"; };
-		0ECA58090D96BB610011A348 /* RotaryStage.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = RotaryStage.java; sourceTree = "<group>"; };
-		0ECA580A0D96BB610011A348 /* Source.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = Source.java; sourceTree = "<group>"; };
-		0ECA580B0D96BB610011A348 /* SourceDetectorPair.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = SourceDetectorPair.java; sourceTree = "<group>"; };
-		0ECA580C0D96BB610011A348 /* TransformableObject.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = TransformableObject.java; sourceTree = "<group>"; };
-		0ECA580D0D96BB610011A348 /* TransformCreator.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = TransformCreator.java; sourceTree = "<group>"; };
-		0ECA580E0D96BB610011A348 /* Voxel.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = Voxel.java; sourceTree = "<group>"; };
-		0ECA580F0D96BB610011A348 /* XRAYSystem.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = XRAYSystem.java; sourceTree = "<group>"; };
-		0ECA58120D96BB610011A348 /* calib_calibrate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = calib_calibrate.m; sourceTree = "<group>"; };
-		0ECA58130D96BB610011A348 /* calib_realDataTester.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = calib_realDataTester.m; sourceTree = "<group>"; };
-		0ECA58140D96BB610011A348 /* calib_systemGuess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = calib_systemGuess.m; sourceTree = "<group>"; };
-		0ECA58150D96BB610011A348 /* calib_validate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = calib_validate.m; sourceTree = "<group>"; };
-		0ECA58160D96BB610011A348 /* calib_validate2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = calib_validate2.m; sourceTree = "<group>"; };
-		0ECA58180D96BB610011A348 /* calib_collectSimulatedData3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = calib_collectSimulatedData3.m; sourceTree = "<group>"; };
-		0ECA58190D96BB610011A348 /* calib_getSimulatedCalibrationPattern.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = calib_getSimulatedCalibrationPattern.m; sourceTree = "<group>"; };
-		0ECA581A0D96BB610011A348 /* calib_perturbFiducialCollection1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = calib_perturbFiducialCollection1.m; sourceTree = "<group>"; };
-		0ECA581B0D96BB610011A348 /* calib_simulateValidation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = calib_simulateValidation.m; sourceTree = "<group>"; };
-		0ECA581C0D96BB610011A348 /* calib_tester.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = calib_tester.m; sourceTree = "<group>"; };
-		0ECA581D0D96BB610011A348 /* calibTester2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = calibTester2.m; sourceTree = "<group>"; };
-		0ECA58200D96BB610011A348 /* xrg_getElectrodeLocationRelativeToFiducialFrame2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = xrg_getElectrodeLocationRelativeToFiducialFrame2.m; sourceTree = "<group>"; };
-		0ECA58210D96BB610011A348 /* randCenteredAtZero1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = randCenteredAtZero1.m; sourceTree = "<group>"; };
-		0ECA58220D96BB610011A348 /* randCenteredAtZero2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = randCenteredAtZero2.m; sourceTree = "<group>"; };
-		0ECA58240D96BB610011A348 /* xrg_buildPerturbedSystem1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = xrg_buildPerturbedSystem1.m; sourceTree = "<group>"; };
-		0ECA58250D96BB610011A348 /* xrg_buildPerturbedSystem2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = xrg_buildPerturbedSystem2.m; sourceTree = "<group>"; };
-		0ECA58260D96BB610011A348 /* xrg_resetToRandomFiducials.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = xrg_resetToRandomFiducials.m; sourceTree = "<group>"; };
-		0ECA58270D96BB610011A348 /* Simulator.jar */ = {isa = PBXFileReference; lastKnownFileType = archive.jar; path = Simulator.jar; sourceTree = "<group>"; };
-		0ECA58280D96BB610011A348 /* xrg_addFiducials.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = xrg_addFiducials.m; sourceTree = "<group>"; };
-		0ECA58290D96BB610011A348 /* xrg_addFiducials1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = xrg_addFiducials1.m; sourceTree = "<group>"; };
-		0ECA582A0D96BB610011A348 /* xrg_addSourceDetectorPair.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = xrg_addSourceDetectorPair.m; sourceTree = "<group>"; };
-		0ECA582B0D96BB610011A348 /* xrg_buildSampleSystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = xrg_buildSampleSystem.m; sourceTree = "<group>"; };
-		0ECA582C0D96BB610011A348 /* xrg_buildUnperturbedSystem1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = xrg_buildUnperturbedSystem1.m; sourceTree = "<group>"; };
-		0ECA582D0D96BB610011A348 /* xrg_displayReconstruction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = xrg_displayReconstruction.m; sourceTree = "<group>"; };
-		0ECA582E0D96BB610011A348 /* xrg_emptySystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = xrg_emptySystem.m; sourceTree = "<group>"; };
-		0ECA582F0D96BB610011A348 /* xrg_fastProject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = xrg_fastProject.m; sourceTree = "<group>"; };
-		0ECA58300D96BB610011A348 /* xrg_getDetectorCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = xrg_getDetectorCenter.m; sourceTree = "<group>"; };
-		0ECA58310D96BB610011A348 /* xrg_getDetectorNormal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = xrg_getDetectorNormal.m; sourceTree = "<group>"; };
-		0ECA58320D96BB610011A348 /* xrg_getDetectorOrigin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = xrg_getDetectorOrigin.m; sourceTree = "<group>"; };
-		0ECA58330D96BB610011A348 /* xrg_getDetectorSize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = xrg_getDetectorSize.m; sourceTree = "<group>"; };
-		0ECA58340D96BB610011A348 /* xrg_getFiducialCenters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = xrg_getFiducialCenters.m; sourceTree = "<group>"; };
-		0ECA58350D96BB610011A348 /* xrg_getFiducialLocationRelativeToFiducialFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = xrg_getFiducialLocationRelativeToFiducialFrame.m; sourceTree = "<group>"; };
-		0ECA58360D96BB610011A348 /* xrg_getFiducialLocationRelativeToFiducialFrame2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = xrg_getFiducialLocationRelativeToFiducialFrame2.m; sourceTree = "<group>"; };
-		0ECA58370D96BB610011A348 /* xrg_getIdealCenterOfProjection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = xrg_getIdealCenterOfProjection.m; sourceTree = "<group>"; };
-		0ECA58380D96BB610011A348 /* xrg_getNumberOfSDP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = xrg_getNumberOfSDP.m; sourceTree = "<group>"; };
-		0ECA58390D96BB610011A348 /* xrg_getPixelSize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = xrg_getPixelSize.m; sourceTree = "<group>"; };
-		0ECA583A0D96BB610011A348 /* xrg_getRHS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = xrg_getRHS.m; sourceTree = "<group>"; };
-		0ECA583B0D96BB610011A348 /* xrg_getSourceCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = xrg_getSourceCenter.m; sourceTree = "<group>"; };
-		0ECA583C0D96BB610011A348 /* xrg_getSourceDetectorDistance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = xrg_getSourceDetectorDistance.m; sourceTree = "<group>"; };
-		0ECA583D0D96BB610011A348 /* xrg_getSystemDeltas.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = xrg_getSystemDeltas.m; sourceTree = "<group>"; };
-		0ECA583E0D96BB610011A348 /* xrg_pointSelectionTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = xrg_pointSelectionTool.m; sourceTree = "<group>"; };
-		0ECA583F0D96BB610011A348 /* xrg_RHSVerbose2Vector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = xrg_RHSVerbose2Vector.m; sourceTree = "<group>"; };
-		0ECA58400D96BB610011A348 /* xrg_setFiducialRadius.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = xrg_setFiducialRadius.m; sourceTree = "<group>"; };
-		0ECA58410D96BB610011A348 /* xrg_setSystemDeltas.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = xrg_setSystemDeltas.m; sourceTree = "<group>"; };
-		0ECA58420D96BB610011A348 /* xrg_setSystemDeltas2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = xrg_setSystemDeltas2.m; sourceTree = "<group>"; };
-		0ECA58430D96BB610011A348 /* xrg_showRHS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = xrg_showRHS.m; sourceTree = "<group>"; };
-		0ECA58440D96BB610011A348 /* xrg_slowProject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = xrg_slowProject.m; sourceTree = "<group>"; };
-		0ECA58450D96BB610011A348 /* globals.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = globals.m; sourceTree = "<group>"; };
-		0ECA58470D96BB610011A348 /* addElementToFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = addElementToFrame.m; sourceTree = "<group>"; };
-		0ECA58480D96BB610011A348 /* addFrameToGlobalRegistry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = addFrameToGlobalRegistry.m; sourceTree = "<group>"; };
-		0ECA58490D96BB610011A348 /* addFrameTransformToGlobalRegistry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = addFrameTransformToGlobalRegistry.m; sourceTree = "<group>"; };
-		0ECA584A0D96BB610011A348 /* checkRigidTransform.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = checkRigidTransform.m; sourceTree = "<group>"; };
-		0ECA584B0D96BB610011A348 /* convertBundleToFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = convertBundleToFrame.m; sourceTree = "<group>"; };
-		0ECA584C0D96BB610011A348 /* deg2rad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = deg2rad.m; sourceTree = "<group>"; };
-		0ECA584D0D96BB610011A348 /* findRigidTransform.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = findRigidTransform.m; sourceTree = "<group>"; };
-		0ECA584E0D96BB610011A348 /* FrameTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FrameTransformer.m; sourceTree = "<group>"; };
-		0ECA584F0D96BB610011A348 /* getGlobalFrames.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = getGlobalFrames.m; sourceTree = "<group>"; };
-		0ECA58500D96BB610011A348 /* getGlobalFrameTransform.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = getGlobalFrameTransform.m; sourceTree = "<group>"; };
-		0ECA58510D96BB610011A348 /* initGlobalFrames.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = initGlobalFrames.m; sourceTree = "<group>"; };
-		0ECA58520D96BB610011A348 /* initGlobalFrameTransforms.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = initGlobalFrameTransforms.m; sourceTree = "<group>"; };
-		0ECA58530D96BB610011A348 /* initializeAlexFrames.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = initializeAlexFrames.m; sourceTree = "<group>"; };
-		0ECA58540D96BB610011A348 /* makeNewFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = makeNewFrame.m; sourceTree = "<group>"; };
-		0ECA58550D96BB610011A348 /* mri_applyRigidTransform.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mri_applyRigidTransform.m; sourceTree = "<group>"; };
-		0ECA58560D96BB610011A348 /* mri_dicomReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mri_dicomReader.m; sourceTree = "<group>"; };
-		0ECA58570D96BB610011A348 /* mri_getCoregTransform.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mri_getCoregTransform.m; sourceTree = "<group>"; };
-		0ECA58580D96BB610011A348 /* mri_getCoregTransform_verJJD1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mri_getCoregTransform_verJJD1.m; sourceTree = "<group>"; };
-		0ECA58590D96BB610011A348 /* mri_getCoregTransformAdvanced.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mri_getCoregTransformAdvanced.m; sourceTree = "<group>"; };
-		0ECA585A0D96BB610011A348 /* mri_getElectrodeInMRIFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mri_getElectrodeInMRIFrame.m; sourceTree = "<group>"; };
-		0ECA585B0D96BB610011A348 /* mri_ksub_next.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mri_ksub_next.m; sourceTree = "<group>"; };
-		0ECA585C0D96BB610011A348 /* mri_neoMRI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mri_neoMRI.m; sourceTree = "<group>"; };
-		0ECA585D0D96BB610011A348 /* mri_neoMRI2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mri_neoMRI2.m; sourceTree = "<group>"; };
-		0ECA585E0D96BB610011A348 /* mri_paulPhantomCoregisteredPlots.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mri_paulPhantomCoregisteredPlots.m; sourceTree = "<group>"; };
-		0ECA585F0D96BB610011A348 /* mri_recenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mri_recenter.m; sourceTree = "<group>"; };
-		0ECA58600D96BB610011A348 /* mri_rotMat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mri_rotMat.m; sourceTree = "<group>"; };
-		0ECA58610D96BB610011A348 /* mri_target2DestFrameTransform.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mri_target2DestFrameTransform.m; sourceTree = "<group>"; };
-		0ECA58620D96BB610011A348 /* mri_testScript.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mri_testScript.m; sourceTree = "<group>"; };
-		0ECA58630D96BB610011A348 /* projectPointsToNewFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = projectPointsToNewFrame.m; sourceTree = "<group>"; };
-		0ECA58640D96BB610011A348 /* runCoregistration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = runCoregistration.m; sourceTree = "<group>"; };
-		0ECA58660D96BB610011A348 /* recon_reconstruct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = recon_reconstruct.m; sourceTree = "<group>"; };
-		0ECA58670D96BB610011A348 /* recon_reconstructIgnoreCorrespondences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = recon_reconstructIgnoreCorrespondences.m; sourceTree = "<group>"; };
-		0ECA58690D96BB610011A348 /* genDatabase2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = genDatabase2.m; sourceTree = "<group>"; };
-		0ECA586A0D96BB610011A348 /* genDatabase2b.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = genDatabase2b.m; sourceTree = "<group>"; };
-		0ECA586B0D96BB610011A348 /* simulateAndReconstruct2b.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = simulateAndReconstruct2b.m; sourceTree = "<group>"; };
-		0ECA586C0D96BB610011A348 /* tester2b.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = tester2b.m; sourceTree = "<group>"; };
-		0ECA586D0D96BB610011A348 /* simulationGlobals.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = simulationGlobals.m; sourceTree = "<group>"; };
-		0ECA58700D96BB610011A348 /* cal1_CT_orderedCenters.mat */ = {isa = PBXFileReference; lastKnownFileType = file; path = cal1_CT_orderedCenters.mat; sourceTree = "<group>"; };
-		0ECA58710D96BB610011A348 /* RHS_calibration.mat */ = {isa = PBXFileReference; lastKnownFileType = file; path = RHS_calibration.mat; sourceTree = "<group>"; };
 		0ECA58920D96BC230011A348 /* 440Hz_20s.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = 440Hz_20s.wav; path = Resources/440Hz_20s.wav; sourceTree = "<group>"; };
-		0ECA58940D96BC230011A348 /* FFOR_OreperTestObject06_microCT.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = FFOR_OreperTestObject06_microCT.xml; sourceTree = "<group>"; };
-		0ECA58950D96BC230011A348 /* FFOR_PapanastassiouPlasticValence01_headStable.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = FFOR_PapanastassiouPlasticValence01_headStable.xml; sourceTree = "<group>"; };
-		0ECA58960D96BC230011A348 /* FFOR_PapanastassiouPlasticValence01_JanMR.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = FFOR_PapanastassiouPlasticValence01_JanMR.xml; sourceTree = "<group>"; };
-		0ECA58970D96BC230011A348 /* FFOR_PapanastassiouPlasticValence01_Machined.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = FFOR_PapanastassiouPlasticValence01_Machined.xml; sourceTree = "<group>"; };
-		0ECA58980D96BC230011A348 /* FFOR_PapanastassiouPlasticValence01_microCT.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = FFOR_PapanastassiouPlasticValence01_microCT.xml; sourceTree = "<group>"; };
-		0ECA58990D96BC230011A348 /* FFOR_PapanastassiouPlasticValence01_MiekeMR.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = FFOR_PapanastassiouPlasticValence01_MiekeMR.xml; sourceTree = "<group>"; };
-		0ECA589B0D96BC230011A348 /* NFS_OreperCalibrationObject01.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = NFS_OreperCalibrationObject01.xml; sourceTree = "<group>"; };
-		0ECA589C0D96BC230011A348 /* NFS_OreperTestObject06.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = NFS_OreperTestObject06.xml; sourceTree = "<group>"; };
-		0ECA589D0D96BC230011A348 /* NFS_PapanastassiouPlasticValence01.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = NFS_PapanastassiouPlasticValence01.xml; sourceTree = "<group>"; };
 		0ECF41AE0D8F3CC000D1132F /* ApplicationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplicationController.h; sourceTree = "<group>"; };
 		0ECF41AF0D8F3CC000D1132F /* ApplicationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApplicationController.m; sourceTree = "<group>"; };
 		0ECF41BD0D8F3E7F00D1132F /* Calibration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Calibration.h; sourceTree = "<group>"; };
@@ -331,6 +156,10 @@
 		685510CC0E38DB1400B721A2 /* XrayXMLDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XrayXMLDocument.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* XRIPT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XRIPT.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E12061CB26AB5D0A00C07099 /* TestData_PapanastassiouPlasticValence.xry */ = {isa = PBXFileReference; lastKnownFileType = folder; name = TestData_PapanastassiouPlasticValence.xry; path = Resources/TestData_PapanastassiouPlasticValence.xry; sourceTree = "<group>"; };
+		E12061D326AB5EF400C07099 /* NFS */ = {isa = PBXFileReference; lastKnownFileType = folder; name = NFS; path = Resources/NFS; sourceTree = "<group>"; };
+		E12061D426AB5EF400C07099 /* FFOR */ = {isa = PBXFileReference; lastKnownFileType = folder; name = FFOR; path = Resources/FFOR; sourceTree = "<group>"; };
+		E12061D726AB5F4500C07099 /* MATLAB */ = {isa = PBXFileReference; lastKnownFileType = folder; path = MATLAB; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -397,368 +226,6 @@
 				0ECA55F90D96B3490011A348 /* GlobalMATLABEngine.m */,
 			);
 			name = "MATLAB Interface";
-			sourceTree = "<group>";
-		};
-		0ECA57B30D96BB600011A348 /* MATLAB */ = {
-			isa = PBXGroup;
-			children = (
-				0ECA57B40D96BB600011A348 /* centroid.M */,
-				0ECA57B50D96BB600011A348 /* extrema.m */,
-				0ECA57B60D96BB600011A348 /* fiducialFinder1.m */,
-				0ECA57B70D96BB600011A348 /* fiducialFinder1Test.m */,
-				0ECA57B80D96BB600011A348 /* filtHorLines.m */,
-				0ECA57B90D96BB600011A348 /* filtVertLines.m */,
-				0ECA57BA0D96BB600011A348 /* fitcircle.m */,
-				0ECA57BB0D96BB600011A348 /* gaussianBlur.m */,
-				0ECA57BC0D96BB600011A348 /* gaussianMask.m */,
-				0ECA57BD0D96BB600011A348 /* getCircumference.m */,
-				0ECA57BE0D96BB600011A348 /* getSeedPoint.m */,
-				0ECA57BF0D96BB600011A348 /* image_normalization.m */,
-				0ECA57C00D96BB600011A348 /* MATLAB_interface_tools */,
-				0ECA57CE0D96BB600011A348 /* raw2mat.m */,
-				0ECA57CF0D96BB600011A348 /* raw2mat_ppc.m */,
-				0ECA57D00D96BB600011A348 /* reconstructBundle.m */,
-				0ECA57D10D96BB600011A348 /* snakedeform2.m */,
-				0ECA57D20D96BB600011A348 /* snakeindex.m */,
-				0ECA57D30D96BB600011A348 /* snakeinterp.m */,
-				0ECA57D40D96BB600011A348 /* xconv2.m */,
-				0ECA57D50D96BB600011A348 /* XRayLocalizationCode */,
-				0ECA586E0D96BB610011A348 /* XRayLocalizationData */,
-			);
-			path = MATLAB;
-			sourceTree = "<group>";
-		};
-		0ECA57C00D96BB600011A348 /* MATLAB_interface_tools */ = {
-			isa = PBXGroup;
-			children = (
-				0ECA57C10D96BB600011A348 /* batchCRVCreation.m */,
-				0ECA57C20D96BB600011A348 /* createCRV.m */,
-				0ECA57C30D96BB600011A348 /* DMR2CRV.m */,
-				0ECA57C40D96BB600011A348 /* getCRV.m */,
-				0ECA57C50D96BB600011A348 /* getCRVAnatomicalPlanesGroups.m */,
-				0ECA57C60D96BB600011A348 /* getCRVInfoElement.m */,
-				0ECA57C70D96BB600011A348 /* getCRVNativeUnits.m */,
-				0ECA57C80D96BB600011A348 /* getCRVProjection.m */,
-				0ECA57C90D96BB600011A348 /* getCRVTransforms.m */,
-				0ECA57CA0D96BB600011A348 /* getCRVVolume.m */,
-				0ECA57CB0D96BB600011A348 /* overlayFunctionalData.m */,
-				0ECA57CC0D96BB600011A348 /* struct2xml.m */,
-				0ECA57CD0D96BB600011A348 /* viewCRV.m */,
-			);
-			path = MATLAB_interface_tools;
-			sourceTree = "<group>";
-		};
-		0ECA57D50D96BB600011A348 /* XRayLocalizationCode */ = {
-			isa = PBXGroup;
-			children = (
-				0ECA57D60D96BB600011A348 /* JavaSimulator */,
-				0ECA58100D96BB610011A348 /* packagedMatlabCode */,
-			);
-			path = XRayLocalizationCode;
-			sourceTree = "<group>";
-		};
-		0ECA57D60D96BB600011A348 /* JavaSimulator */ = {
-			isa = PBXGroup;
-			children = (
-				0ECA57D70D96BB600011A348 /* build */,
-				0ECA57F10D96BB600011A348 /* build.xml */,
-				0ECA57F20D96BB600011A348 /* Docs */,
-				0ECA57F40D96BB600011A348 /* jars */,
-				0ECA57F60D96BB600011A348 /* Source */,
-			);
-			path = JavaSimulator;
-			sourceTree = "<group>";
-		};
-		0ECA57D70D96BB600011A348 /* build */ = {
-			isa = PBXGroup;
-			children = (
-				0ECA57D80D96BB600011A348 /* Simulator */,
-			);
-			path = build;
-			sourceTree = "<group>";
-		};
-		0ECA57D80D96BB600011A348 /* Simulator */ = {
-			isa = PBXGroup;
-			children = (
-				0ECA57D90D96BB600011A348 /* BasisCollection.class */,
-				0ECA57DA0D96BB600011A348 /* CalibMovingStatKnown.class */,
-				0ECA57DB0D96BB600011A348 /* CalibMovingStatKnown2.class */,
-				0ECA57DC0D96BB600011A348 /* CalibMovingStatUnknown.class */,
-				0ECA57DD0D96BB600011A348 /* CalibMovingStatUnknown2.class */,
-				0ECA57DE0D96BB600011A348 /* CalibStatStatKnown.class */,
-				0ECA57DF0D96BB600011A348 /* CalibStatStatUnknown.class */,
-				0ECA57E00D96BB600011A348 /* DetectorArray.class */,
-				0ECA57E10D96BB600011A348 /* Fiducial.class */,
-				0ECA57E20D96BB600011A348 /* FiducialCollection.class */,
-				0ECA57E30D96BB600011A348 /* FiducialCollectionHolder.class */,
-				0ECA57E40D96BB600011A348 /* HeavyFiducial.class */,
-				0ECA57E50D96BB600011A348 /* LightFiducial.class */,
-				0ECA57E60D96BB600011A348 /* OutputGenerator.class */,
-				0ECA57E70D96BB600011A348 /* ParamGuesser.class */,
-				0ECA57E80D96BB600011A348 /* Ray.class */,
-				0ECA57E90D96BB600011A348 /* ReconStatStatUnknown.class */,
-				0ECA57EA0D96BB600011A348 /* RotaryStage.class */,
-				0ECA57EB0D96BB600011A348 /* Source.class */,
-				0ECA57EC0D96BB600011A348 /* SourceDetectorPair.class */,
-				0ECA57ED0D96BB600011A348 /* TransformableObject.class */,
-				0ECA57EE0D96BB600011A348 /* TransformCreator.class */,
-				0ECA57EF0D96BB600011A348 /* Voxel.class */,
-				0ECA57F00D96BB600011A348 /* XRAYSystem.class */,
-			);
-			path = Simulator;
-			sourceTree = "<group>";
-		};
-		0ECA57F20D96BB600011A348 /* Docs */ = {
-			isa = PBXGroup;
-			children = (
-				0ECA57F30D96BB600011A348 /* TransformableObject.doc */,
-			);
-			path = Docs;
-			sourceTree = "<group>";
-		};
-		0ECA57F40D96BB600011A348 /* jars */ = {
-			isa = PBXGroup;
-			children = (
-				0ECA57F50D96BB600011A348 /* Simulator.jar */,
-			);
-			path = jars;
-			sourceTree = "<group>";
-		};
-		0ECA57F60D96BB600011A348 /* Source */ = {
-			isa = PBXGroup;
-			children = (
-				0ECA57F70D96BB600011A348 /* Simulator */,
-			);
-			path = Source;
-			sourceTree = "<group>";
-		};
-		0ECA57F70D96BB600011A348 /* Simulator */ = {
-			isa = PBXGroup;
-			children = (
-				0ECA57F80D96BB600011A348 /* BasisCollection.java */,
-				0ECA57F90D96BB610011A348 /* CalibMovingStatKnown.java */,
-				0ECA57FA0D96BB610011A348 /* CalibMovingStatKnown2.java */,
-				0ECA57FB0D96BB610011A348 /* CalibMovingStatUnknown.java */,
-				0ECA57FC0D96BB610011A348 /* CalibMovingStatUnknown2.java */,
-				0ECA57FD0D96BB610011A348 /* CalibStatStatKnown.java */,
-				0ECA57FE0D96BB610011A348 /* CalibStatStatUnknown.java */,
-				0ECA57FF0D96BB610011A348 /* DetectorArray.java */,
-				0ECA58000D96BB610011A348 /* Fiducial.java */,
-				0ECA58010D96BB610011A348 /* FiducialCollection.java */,
-				0ECA58020D96BB610011A348 /* FiducialCollectionHolder.java */,
-				0ECA58030D96BB610011A348 /* HeavyFiducial.java */,
-				0ECA58040D96BB610011A348 /* LightFiducial.java */,
-				0ECA58050D96BB610011A348 /* OutputGenerator.java */,
-				0ECA58060D96BB610011A348 /* ParamGuesser.java */,
-				0ECA58070D96BB610011A348 /* Ray.java */,
-				0ECA58080D96BB610011A348 /* ReconStatStatUnknown.java */,
-				0ECA58090D96BB610011A348 /* RotaryStage.java */,
-				0ECA580A0D96BB610011A348 /* Source.java */,
-				0ECA580B0D96BB610011A348 /* SourceDetectorPair.java */,
-				0ECA580C0D96BB610011A348 /* TransformableObject.java */,
-				0ECA580D0D96BB610011A348 /* TransformCreator.java */,
-				0ECA580E0D96BB610011A348 /* Voxel.java */,
-				0ECA580F0D96BB610011A348 /* XRAYSystem.java */,
-			);
-			path = Simulator;
-			sourceTree = "<group>";
-		};
-		0ECA58100D96BB610011A348 /* packagedMatlabCode */ = {
-			isa = PBXGroup;
-			children = (
-				0ECA58110D96BB610011A348 /* calibration */,
-				0ECA581E0D96BB610011A348 /* general */,
-				0ECA58450D96BB610011A348 /* globals.m */,
-				0ECA58460D96BB610011A348 /* mriCoregistration */,
-				0ECA58650D96BB610011A348 /* reconstruction */,
-				0ECA586D0D96BB610011A348 /* simulationGlobals.m */,
-			);
-			path = packagedMatlabCode;
-			sourceTree = "<group>";
-		};
-		0ECA58110D96BB610011A348 /* calibration */ = {
-			isa = PBXGroup;
-			children = (
-				0ECA58120D96BB610011A348 /* calib_calibrate.m */,
-				0ECA58130D96BB610011A348 /* calib_realDataTester.m */,
-				0ECA58140D96BB610011A348 /* calib_systemGuess.m */,
-				0ECA58150D96BB610011A348 /* calib_validate.m */,
-				0ECA58160D96BB610011A348 /* calib_validate2.m */,
-				0ECA58170D96BB610011A348 /* simulation */,
-			);
-			path = calibration;
-			sourceTree = "<group>";
-		};
-		0ECA58170D96BB610011A348 /* simulation */ = {
-			isa = PBXGroup;
-			children = (
-				0ECA58180D96BB610011A348 /* calib_collectSimulatedData3.m */,
-				0ECA58190D96BB610011A348 /* calib_getSimulatedCalibrationPattern.m */,
-				0ECA581A0D96BB610011A348 /* calib_perturbFiducialCollection1.m */,
-				0ECA581B0D96BB610011A348 /* calib_simulateValidation.m */,
-				0ECA581C0D96BB610011A348 /* calib_tester.m */,
-				0ECA581D0D96BB610011A348 /* calibTester2.m */,
-			);
-			path = simulation;
-			sourceTree = "<group>";
-		};
-		0ECA581E0D96BB610011A348 /* general */ = {
-			isa = PBXGroup;
-			children = (
-				0ECA581F0D96BB610011A348 /* misc */,
-				0ECA58210D96BB610011A348 /* randCenteredAtZero1.m */,
-				0ECA58220D96BB610011A348 /* randCenteredAtZero2.m */,
-				0ECA58230D96BB610011A348 /* simulation */,
-				0ECA58270D96BB610011A348 /* Simulator.jar */,
-				0ECA58280D96BB610011A348 /* xrg_addFiducials.m */,
-				0ECA58290D96BB610011A348 /* xrg_addFiducials1.m */,
-				0ECA582A0D96BB610011A348 /* xrg_addSourceDetectorPair.m */,
-				0ECA582B0D96BB610011A348 /* xrg_buildSampleSystem.m */,
-				0ECA582C0D96BB610011A348 /* xrg_buildUnperturbedSystem1.m */,
-				0ECA582D0D96BB610011A348 /* xrg_displayReconstruction.m */,
-				0ECA582E0D96BB610011A348 /* xrg_emptySystem.m */,
-				0ECA582F0D96BB610011A348 /* xrg_fastProject.m */,
-				0ECA58300D96BB610011A348 /* xrg_getDetectorCenter.m */,
-				0ECA58310D96BB610011A348 /* xrg_getDetectorNormal.m */,
-				0ECA58320D96BB610011A348 /* xrg_getDetectorOrigin.m */,
-				0ECA58330D96BB610011A348 /* xrg_getDetectorSize.m */,
-				0ECA58340D96BB610011A348 /* xrg_getFiducialCenters.m */,
-				0ECA58350D96BB610011A348 /* xrg_getFiducialLocationRelativeToFiducialFrame.m */,
-				0ECA58360D96BB610011A348 /* xrg_getFiducialLocationRelativeToFiducialFrame2.m */,
-				0ECA58370D96BB610011A348 /* xrg_getIdealCenterOfProjection.m */,
-				0ECA58380D96BB610011A348 /* xrg_getNumberOfSDP.m */,
-				0ECA58390D96BB610011A348 /* xrg_getPixelSize.m */,
-				0ECA583A0D96BB610011A348 /* xrg_getRHS.m */,
-				0ECA583B0D96BB610011A348 /* xrg_getSourceCenter.m */,
-				0ECA583C0D96BB610011A348 /* xrg_getSourceDetectorDistance.m */,
-				0ECA583D0D96BB610011A348 /* xrg_getSystemDeltas.m */,
-				0ECA583E0D96BB610011A348 /* xrg_pointSelectionTool.m */,
-				0ECA583F0D96BB610011A348 /* xrg_RHSVerbose2Vector.m */,
-				0ECA58400D96BB610011A348 /* xrg_setFiducialRadius.m */,
-				0ECA58410D96BB610011A348 /* xrg_setSystemDeltas.m */,
-				0ECA58420D96BB610011A348 /* xrg_setSystemDeltas2.m */,
-				0ECA58430D96BB610011A348 /* xrg_showRHS.m */,
-				0ECA58440D96BB610011A348 /* xrg_slowProject.m */,
-			);
-			path = general;
-			sourceTree = "<group>";
-		};
-		0ECA581F0D96BB610011A348 /* misc */ = {
-			isa = PBXGroup;
-			children = (
-				0ECA58200D96BB610011A348 /* xrg_getElectrodeLocationRelativeToFiducialFrame2.m */,
-			);
-			path = misc;
-			sourceTree = "<group>";
-		};
-		0ECA58230D96BB610011A348 /* simulation */ = {
-			isa = PBXGroup;
-			children = (
-				0ECA58240D96BB610011A348 /* xrg_buildPerturbedSystem1.m */,
-				0ECA58250D96BB610011A348 /* xrg_buildPerturbedSystem2.m */,
-				0ECA58260D96BB610011A348 /* xrg_resetToRandomFiducials.m */,
-			);
-			path = simulation;
-			sourceTree = "<group>";
-		};
-		0ECA58460D96BB610011A348 /* mriCoregistration */ = {
-			isa = PBXGroup;
-			children = (
-				0ECA58470D96BB610011A348 /* addElementToFrame.m */,
-				0ECA58480D96BB610011A348 /* addFrameToGlobalRegistry.m */,
-				0ECA58490D96BB610011A348 /* addFrameTransformToGlobalRegistry.m */,
-				0ECA584A0D96BB610011A348 /* checkRigidTransform.m */,
-				0ECA584B0D96BB610011A348 /* convertBundleToFrame.m */,
-				0ECA584C0D96BB610011A348 /* deg2rad.m */,
-				0ECA584D0D96BB610011A348 /* findRigidTransform.m */,
-				0ECA584E0D96BB610011A348 /* FrameTransformer.m */,
-				0ECA584F0D96BB610011A348 /* getGlobalFrames.m */,
-				0ECA58500D96BB610011A348 /* getGlobalFrameTransform.m */,
-				0ECA58510D96BB610011A348 /* initGlobalFrames.m */,
-				0ECA58520D96BB610011A348 /* initGlobalFrameTransforms.m */,
-				0ECA58530D96BB610011A348 /* initializeAlexFrames.m */,
-				0ECA58540D96BB610011A348 /* makeNewFrame.m */,
-				0ECA58550D96BB610011A348 /* mri_applyRigidTransform.m */,
-				0ECA58560D96BB610011A348 /* mri_dicomReader.m */,
-				0ECA58570D96BB610011A348 /* mri_getCoregTransform.m */,
-				0ECA58580D96BB610011A348 /* mri_getCoregTransform_verJJD1.m */,
-				0ECA58590D96BB610011A348 /* mri_getCoregTransformAdvanced.m */,
-				0ECA585A0D96BB610011A348 /* mri_getElectrodeInMRIFrame.m */,
-				0ECA585B0D96BB610011A348 /* mri_ksub_next.m */,
-				0ECA585C0D96BB610011A348 /* mri_neoMRI.m */,
-				0ECA585D0D96BB610011A348 /* mri_neoMRI2.m */,
-				0ECA585E0D96BB610011A348 /* mri_paulPhantomCoregisteredPlots.m */,
-				0ECA585F0D96BB610011A348 /* mri_recenter.m */,
-				0ECA58600D96BB610011A348 /* mri_rotMat.m */,
-				0ECA58610D96BB610011A348 /* mri_target2DestFrameTransform.m */,
-				0ECA58620D96BB610011A348 /* mri_testScript.m */,
-				0ECA58630D96BB610011A348 /* projectPointsToNewFrame.m */,
-				0ECA58640D96BB610011A348 /* runCoregistration.m */,
-			);
-			path = mriCoregistration;
-			sourceTree = "<group>";
-		};
-		0ECA58650D96BB610011A348 /* reconstruction */ = {
-			isa = PBXGroup;
-			children = (
-				0ECA58660D96BB610011A348 /* recon_reconstruct.m */,
-				0ECA58670D96BB610011A348 /* recon_reconstructIgnoreCorrespondences.m */,
-				0ECA58680D96BB610011A348 /* simulation */,
-			);
-			path = reconstruction;
-			sourceTree = "<group>";
-		};
-		0ECA58680D96BB610011A348 /* simulation */ = {
-			isa = PBXGroup;
-			children = (
-				0ECA58690D96BB610011A348 /* genDatabase2.m */,
-				0ECA586A0D96BB610011A348 /* genDatabase2b.m */,
-				0ECA586B0D96BB610011A348 /* simulateAndReconstruct2b.m */,
-				0ECA586C0D96BB610011A348 /* tester2b.m */,
-			);
-			path = simulation;
-			sourceTree = "<group>";
-		};
-		0ECA586E0D96BB610011A348 /* XRayLocalizationData */ = {
-			isa = PBXGroup;
-			children = (
-				0ECA586F0D96BB610011A348 /* processedCTData */,
-				0ECA58710D96BB610011A348 /* RHS_calibration.mat */,
-			);
-			path = XRayLocalizationData;
-			sourceTree = "<group>";
-		};
-		0ECA586F0D96BB610011A348 /* processedCTData */ = {
-			isa = PBXGroup;
-			children = (
-				0ECA58700D96BB610011A348 /* cal1_CT_orderedCenters.mat */,
-			);
-			path = processedCTData;
-			sourceTree = "<group>";
-		};
-		0ECA58930D96BC230011A348 /* FFOR */ = {
-			isa = PBXGroup;
-			children = (
-				0ECA58940D96BC230011A348 /* FFOR_OreperTestObject06_microCT.xml */,
-				0ECA58950D96BC230011A348 /* FFOR_PapanastassiouPlasticValence01_headStable.xml */,
-				0ECA58960D96BC230011A348 /* FFOR_PapanastassiouPlasticValence01_JanMR.xml */,
-				0ECA58970D96BC230011A348 /* FFOR_PapanastassiouPlasticValence01_Machined.xml */,
-				0ECA58980D96BC230011A348 /* FFOR_PapanastassiouPlasticValence01_microCT.xml */,
-				0ECA58990D96BC230011A348 /* FFOR_PapanastassiouPlasticValence01_MiekeMR.xml */,
-			);
-			name = FFOR;
-			path = Resources/FFOR;
-			sourceTree = "<group>";
-		};
-		0ECA589A0D96BC230011A348 /* NFS */ = {
-			isa = PBXGroup;
-			children = (
-				0ECA589B0D96BC230011A348 /* NFS_OreperCalibrationObject01.xml */,
-				0ECA589C0D96BC230011A348 /* NFS_OreperTestObject06.xml */,
-				0ECA589D0D96BC230011A348 /* NFS_PapanastassiouPlasticValence01.xml */,
-			);
-			name = NFS;
-			path = Resources/NFS;
 			sourceTree = "<group>";
 		};
 		0ECAE5950D95591C002749C5 /* MainWindow */ = {
@@ -915,7 +382,6 @@
 		29B97314FDCFA39411CA2CEA /* XRIPT */ = {
 			isa = PBXGroup;
 			children = (
-				0ECA57B30D96BB600011A348 /* MATLAB */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
@@ -937,6 +403,11 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				E12061D726AB5F4500C07099 /* MATLAB */,
+				E12061D426AB5EF400C07099 /* FFOR */,
+				E12061D326AB5EF400C07099 /* NFS */,
+				E12061CB26AB5D0A00C07099 /* TestData_PapanastassiouPlasticValence.xry */,
+				0ECA58920D96BC230011A348 /* 440Hz_20s.wav */,
 				682C755C0DA29A9200FBA300 /* CalibrationWindow.nib */,
 				682C751F0DA2951A00FBA300 /* MainMenu.nib */,
 				0EB839C40DA12815007E4246 /* ImageViewer.nib */,
@@ -945,9 +416,6 @@
 				0E77E0E40D9D84560063019B /* NewXrayObjectWindow.nib */,
 				0E77E0E60D9D84560063019B /* OperationsWindow.nib */,
 				0E77E0E80D9D84560063019B /* PreferencesWindow.nib */,
-				0ECA58920D96BC230011A348 /* 440Hz_20s.wav */,
-				0ECA58930D96BC230011A348 /* FFOR */,
-				0ECA589A0D96BC230011A348 /* NFS */,
 				8D1107310486CEB800E47090 /* Info.plist */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
 			);
@@ -985,10 +453,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "XRIPT" */;
 			buildPhases = (
-				8D1107290486CEB800E47090 /* Resources */,
 				8D11072C0486CEB800E47090 /* Sources */,
 				8D11072E0486CEB800E47090 /* Frameworks */,
-				0ECA57B10D96BAC60011A348 /* ShellScript */,
+				8D1107290486CEB800E47090 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -1033,10 +500,14 @@
 				0ECA589E0D96BC2D0011A348 /* 440Hz_20s.wav in Resources */,
 				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
 				0E77E0EF0D9D84560063019B /* FiducialsWindow.nib in Resources */,
+				E12061D626AB5EF400C07099 /* FFOR in Resources */,
 				0E77E0F00D9D84560063019B /* MainWindow.nib in Resources */,
 				0E77E0F10D9D84560063019B /* NewXrayObjectWindow.nib in Resources */,
 				0E77E0F20D9D84560063019B /* OperationsWindow.nib in Resources */,
+				E12061D826AB5F4500C07099 /* MATLAB in Resources */,
+				E12061D526AB5EF400C07099 /* NFS in Resources */,
 				0E77E0F30D9D84560063019B /* PreferencesWindow.nib in Resources */,
+				E12061CC26AB5D0A00C07099 /* TestData_PapanastassiouPlasticValence.xry in Resources */,
 				0EB839C60DA12815007E4246 /* ImageViewer.nib in Resources */,
 				682C75210DA2951A00FBA300 /* MainMenu.nib in Resources */,
 				682C755E0DA29A9200FBA300 /* CalibrationWindow.nib in Resources */,
@@ -1044,22 +515,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		0ECA57B10D96BAC60011A348 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "cp -Rf \"$BUILT_PRODUCTS_DIR/../../MATLAB\" \"$BUILT_PRODUCTS_DIR/XRIPT.app/Contents/Resources\"\ncp -Rf \"$BUILT_PRODUCTS_DIR/../../Resources/FFOR\" \"$BUILT_PRODUCTS_DIR/XRIPT.app/Contents/Resources\"\ncp -Rf \"$BUILT_PRODUCTS_DIR/../../Resources/NFS\" \"$BUILT_PRODUCTS_DIR/XRIPT.app/Contents/Resources\"\ncp -Rf \"$BUILT_PRODUCTS_DIR/../../Resources/TestData_PapanastassiouPlasticValence.xry\" \"$BUILT_PRODUCTS_DIR/XRIPT.app/Contents/Resources\"\n";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8D11072C0486CEB800E47090 /* Sources */ = {
