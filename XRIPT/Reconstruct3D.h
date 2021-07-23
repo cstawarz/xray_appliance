@@ -7,7 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "XRayBundle.h"
+#import "XrayBundle.h"
 #import "Calibration.h"
 
 @interface Reconstruct3D : NSObject {

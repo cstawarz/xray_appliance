@@ -118,10 +118,10 @@
 													 sizeof(color_elements)/sizeof(*color_elements), 
 													 color_fieldnames);
 		
-		mxSetField(color_struct, 0, "red", mxCreateScalarDouble([[[xro plotableObject] color] redComponent]));
-		mxSetField(color_struct, 0, "green", mxCreateScalarDouble([[[xro plotableObject] color] greenComponent]));
-		mxSetField(color_struct, 0, "blue", mxCreateScalarDouble([[[xro plotableObject] color] blueComponent]));
-		mxSetField(color_struct, 0, "alpha", mxCreateScalarDouble([[[xro plotableObject] color] alphaComponent]));
+		mxSetField(color_struct, 0, "red", mxCreateDoubleScalar([[[xro plotableObject] color] redComponent]));
+		mxSetField(color_struct, 0, "green", mxCreateDoubleScalar([[[xro plotableObject] color] greenComponent]));
+		mxSetField(color_struct, 0, "blue", mxCreateDoubleScalar([[[xro plotableObject] color] blueComponent]));
+		mxSetField(color_struct, 0, "alpha", mxCreateDoubleScalar([[[xro plotableObject] color] alphaComponent]));
 		
 		mxSetField(object_struct, 0, "center", center_struct);
 		mxSetField(object_struct, 0, "name", name);
@@ -355,7 +355,7 @@
 	mxSetField(rhs_verbose, 
 			   0, 
 			   "numFids", 
-			   mxCreateScalarDouble(projection_number));
+               mxCreateDoubleScalar(projection_number));
 	
 	NSString *RHS_path = [bundle_path stringByAppendingPathComponent:@"Image_processing/RHS.mat"];
 	MATFile *rhs_mat_file = matOpen([RHS_path cStringUsingEncoding:NSASCIIStringEncoding], 

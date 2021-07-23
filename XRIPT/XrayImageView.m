@@ -182,8 +182,8 @@
 	NSDictionary *path_and_color;
 	
 	while(path_and_color = [path_enumerator nextObject]) {
-		[[path_and_color objectForKey:XRAY_OBJECT_COLOR] set];
-		[[path_and_color objectForKey:XRAY_OBJECT_PATH] stroke];
+		[(NSColor *)[path_and_color objectForKey:XRAY_OBJECT_COLOR] set];
+		[(NSBezierPath *)[path_and_color objectForKey:XRAY_OBJECT_PATH] stroke];
 	}
 	
 	if(making_selection) {

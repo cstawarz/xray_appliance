@@ -305,7 +305,7 @@
     [op setAllowsMultipleSelection:NO];
 	
     int bp = [op runModalForTypes:[NSArray arrayWithObjects:@"crv", nil]];
-    if(bp == NSOKButton) {
+    if(bp == NSModalResponseOK) {
         NSArray * fn = [op filenames];
         NSEnumerator * fileEnum = [fn objectEnumerator];
         NSString * filename;
@@ -513,7 +513,7 @@
 	[self setStatusMessage:@"Performing projection"];
 	
 	[op_lock lock];
-	if([self overlay] == NSOnState) {
+    if([self overlay] == NSControlStateValueOn) {
 		[ProjectToCRV projectElement:[self objectToProject]
 							 toFrame:[[[self fforsToUse] objectAtIndex:[[self fforsToUse] count]-1] name]
 							toBundle:bundle_path

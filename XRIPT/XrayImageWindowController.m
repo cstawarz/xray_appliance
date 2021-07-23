@@ -152,8 +152,8 @@
 	NSBitmapImageRep *new_image = [self convertRawToImage:[self imageData] 
 											   withMaxLUT:[self maxLUT]
 											   withMinLUT:[self minLUT]
-										  usingCorrection:([self pixelCorrect] == NSOnState)
-									  andUsingCalibration:([self calibrate] == NSOnState)];
+                                          usingCorrection:([self pixelCorrect] == NSControlStateValueOn)
+                                      andUsingCalibration:([self calibrate] == NSControlStateValueOn)];
 	
 	@synchronized(cached_image) {
 		[self setImage:[new_image TIFFRepresentation]];
@@ -424,8 +424,8 @@
 	NSBitmapImageRep *new_image = [self convertRawToImage:[self imageData] 
 											   withMaxLUT:[self maxLUT]
 											   withMinLUT:[self minLUT]
-										  usingCorrection:([self pixelCorrect] == NSOnState)
-									  andUsingCalibration:([self calibrate] == NSOnState)];
+                                          usingCorrection:([self pixelCorrect] == NSControlStateValueOn)
+                                      andUsingCalibration:([self calibrate] == NSControlStateValueOn)];
 	
 	@synchronized(cached_image) {
 		[self setImage:[new_image TIFFRepresentation]];
