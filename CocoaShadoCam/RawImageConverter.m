@@ -282,7 +282,7 @@
 			pixel_ *= SCALE_FACTOR_16BIT;
 			
 			
-			unsigned int pixel = min_LUT > pixel_ ? 0 : pixel_ - min_LUT;
+			NSUInteger pixel = min_LUT > pixel_ ? 0 : pixel_ - min_LUT;
 			pixel *= scaleFactor;
 			pixel = pixel > 0xFFFF ? 0xFFFF : pixel;
 			

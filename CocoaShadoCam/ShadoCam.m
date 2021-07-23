@@ -571,8 +571,8 @@
 - (void)writeData:(NSData *)data {	
 	NSString *setupFile = [[self volumePath] stringByAppendingPathComponent:SETUP_FILE];
 	
-	[[NSFileManager defaultManager] removeFileAtPath:setupFile
-											 handler:nil];
+    [[NSFileManager defaultManager] removeItemAtPath:setupFile
+                                               error:nil];
 	[data writeToFile:setupFile atomically:YES];
 //	[[NSFileManager defaultManager] createFileAtPath:setupFile
 //											contents:data
