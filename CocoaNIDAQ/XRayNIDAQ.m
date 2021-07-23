@@ -348,8 +348,9 @@
 		int32 bufferSize = DAQmxBaseGetExtendedErrorInfo(NULL,0);
 		char *errBuff=malloc(bufferSize); 
 		DAQmxBaseGetExtendedErrorInfo(errBuff,bufferSize); 
-		NSString *errorString = [[NSString alloc] initWithCString:errBuff 
-														   length:bufferSize];
+        NSString *errorString = [[NSString alloc] initWithBytes:errBuff
+                                                         length:bufferSize
+                                                       encoding:NSASCIIStringEncoding];
 		free(errBuff);
 		
 		NSException *exception = [NSException exceptionWithName:@"NIDAQException"
