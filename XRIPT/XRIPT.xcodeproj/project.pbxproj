@@ -55,11 +55,11 @@
 		685510CD0E38DB1400B721A2 /* XrayXMLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 685510CC0E38DB1400B721A2 /* XrayXMLDocument.m */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
-		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 		E12061CC26AB5D0A00C07099 /* TestData_PapanastassiouPlasticValence.xry in Resources */ = {isa = PBXBuildFile; fileRef = E12061CB26AB5D0A00C07099 /* TestData_PapanastassiouPlasticValence.xry */; };
 		E12061D526AB5EF400C07099 /* NFS in Resources */ = {isa = PBXBuildFile; fileRef = E12061D326AB5EF400C07099 /* NFS */; };
 		E12061D626AB5EF400C07099 /* FFOR in Resources */ = {isa = PBXBuildFile; fileRef = E12061D426AB5EF400C07099 /* FFOR */; };
 		E12061D826AB5F4500C07099 /* MATLAB in Resources */ = {isa = PBXBuildFile; fileRef = E12061D726AB5F4500C07099 /* MATLAB */; };
+		E12061DA26AB618A00C07099 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E12061D926AB618A00C07099 /* Cocoa.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -138,11 +138,7 @@
 		0EF4B3700D905CD0007C3FBD /* Electrode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Electrode.m; sourceTree = "<group>"; };
 		0EF4B3730D905CD0007C3FBD /* XrayObjects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XrayObjects.h; sourceTree = "<group>"; };
 		0EF4B3740D905CD0007C3FBD /* XrayObjects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XrayObjects.m; sourceTree = "<group>"; };
-		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
-		13E42FB307B3F0F600E4EEF1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
-		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		32CA4F630368D1EE00C91783 /* XRIPT_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XRIPT_Prefix.pch; sourceTree = "<group>"; };
 		68198B0C0E23FA960086EEF7 /* TransformableObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransformableObject.h; sourceTree = "<group>"; };
 		68198B0D0E23FA960086EEF7 /* TransformableObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransformableObject.m; sourceTree = "<group>"; };
@@ -160,6 +156,7 @@
 		E12061D326AB5EF400C07099 /* NFS */ = {isa = PBXFileReference; lastKnownFileType = folder; name = NFS; path = Resources/NFS; sourceTree = "<group>"; };
 		E12061D426AB5EF400C07099 /* FFOR */ = {isa = PBXFileReference; lastKnownFileType = folder; name = FFOR; path = Resources/FFOR; sourceTree = "<group>"; };
 		E12061D726AB5F4500C07099 /* MATLAB */ = {isa = PBXFileReference; lastKnownFileType = folder; path = MATLAB; sourceTree = "<group>"; };
+		E12061D926AB618A00C07099 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,7 +164,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
+				E12061DA26AB618A00C07099 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -353,24 +350,6 @@
 			name = XrayObjects;
 			sourceTree = "<group>";
 		};
-		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
-			);
-			name = "Linked Frameworks";
-			sourceTree = "<group>";
-		};
-		1058C7A2FEA54F0111CA2CBB /* Other Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				29B97324FDCFA39411CA2CEA /* AppKit.framework */,
-				13E42FB307B3F0F600E4EEF1 /* CoreData.framework */,
-				29B97325FDCFA39411CA2CEA /* Foundation.framework */,
-			);
-			name = "Other Frameworks";
-			sourceTree = "<group>";
-		};
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -425,8 +404,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */,
-				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
+				E12061D926AB618A00C07099 /* Cocoa.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
