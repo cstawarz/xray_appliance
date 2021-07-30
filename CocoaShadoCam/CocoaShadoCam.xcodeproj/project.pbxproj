@@ -248,6 +248,7 @@
 				GCC_PREFIX_HEADER = CocoaShadoCam_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "@loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				PRODUCT_BUNDLE_IDENTIFIER = edu.mit.CocoaShadoCam;
 				PRODUCT_NAME = CocoaShadoCam;
 				WRAPPER_EXTENSION = framework;
@@ -267,6 +268,7 @@
 				GCC_PREFIX_HEADER = CocoaShadoCam_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "@loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				PRODUCT_BUNDLE_IDENTIFIER = edu.mit.CocoaShadoCam;
 				PRODUCT_NAME = CocoaShadoCam;
 				WRAPPER_EXTENSION = framework;

@@ -60,7 +60,25 @@
 		E12061D626AB5EF400C07099 /* FFOR in Resources */ = {isa = PBXBuildFile; fileRef = E12061D426AB5EF400C07099 /* FFOR */; };
 		E12061D826AB5F4500C07099 /* MATLAB in Resources */ = {isa = PBXBuildFile; fileRef = E12061D726AB5F4500C07099 /* MATLAB */; };
 		E12061DA26AB618A00C07099 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E12061D926AB618A00C07099 /* Cocoa.framework */; };
+		E12061DC26AB62AF00C07099 /* CocoaShadoCam.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E12061DB26AB62AF00C07099 /* CocoaShadoCam.framework */; };
+		E12061DE26AB630000C07099 /* CocoaShadoCam.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = E12061DB26AB62AF00C07099 /* CocoaShadoCam.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E138C56126B436EB0072693C /* CocoaNIDAQ.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E138C56026B436EB0072693C /* CocoaNIDAQ.framework */; };
+		E138C56226B437E90072693C /* CocoaNIDAQ.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = E138C56026B436EB0072693C /* CocoaNIDAQ.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		E12061DD26AB62F900C07099 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				E138C56226B437E90072693C /* CocoaNIDAQ.framework in CopyFiles */,
+				E12061DE26AB630000C07099 /* CocoaShadoCam.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		089C165DFE840E0CC02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -157,6 +175,8 @@
 		E12061D426AB5EF400C07099 /* FFOR */ = {isa = PBXFileReference; lastKnownFileType = folder; name = FFOR; path = Resources/FFOR; sourceTree = "<group>"; };
 		E12061D726AB5F4500C07099 /* MATLAB */ = {isa = PBXFileReference; lastKnownFileType = folder; path = MATLAB; sourceTree = "<group>"; };
 		E12061D926AB618A00C07099 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		E12061DB26AB62AF00C07099 /* CocoaShadoCam.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CocoaShadoCam.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E138C56026B436EB0072693C /* CocoaNIDAQ.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CocoaNIDAQ.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +185,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E12061DA26AB618A00C07099 /* Cocoa.framework in Frameworks */,
+				E138C56126B436EB0072693C /* CocoaNIDAQ.framework in Frameworks */,
+				E12061DC26AB62AF00C07099 /* CocoaShadoCam.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -405,6 +427,8 @@
 			isa = PBXGroup;
 			children = (
 				E12061D926AB618A00C07099 /* Cocoa.framework */,
+				E138C56026B436EB0072693C /* CocoaNIDAQ.framework */,
+				E12061DB26AB62AF00C07099 /* CocoaShadoCam.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -434,6 +458,7 @@
 				8D11072C0486CEB800E47090 /* Sources */,
 				8D11072E0486CEB800E47090 /* Frameworks */,
 				8D1107290486CEB800E47090 /* Resources */,
+				E12061DD26AB62F900C07099 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -622,12 +647,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = XRIPT_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				PRODUCT_BUNDLE_IDENTIFIER = edu.mit.XRIPT;
 				PRODUCT_NAME = XRIPT;
 				WRAPPER_EXTENSION = app;
@@ -638,9 +665,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = XRIPT_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				PRODUCT_BUNDLE_IDENTIFIER = edu.mit.XRIPT;
 				PRODUCT_NAME = XRIPT;
 				WRAPPER_EXTENSION = app;
@@ -670,11 +699,6 @@
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
-					"-framework",
-					CocoaNIDAQ,
-					"-framework",
-					CocoaShadoCam,
-					"-lxml2",
 					"-lmat",
 					"-lmx",
 					"-leng",
@@ -704,11 +728,6 @@
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
-					"-framework",
-					CocoaNIDAQ,
-					"-framework",
-					CocoaShadoCam,
-					"-lxml2",
 					"-lmat",
 					"-lmx",
 					"-leng",

@@ -7,7 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "NIDAQmxBase.h"
+#import <nidaqmxbase/NIDAQmxBase.h>
 
 #define MIN_OUT_VOLTAGE 0.0
 #define MAX_OUT_VOLTAGE 5.0
