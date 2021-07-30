@@ -9,18 +9,8 @@
 #import "GlobalMATLABEngine.h"
 #import "engine.h"
 
-#ifdef __ppc__
-#define MATLAB_EXECUTABLE_PATH "/Applications/MATLAB7/bin/matlab"
-#else
-#define MATLAB_EXECUTABLE_PATH "/Applications/MATLAB/bin/matlab -maci"
-#endif
-
 
 static GlobalMATLABEngine *global_MATLAB_engine;
-
-@interface GlobalMATLABEngine (PrivateMethods)
-+ (void)startX11;
-@end
 
 @implementation GlobalMATLABEngine
 
@@ -28,7 +18,8 @@ static GlobalMATLABEngine *global_MATLAB_engine;
 	self = [super init];
 	if (self != nil) {
 		engine_lock = [[NSLock alloc] init];
-		matlab_engine = engOpen(MATLAB_EXECUTABLE_PATH);
+        NSString *matlabStartupCommand = [NSString stringWithFormat:@"%s/bin/matlab -nosplash -%s", MATLAB_PATH, MATLAB_ARCH];
+		matlab_engine = engOpen(matlabStartupCommand.UTF8String);
 		engSetVisible(matlab_engine, 0);
 		engOutputBuffer(matlab_engine, NULL, 0);
 		
@@ -59,7 +50,6 @@ static GlobalMATLABEngine *global_MATLAB_engine;
 + (GlobalMATLABEngine *)lockedEngine {
     @synchronized(self) {
         if (global_MATLAB_engine == nil) {
-			[self startX11];
             [[self alloc] init]; // assignment not done here
         }
     }
@@ -137,10 +127,6 @@ static GlobalMATLABEngine *global_MATLAB_engine;
 					 usingImageSize:(NSSize)image_size {
 	return NSMakePoint(MATLAB_point.x - 0.5,
 					   (image_size.height-MATLAB_point.y)-0.5);
-}
-
-+ (void)startX11 {
-	system("open -a /Applications/Utilities/X11.app");
 }
 
 @end

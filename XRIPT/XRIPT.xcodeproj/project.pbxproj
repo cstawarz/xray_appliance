@@ -657,22 +657,20 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = XRIPT_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"MATLAB_PATH=\\\"$(MATLAB_PATH)\\\"",
+					"MATLAB_ARCH=\\\"$(MATLAB_ARCH_$(CURRENT_ARCH))\\\"",
+				);
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					/Applications/MATLAB/extern/include,
-				);
+				HEADER_SEARCH_PATHS = "$(MATLAB_PATH)/extern/include";
 				INFOPLIST_FILE = Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					/Applications/MATLAB/bin/maci64,
-				);
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					/Applications/MATLAB/bin/maci64,
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(MATLAB_PATH)/bin/$(MATLAB_ARCH_$(CURRENT_ARCH))";
+				LIBRARY_SEARCH_PATHS = "$(MATLAB_PATH)/bin/$(MATLAB_ARCH_$(CURRENT_ARCH))";
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MATLAB_ARCH_x86_64 = maci64;
+				MATLAB_PATH = "/Applications/MATLAB_$(MATLAB_VERSION).app";
+				MATLAB_VERSION = R2021a;
 				OTHER_LDFLAGS = (
 					"-lmat",
 					"-lmx",
@@ -695,22 +693,20 @@
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = XRIPT_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"MATLAB_PATH=\\\"$(MATLAB_PATH)\\\"",
+					"MATLAB_ARCH=\\\"$(MATLAB_ARCH_$(CURRENT_ARCH))\\\"",
+				);
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					/Applications/MATLAB/extern/include,
-				);
+				HEADER_SEARCH_PATHS = "$(MATLAB_PATH)/extern/include";
 				INFOPLIST_FILE = Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					/Applications/MATLAB/bin/maci64,
-				);
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					/Applications/MATLAB/bin/maci64,
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(MATLAB_PATH)/bin/$(MATLAB_ARCH_$(CURRENT_ARCH))";
+				LIBRARY_SEARCH_PATHS = "$(MATLAB_PATH)/bin/$(MATLAB_ARCH_$(CURRENT_ARCH))";
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MATLAB_ARCH_x86_64 = maci64;
+				MATLAB_PATH = "/Applications/MATLAB_$(MATLAB_VERSION).app";
+				MATLAB_VERSION = R2021a;
 				OTHER_LDFLAGS = (
 					"-lmat",
 					"-lmx",
