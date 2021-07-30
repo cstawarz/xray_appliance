@@ -21,5 +21,5 @@ typedef enum tagDetector {DETECTOR_1,
 #define MAX_XRAY_CURRENT 0.001
 #define MIN_XRAY_CURRENT 0.0
 
-#define XRAY_DEVICES_ATTACHED 0
+#define XRAY_DEVICES_ATTACHED 1
 
