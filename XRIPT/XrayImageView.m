@@ -47,7 +47,7 @@
 		
 		BOOL object_selected = NO;
 		
-		if(!(modifier_flags & NSControlKeyMask)) {
+		if(!(modifier_flags & NSEventModifierFlagControl)) {
 			NSRect image_view_frame = [self imageViewFrame];
 			object_selected = [delegate selectObjectAtPoint:NSMakePoint((start_point.x-image_view_frame.origin.x)/image_view_frame.size.width,
 																		(start_point.y-image_view_frame.origin.y)/image_view_frame.size.height)];
@@ -55,7 +55,7 @@
 		
 		while (keep_on) {
 			
-			the_event = [[self window] nextEventMatchingMask: NSLeftMouseUpMask | NSLeftMouseDraggedMask];
+			the_event = [[self window] nextEventMatchingMask: NSEventMaskLeftMouseUp | NSEventMaskLeftMouseDragged];
 			NSPoint mouse_location = [self convertPoint:[the_event locationInWindow] fromView:nil];
 			is_inside = [self mouse:mouse_location inRect:[[self cell] drawingRectForBounds:[self bounds]]];
 			
@@ -67,9 +67,9 @@
 			mouse_location.x = mouse_location.x > bounds.size.width-bounds.origin.x ? bounds.size.width-bounds.origin.x : mouse_location.x;
 			mouse_location.y = mouse_location.y > bounds.size.height-bounds.origin.y ? bounds.size.height-bounds.origin.y : mouse_location.y;
 			
-			if (modifier_flags & NSControlKeyMask) {
+			if (modifier_flags & NSEventModifierFlagControl) {
 				switch ([the_event type]) {
-					case NSLeftMouseDragged:
+					case NSEventTypeLeftMouseDragged:
 					{
 						dragging = YES;
 						
@@ -86,7 +86,7 @@
 						
 						break;
 					}
-					case NSLeftMouseUp:
+					case NSEventTypeLeftMouseUp:
 					{
 						keep_on = NO;
 						making_selection = NO;
@@ -102,7 +102,7 @@
 				}		
 			} else {
 				switch ([the_event type]) {
-					case NSLeftMouseDragged:
+					case NSEventTypeLeftMouseDragged:
 						dragging = YES;
 						if(object_selected) {
 							NSRect image_view_frame = [self imageViewFrame];
@@ -127,7 +127,7 @@
 						}
 						[self setNeedsDisplay:YES];
 						break;
-					case NSLeftMouseUp:
+					case NSEventTypeLeftMouseUp:
 						if([self image]) {					
 							NSRect image_view_frame = [self imageViewFrame];
 							

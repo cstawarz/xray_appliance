@@ -81,8 +81,8 @@
     [op setCanChooseDirectories:YES];
     [op setAllowsMultipleSelection:NO];
 	
-    int bp = [op runModalForTypes:nil];
-    if(bp == NSOKButton) {
+    int bp = [op runModal];
+    if(bp == NSModalResponseOK) {
         NSArray * fn = [op filenames];
         NSEnumerator * fileEnum = [fn objectEnumerator];
         NSString * filename;

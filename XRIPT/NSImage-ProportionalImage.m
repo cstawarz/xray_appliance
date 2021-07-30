@@ -104,7 +104,7 @@
 
             [sourceImage drawInRect: thumbnailRect
                            fromRect: NSZeroRect
-                          operation: NSCompositeSourceOver
+                          operation: NSCompositingOperationSourceOver
                            fraction: 1.0];
 
         [newImage unlockFocus];

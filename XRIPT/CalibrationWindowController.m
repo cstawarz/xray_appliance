@@ -58,7 +58,7 @@
 	
 	
 	int bp = [op runModalForTypes:[NSArray arrayWithObjects:@"mat", nil]];
-	if(bp == NSOKButton) {
+	if(bp == NSModalResponseOK) {
 		NSArray * fn = [op filenames];
 		NSEnumerator * fileEnum = [fn objectEnumerator];
 		NSString * filename;

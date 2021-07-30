@@ -213,11 +213,12 @@
 	[op setCanChooseDirectories:YES];
 	// it is important that you never allow multiple files to be selected!
 	[op setAllowsMultipleSelection:NO];
+    op.allowedFileTypes = @[@"xry"];
 	
 	
 	
-	int bp = [op runModalForTypes:[NSArray arrayWithObjects:@"xry", nil]];
-	if(bp == NSOKButton) {
+	int bp = [op runModal];
+	if(bp == NSModalResponseOK) {
 		NSArray * fn = [op filenames];
 		NSEnumerator * fileEnum = [fn objectEnumerator];
 		NSString * filename;
