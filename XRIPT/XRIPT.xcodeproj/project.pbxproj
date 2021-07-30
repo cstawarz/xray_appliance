@@ -646,15 +646,38 @@
 		C01FCF4B08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = x86_64;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = XRIPT_Prefix.pch;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/MATLAB/extern/include,
+				);
 				INFOPLIST_FILE = Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/MATLAB/bin/maci64,
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/MATLAB/bin/maci64,
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				OTHER_LDFLAGS = (
+					"-lmat",
+					"-lmx",
+					"-leng",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = edu.mit.XRIPT;
 				PRODUCT_NAME = XRIPT;
 				WRAPPER_EXTENSION = app;
@@ -664,12 +687,35 @@
 		C01FCF4C08A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = x86_64;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = XRIPT_Prefix.pch;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/MATLAB/extern/include,
+				);
 				INFOPLIST_FILE = Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/MATLAB/bin/maci64,
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/MATLAB/bin/maci64,
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				OTHER_LDFLAGS = (
+					"-lmat",
+					"-lmx",
+					"-leng",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = edu.mit.XRIPT;
 				PRODUCT_NAME = XRIPT;
 				WRAPPER_EXTENSION = app;
@@ -679,59 +725,12 @@
 		C01FCF4F08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = x86_64;
-				GCC_C_LANGUAGE_STANDARD = c99;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					/Applications/MATLAB/extern/include,
-				);
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					/Applications/MATLAB/bin/maci64,
-				);
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					/Applications/MATLAB/bin/maci64,
-				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-lmat",
-					"-lmx",
-					"-leng",
-				);
 			};
 			name = Debug;
 		};
 		C01FCF5008A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = x86_64;
-				GCC_C_LANGUAGE_STANDARD = c99;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					/Applications/MATLAB/extern/include,
-				);
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					/Applications/MATLAB/bin/maci64,
-				);
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					/Applications/MATLAB/bin/maci64,
-				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-lmat",
-					"-lmx",
-					"-leng",
-				);
 			};
 			name = Release;
 		};
