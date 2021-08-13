@@ -13,6 +13,7 @@
 		E12061C926AB16AE00C07099 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E12061C826AB16AE00C07099 /* Cocoa.framework */; };
 		E138C55E26B4341E0072693C /* nidaqmxbaselv.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E138C55C26B4341E0072693C /* nidaqmxbaselv.framework */; };
 		E138C55F26B4341E0072693C /* nidaqmxbase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E138C55D26B4341E0072693C /* nidaqmxbase.framework */; };
+		E1BA867426C6A3C50021658E /* NSApplication+NextEventMatchingMaskFix.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BA867326C6A3C50021658E /* NSApplication+NextEventMatchingMaskFix.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		E12061C826AB16AE00C07099 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		E138C55C26B4341E0072693C /* nidaqmxbaselv.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = nidaqmxbaselv.framework; path = /Library/Frameworks/nidaqmxbaselv.framework; sourceTree = "<absolute>"; };
 		E138C55D26B4341E0072693C /* nidaqmxbase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = nidaqmxbase.framework; path = /Library/Frameworks/nidaqmxbase.framework; sourceTree = "<absolute>"; };
+		E1BA867326C6A3C50021658E /* NSApplication+NextEventMatchingMaskFix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSApplication+NextEventMatchingMaskFix.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 		08FB77AEFE84172EC02AAC07 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				E1BA867326C6A3C50021658E /* NSApplication+NextEventMatchingMaskFix.m */,
 				0E6707AE0C999C4F00EFF368 /* XRayNIDAQ.h */,
 				0E6707AF0C999C4F00EFF368 /* XRayNIDAQ.m */,
 			);
@@ -172,6 +175,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1BA867426C6A3C50021658E /* NSApplication+NextEventMatchingMaskFix.m in Sources */,
 				0E6707B10C999C4F00EFF368 /* XRayNIDAQ.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
