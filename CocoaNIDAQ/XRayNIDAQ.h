@@ -38,6 +38,8 @@
 	float64 source1Voltage_V;
 	float64 source2Current_A;
 	float64 source2Voltage_V;
+    
+    dispatch_queue_t nidaqAPIQueue;
 }
 
 

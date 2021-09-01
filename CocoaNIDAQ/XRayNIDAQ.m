@@ -14,7 +14,7 @@
 - (void)initAnalogOutChannel:(id)arg;
 - (void)initControlInChannel:(id)arg;
 - (void)initShutterDetectorChannel:(id)arg;
-- (void)setAnalogOut:(id)arg;
+- (void)setAnalogOut:(NSArray<NSNumber *> *)values;
 - (void)setDigitalOutput:(NSNumber *)value;
 - (void)checkError:(int32)errorValue;
 - (void)updateMonitorThread:(id)arg;
@@ -40,38 +40,49 @@
 		currentOutput = MIN_OUT_VOLTAGE;
 		
 		shouldMonitorUpdate = YES;
+        
+        nidaqAPIQueue = dispatch_queue_create_with_target(NULL,
+                                                          DISPATCH_QUEUE_SERIAL,
+                                                          dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0));
 		
-		@try {
-			[self resetDevice:nil];
-			
-			[self initAnalogOutChannel:nil];
-			[self initControlInChannel:nil];
-			[self initShutterDetectorChannel:nil];
-			
- 		}
-		@catch (NSException * e) {
-			NSLog(@"XRayNIDAQ::initWithName: Caught %@: %@", 
-				  [e name], 
-				  [e reason]);
-			
-			@throw e;
-		}
-		@finally {
-		}
-
-		[NSThread detachNewThreadSelector:@selector(updateMonitorThread:)
-								 toTarget:self
-							   withObject:nil];
+        dispatch_async(nidaqAPIQueue, ^{
+            @try {
+                [self resetDevice:nil];
+                
+                [self initAnalogOutChannel:nil];
+                [self initControlInChannel:nil];
+                [self initShutterDetectorChannel:nil];
+                
+            }
+            @catch (NSException * e) {
+                NSLog(@"XRayNIDAQ::initWithName: Caught %@: %@",
+                      [e name],
+                      [e reason]);
+                
+                @throw e;
+            }
+            @finally {
+            }
+            
+            [NSThread detachNewThreadSelector:@selector(updateMonitorThread:)
+                                     toTarget:self
+                                   withObject:nil];
+        });
 	}
 	return self;
 }
 
 - (void)dealloc {
-	[self performSelectorOnMainThread:@selector(resetDevice:)
-						   withObject:nil
-						waitUntilDone:YES];
+    dispatch_sync(nidaqAPIQueue, ^{
+        [self resetDevice:nil];
+    });
+    
 	shouldMonitorUpdate = NO;
-	[super dealloc];
+    
+    dispatch_release(nidaqAPIQueue);
+    nidaqAPIQueue = nil;
+
+    [super dealloc];
 }
 
 - (void)setVoltageControl:(NSNumber *)percentOfMax {
@@ -82,13 +93,14 @@
 	
 	[devLock lock];
 	voltageOutput = percent * MAX_OUT_VOLTAGE;
+    NSArray<NSNumber *> *values = @[ @(voltageOutput), @(currentOutput) ];
 	[devLock unlock];
 
-	[stopMonitoringLock lock];
-	[self performSelectorOnMainThread:@selector(setAnalogOut:) 
-						   withObject:nil
-						waitUntilDone:YES];
-	[stopMonitoringLock unlock];
+    dispatch_async(nidaqAPIQueue, ^{
+        [stopMonitoringLock lock];
+        [self setAnalogOut:values];
+        [stopMonitoringLock unlock];
+    });
 }
 
 - (void)setCurrentControl:(NSNumber *)percentOfMax {
@@ -98,41 +110,44 @@
 	
 	[devLock lock];
 	currentOutput = percent * MAX_OUT_VOLTAGE;
+    NSArray<NSNumber *> *values = @[ @(voltageOutput), @(currentOutput) ];
 	[devLock unlock];
 	
-	[stopMonitoringLock lock];
-	[self performSelectorOnMainThread:@selector(setAnalogOut:) 
-						   withObject:nil
-						waitUntilDone:YES];
-	[stopMonitoringLock unlock];
+    dispatch_async(nidaqAPIQueue, ^{
+        [stopMonitoringLock lock];
+        [self setAnalogOut:values];
+        [stopMonitoringLock unlock];
+    });
 }
 
 - (void)energizeSources:(NSNumber *)on {
 	digitalOutput = [on boolValue] ? digitalOutput | 0x2 : digitalOutput & 0xFD;
+    NSNumber *value = [NSNumber numberWithChar:digitalOutput];
 	
-	[stopMonitoringLock lock];
-	[self performSelectorOnMainThread:@selector(setDigitalOutput:) 
-						   withObject:[NSNumber numberWithChar:digitalOutput]
-						waitUntilDone:YES];
-	[stopMonitoringLock unlock];
+    dispatch_async(nidaqAPIQueue, ^{
+        [stopMonitoringLock lock];
+        [self setDigitalOutput:value];
+        [stopMonitoringLock unlock];
+    });
 }
 
 - (void)activateDetectors:(NSNumber *)on {
 	digitalOutput = [on boolValue] ? digitalOutput | 0x1 : digitalOutput & 0xFE;
-	
-	[stopMonitoringLock lock];
-	[self performSelectorOnMainThread:@selector(setDigitalOutput:) 
-						   withObject:[NSNumber numberWithChar:digitalOutput]
-						waitUntilDone:YES];
-	[stopMonitoringLock unlock];
+    NSNumber *value = [NSNumber numberWithChar:digitalOutput];
+    
+    dispatch_async(nidaqAPIQueue, ^{
+        [stopMonitoringLock lock];
+        [self setDigitalOutput:value];
+        [stopMonitoringLock unlock];
+    });
 }
 
-- (void)setAnalogOut:(id)arg {
+- (void)setAnalogOut:(NSArray<NSNumber *> *)values {
 	[devLock lock];
 	int32 written;
 	float64 output[2];
-	output[0] = voltageOutput;
-	output[1] = currentOutput;
+    output[0] = values[0].doubleValue;
+    output[1] = values[1].doubleValue;
 	
 	@try {
 		[self checkError:DAQmxBaseWriteAnalogF64(analogOutHandle,
@@ -302,11 +317,11 @@
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 	while(shouldMonitorUpdate) {
 		usleep(400000);
-		[stopMonitoringLock lock];
-		[self performSelectorOnMainThread:@selector(updateMonitor:)
-							   withObject:nil
-							waitUntilDone:YES];
-		[stopMonitoringLock unlock];
+        dispatch_sync(nidaqAPIQueue, ^{
+            [stopMonitoringLock lock];
+            [self updateMonitor:nil];
+            [stopMonitoringLock unlock];
+        });
 	}
 	[pool release];
 }
