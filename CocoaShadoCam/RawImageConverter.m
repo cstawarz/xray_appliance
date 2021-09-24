@@ -185,7 +185,7 @@
 	id framework;
 	
 	while(framework = [frameworks_enumerator nextObject]) {
-		if([[framework bundleIdentifier] isEqualToString:@"edu.mit.cocoashadocam"]) {
+		if([[framework bundleIdentifier] isEqualToString:@"edu.mit.CocoaShadoCam"]) {
 			break;
 		}
 	}
