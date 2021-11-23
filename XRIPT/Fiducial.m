@@ -23,12 +23,12 @@
 }
 
 + (id)fiducialWithName:(NSString *)_name {
-	return [[[self alloc] initWithName:_name] autorelease];	
+	return [[self alloc] initWithName:_name];	
 }
 
 + (id)fiducialWithName:(NSString *)_name 
 		 andVisibility:(NSString *)_visibility {
-	return [[[self alloc] initWithName:_name andVisibility:_visibility] autorelease];	
+	return [[self alloc] initWithName:_name andVisibility:_visibility];	
 }
 
 
@@ -36,10 +36,6 @@
 	return [[[self class] allocWithZone: zone] initWithName:name andVisibility:visibility];
 }
 
-- (void) dealloc {
-	[po release];
-	[super dealloc];
-}
 
 - (XrayObjectType)type {
 	return FIDUCIAL;

@@ -189,16 +189,6 @@
 	[[model preferences] saveAsDefaults];
 }
 
-- (void)dealloc {
-#if XRAY_DEVICES_ATTACHED
-	[daq release];
-	[detector_1 release];
-	[detector_2 release];
-#endif
-	[model release];
-	[bundles release];
-	[super dealloc];
-}
 
 - (IBAction)openSettingsWindow:(id)sender {
 	[preferences_window_controller showWindow:self];
@@ -289,235 +279,235 @@
 // Delegate Methods
 //////////////////////////////////////////////////////////
 - (void)primeXray:(id)sender {
-	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-	if([model xrayNotPrimed]) {
-		[model setStatusMessage:@"Priming Xray"];
-		
+	@autoreleasepool {
+		if([model xrayNotPrimed]) {
+			[model setStatusMessage:@"Priming Xray"];
+			
 #if XRAY_DEVICES_ATTACHED
-		[model setStatusMessage:@"Initializing Detector 1: setting integration time"];
-		[detector_1 setIntegrationTime:[[model preferences] integrationTime]];                                                                                                              
-		[model setStatusMessage:@"Initializing Detector 1: resetting"];                                                                                                                                                     
-		[detector_1 setReset:NO];                                                                                                                                                              
-		[detector_1 setReset:YES];                                                                                                                                                             
-		
-		[model setStatusMessage:@"Initializing Detector 2: setting integration time"];                                                                                                                                      
-		[detector_2 setIntegrationTime:[[model preferences] integrationTime]];                                                                                                              
-		[model setStatusMessage:@"Initializing Detector 2: resetting"];                                                                                                                                                     
-		[detector_2 setReset:NO];                                                                                                                                                              
-		[detector_2 setReset:YES];    		
-		// ramp up sources' voltages
-		//		const float MAX_XRAY_VOLTAGE_TO_REACH = [[model preferences] maxVoltage * MAX_XRAY_VOLTAGE;
-		const float max_voltage_to_reach = [[model preferences] maxVoltage];
-		
-		
-		float percentV = 0;
-		float s1v = 0;
-		float s2v = 0;
-		
-		const NSTimeInterval VOLTAGE_RAMP_SPEED = 0.12; // 120 ms/step
-														// only wait for 5 seconds
-		NSDate *fail_safe_time = [NSDate dateWithTimeIntervalSinceNow:5];
-		
-		[model setStatusMessage:@"Ramping high voltage sources"];			
-		// ramp up voltage
-		do {
-			if(percentV < 1) {
-				[daq setVoltageControl:[NSNumber numberWithFloat:(percentV+=0.05)]];
-				[NSThread sleepUntilDate:[NSDate dateWithTimeIntervalSinceNow:VOLTAGE_RAMP_SPEED]];
+			[model setStatusMessage:@"Initializing Detector 1: setting integration time"];
+			[detector_1 setIntegrationTime:[[model preferences] integrationTime]];                                                                                                              
+			[model setStatusMessage:@"Initializing Detector 1: resetting"];                                                                                                                                                     
+			[detector_1 setReset:NO];                                                                                                                                                              
+			[detector_1 setReset:YES];                                                                                                                                                             
+			
+			[model setStatusMessage:@"Initializing Detector 2: setting integration time"];                                                                                                                                      
+			[detector_2 setIntegrationTime:[[model preferences] integrationTime]];                                                                                                              
+			[model setStatusMessage:@"Initializing Detector 2: resetting"];                                                                                                                                                     
+			[detector_2 setReset:NO];                                                                                                                                                              
+			[detector_2 setReset:YES];    		
+			// ramp up sources' voltages
+			//		const float MAX_XRAY_VOLTAGE_TO_REACH = [[model preferences] maxVoltage * MAX_XRAY_VOLTAGE;
+			const float max_voltage_to_reach = [[model preferences] maxVoltage];
+			
+			
+			float percentV = 0;
+			float s1v = 0;
+			float s2v = 0;
+			
+			const NSTimeInterval VOLTAGE_RAMP_SPEED = 0.12; // 120 ms/step
+															// only wait for 5 seconds
+			NSDate *fail_safe_time = [NSDate dateWithTimeIntervalSinceNow:5];
+			
+			[model setStatusMessage:@"Ramping high voltage sources"];			
+			// ramp up voltage
+			do {
+				if(percentV < 1) {
+					[daq setVoltageControl:[NSNumber numberWithFloat:(percentV+=0.05)]];
+					[NSThread sleepUntilDate:[NSDate dateWithTimeIntervalSinceNow:VOLTAGE_RAMP_SPEED]];
+				}
+				s1v = [[daq source1Voltage] floatValue];
+				s2v = [[daq source2Voltage] floatValue];
+			} while ((s1v < max_voltage_to_reach || 
+					  s2v < max_voltage_to_reach) && [fail_safe_time timeIntervalSinceNow] > 0);
+			
+			
+			const NSTimeInterval CURRENT_RAMP_SPEED = 0.07; // 70 ms/step
+															// ramp up current
+			for(float percentC = 0; percentC <= 1; percentC += 0.1) {
+				[daq setCurrentControl:[NSNumber numberWithFloat:(percentC+0.1)]];
+				[NSThread sleepUntilDate:[NSDate dateWithTimeIntervalSinceNow:CURRENT_RAMP_SPEED]];
 			}
-			s1v = [[daq source1Voltage] floatValue];
-			s2v = [[daq source2Voltage] floatValue];
-		} while ((s1v < max_voltage_to_reach || 
-				  s2v < max_voltage_to_reach) && [fail_safe_time timeIntervalSinceNow] > 0);
-		
-		
-		const NSTimeInterval CURRENT_RAMP_SPEED = 0.07; // 70 ms/step
-														// ramp up current
-		for(float percentC = 0; percentC <= 1; percentC += 0.1) {
-			[daq setCurrentControl:[NSNumber numberWithFloat:(percentC+0.1)]];
-			[NSThread sleepUntilDate:[NSDate dateWithTimeIntervalSinceNow:CURRENT_RAMP_SPEED]];
-		}
 #endif
-		
-		
-		[model setXrayNotPrimed:NO];
-		[model setStatusMessage:@"X-ray Primed"];
+			
+			
+			[model setXrayNotPrimed:NO];
+			[model setStatusMessage:@"X-ray Primed"];
+		}
 	}
-	[pool release];
 }
 
 - (void)takeXray:(id)sender {
-	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-	[model setStatusMessage:@"Taking X-ray"];
-	[self primeXray:self];
-	
-	//	// close all of the auxillary windows
-	[detector_1_image_window_controller performSelectorOnMainThread:@selector(close)
-														 withObject:nil
-													  waitUntilDone:YES];
-	[detector_2_image_window_controller performSelectorOnMainThread:@selector(close)
-														 withObject:nil
-													  waitUntilDone:YES];
-	[new_xray_object_window_controller performSelectorOnMainThread:@selector(close)
-														withObject:nil
-													 waitUntilDone:YES];
-	[operations_window_controller performSelectorOnMainThread:@selector(close)
-												   withObject:nil
-												waitUntilDone:YES];
-	[fiducial_window_controller performSelectorOnMainThread:@selector(close)
-												 withObject:nil
-											  waitUntilDone:YES];
-	
-	float source_1_voltage = 0;
-	float source_2_voltage = 0;
-	float source_1_current = 0;
-	float source_2_current = 0;
-	
-	NSTimeInterval sources_on_time = 0;
-	NSTimeInterval detectors_on_time = 0;
-	NSTimeInterval detectors_lag_time = 0;
-	
+	@autoreleasepool {
+		[model setStatusMessage:@"Taking X-ray"];
+		[self primeXray:self];
+		
+		//	// close all of the auxillary windows
+		[detector_1_image_window_controller performSelectorOnMainThread:@selector(close)
+															 withObject:nil
+														  waitUntilDone:YES];
+		[detector_2_image_window_controller performSelectorOnMainThread:@selector(close)
+															 withObject:nil
+														  waitUntilDone:YES];
+		[new_xray_object_window_controller performSelectorOnMainThread:@selector(close)
+															withObject:nil
+														 waitUntilDone:YES];
+		[operations_window_controller performSelectorOnMainThread:@selector(close)
+													   withObject:nil
+													waitUntilDone:YES];
+		[fiducial_window_controller performSelectorOnMainThread:@selector(close)
+													 withObject:nil
+												  waitUntilDone:YES];
+		
+		float source_1_voltage = 0;
+		float source_2_voltage = 0;
+		float source_1_current = 0;
+		float source_2_current = 0;
+		
+		NSTimeInterval sources_on_time = 0;
+		NSTimeInterval detectors_on_time = 0;
+		NSTimeInterval detectors_lag_time = 0;
+		
 #if XRAY_DEVICES_ATTACHED
-	//[self startAlarm];
-	
-	NSDate *sources_on = [NSDate date];
-	[daq energizeSources:[NSNumber numberWithBool:YES]];
-	
-	// wait until the device reaches max current draw
-	//	float MAX_XRAY_CURRENT = [[model preferences] maxCurrent;
-	float max_xray_current_to_reach = [[model preferences] maxCurrent];
-	[model setStatusMessage:@"Waiting for devices to reach max current"];
-	
-	float s1c = 0;
-	float s2c = 0;
-	
-	NSDate *fail_safe_time = [NSDate dateWithTimeIntervalSinceNow:3];
-	// if it's not going, only try for 3 seconds
-	do {
-		[NSThread sleepUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.1]];
-		//			usleep(100000);
-		s1c = [[daq source1Current] floatValue];
-		s2c = [[daq source2Current] floatValue];
-	} while ((s1c < max_xray_current_to_reach || 
-			  s2c < max_xray_current_to_reach) && [fail_safe_time timeIntervalSinceNow] > 0);
-	
-	// wait until cameras are ready
-	[model setStatusMessage:@"Waiting for detectors"];
-	if(![detector_1 pollUntilCameraReady:10] || 
-	   ![detector_2 pollUntilCameraReady:10]) {
-		NSLog(@"badness");
-	}
-	
-	[model setStatusMessage:@"Taking X-ray"];
-	
-	NSDate *detectors_lag = [NSDate date];
-	[NSThread sleepUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.140]];
-	//		usleep(detector_lag);
-	
-	NSDate *detectors_on = [NSDate date];
-	[daq activateDetectors:[NSNumber numberWithBool:YES]];
-	detectors_lag_time = -1*[detectors_lag timeIntervalSinceNow];
-	
-	[NSThread sleepUntilDate:[NSDate dateWithTimeIntervalSinceNow:[[model preferences] integrationTime]]];
-	//		usleep([xbc integrationTime]);
-	
-	[model setStatusMessage:@"Powering down sources"];
-	
-	[daq activateDetectors:[NSNumber numberWithBool:NO]];
-	detectors_on_time = -1*[detectors_on timeIntervalSinceNow];
-	
-	[NSThread sleepUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.140]];
-	
-	// get these values for storage
-	source_1_voltage = [[daq source1Voltage] floatValue];
-	source_2_voltage = [[daq source2Voltage] floatValue];
-	source_1_current = [[daq source1Current] floatValue];
-	source_2_current = [[daq source2Current] floatValue];
-	
-	[daq energizeSources:[NSNumber numberWithBool:NO]];
-	sources_on_time = -1*[sources_on timeIntervalSinceNow];
-	//	[xbc stopAlarm];
-	
-	// turn off sources
-	[daq setCurrentControl:[NSNumber numberWithFloat:0]];
-	[daq setVoltageControl:[NSNumber numberWithFloat:0]];
-	
-	[model setStatusMessage:@"Waiting for images"];
-	if(![detector_1 pollUntilImageReady:10] || 
-	   ![detector_2 pollUntilImageReady:10]) {
-		NSLog(@"badness");
-	}		
-	
-	
+		//[self startAlarm];
+		
+		NSDate *sources_on = [NSDate date];
+		[daq energizeSources:[NSNumber numberWithBool:YES]];
+		
+		// wait until the device reaches max current draw
+		//	float MAX_XRAY_CURRENT = [[model preferences] maxCurrent;
+		float max_xray_current_to_reach = [[model preferences] maxCurrent];
+		[model setStatusMessage:@"Waiting for devices to reach max current"];
+		
+		float s1c = 0;
+		float s2c = 0;
+		
+		NSDate *fail_safe_time = [NSDate dateWithTimeIntervalSinceNow:3];
+		// if it's not going, only try for 3 seconds
+		do {
+			[NSThread sleepUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.1]];
+			//			usleep(100000);
+			s1c = [[daq source1Current] floatValue];
+			s2c = [[daq source2Current] floatValue];
+		} while ((s1c < max_xray_current_to_reach || 
+				  s2c < max_xray_current_to_reach) && [fail_safe_time timeIntervalSinceNow] > 0);
+		
+		// wait until cameras are ready
+		[model setStatusMessage:@"Waiting for detectors"];
+		if(![detector_1 pollUntilCameraReady:10] || 
+		   ![detector_2 pollUntilCameraReady:10]) {
+			NSLog(@"badness");
+		}
+		
+		[model setStatusMessage:@"Taking X-ray"];
+		
+		NSDate *detectors_lag = [NSDate date];
+		[NSThread sleepUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.140]];
+		//		usleep(detector_lag);
+		
+		NSDate *detectors_on = [NSDate date];
+		[daq activateDetectors:[NSNumber numberWithBool:YES]];
+		detectors_lag_time = -1*[detectors_lag timeIntervalSinceNow];
+		
+		[NSThread sleepUntilDate:[NSDate dateWithTimeIntervalSinceNow:[[model preferences] integrationTime]]];
+		//		usleep([xbc integrationTime]);
+		
+		[model setStatusMessage:@"Powering down sources"];
+		
+		[daq activateDetectors:[NSNumber numberWithBool:NO]];
+		detectors_on_time = -1*[detectors_on timeIntervalSinceNow];
+		
+		[NSThread sleepUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.140]];
+		
+		// get these values for storage
+		source_1_voltage = [[daq source1Voltage] floatValue];
+		source_2_voltage = [[daq source2Voltage] floatValue];
+		source_1_current = [[daq source1Current] floatValue];
+		source_2_current = [[daq source2Current] floatValue];
+		
+		[daq energizeSources:[NSNumber numberWithBool:NO]];
+		sources_on_time = -1*[sources_on timeIntervalSinceNow];
+		//	[xbc stopAlarm];
+		
+		// turn off sources
+		[daq setCurrentControl:[NSNumber numberWithFloat:0]];
+		[daq setVoltageControl:[NSNumber numberWithFloat:0]];
+		
+		[model setStatusMessage:@"Waiting for images"];
+		if(![detector_1 pollUntilImageReady:10] || 
+		   ![detector_2 pollUntilImageReady:10]) {
+			NSLog(@"badness");
+		}		
+		
+		
 #endif
-	[model setStatusMessage:@"Acquiring image 1"];
-	NSData *detector_1_raw_data = [self rawDataForDetector:DETECTOR_1];
-	[model setStatusMessage:@"Converting image 1"];
-	[detector_1_image_window_controller setImageData:detector_1_raw_data];
+		[model setStatusMessage:@"Acquiring image 1"];
+		NSData *detector_1_raw_data = [self rawDataForDetector:DETECTOR_1];
+		[model setStatusMessage:@"Converting image 1"];
+		[detector_1_image_window_controller setImageData:detector_1_raw_data];
 
-	[model setStatusMessage:@"Acquiring image 2"];
-	NSData *detector_2_raw_data = [self rawDataForDetector:DETECTOR_2];
-	[model setStatusMessage:@"Converting image 2"];
-	[detector_2_image_window_controller setImageData:detector_2_raw_data];
-	
-	[model setStatusMessage:@"Creating bundle"];
-	
-	XrayBundle *new_bundle = [XrayBundle bundleWithSubject:[[model preferences] subject] 
-										   andExperimenter:[[model preferences] experimenter]
+		[model setStatusMessage:@"Acquiring image 2"];
+		NSData *detector_2_raw_data = [self rawDataForDetector:DETECTOR_2];
+		[model setStatusMessage:@"Converting image 2"];
+		[detector_2_image_window_controller setImageData:detector_2_raw_data];
+		
+		[model setStatusMessage:@"Creating bundle"];
+		
+		XrayBundle *new_bundle = [XrayBundle bundleWithSubject:[[model preferences] subject] 
+											   andExperimenter:[[model preferences] experimenter]
 #if XRAY_DEVICES_ATTACHED
-								  andDetector1SerialNumber:[detector_1 serialNumber]
-								  andDetector2SerialNumber:[detector_2 serialNumber]
+									  andDetector1SerialNumber:[detector_1 serialNumber]
+									  andDetector2SerialNumber:[detector_2 serialNumber]
 #else
-								  andDetector1SerialNumber:@"0187"
-								  andDetector2SerialNumber:@"0299"
+									  andDetector1SerialNumber:@"0187"
+									  andDetector2SerialNumber:@"0299"
 #endif
-								  andDetector1ExposureTime:detectors_on_time
-								  andDetector2ExposureTime:detectors_on_time
-										 andSource1Voltage:source_1_voltage
-										 andSource2Voltage:source_2_voltage
-										 andSource1Current:source_1_current
-										 andSource2Current:source_2_current
-										   andDetector1Lag:detectors_lag_time
-										   andDetector2Lag:detectors_lag_time
-										andSource1Duration:sources_on_time
-										andSource2Duration:sources_on_time
-										   andImageComment:[[model preferences] imageComment]
-										 andSessionComment:[[model preferences] sessionComment]
-													 andD1:[detector_1_image_window_controller image]
-													 andD2:[detector_2_image_window_controller image]
-												  andD1Raw:detector_1_raw_data
-												  andD2Raw:detector_2_raw_data
-											andCalibration:[[model preferences] calibration]
-										   andXrayElements:[[[model xrayObjects] currentSet] objectForKey:XRAY_OBJECTS]];
+									  andDetector1ExposureTime:detectors_on_time
+									  andDetector2ExposureTime:detectors_on_time
+											 andSource1Voltage:source_1_voltage
+											 andSource2Voltage:source_2_voltage
+											 andSource1Current:source_1_current
+											 andSource2Current:source_2_current
+											   andDetector1Lag:detectors_lag_time
+											   andDetector2Lag:detectors_lag_time
+											andSource1Duration:sources_on_time
+											andSource2Duration:sources_on_time
+											   andImageComment:[[model preferences] imageComment]
+											 andSessionComment:[[model preferences] sessionComment]
+														 andD1:[detector_1_image_window_controller image]
+														 andD2:[detector_2_image_window_controller image]
+													  andD1Raw:detector_1_raw_data
+													  andD2Raw:detector_2_raw_data
+												andCalibration:[[model preferences] calibration]
+											   andXrayElements:[[[model xrayObjects] currentSet] objectForKey:XRAY_OBJECTS]];
+		
+		[self useNewBundle:new_bundle];
+		[bundles addObject:new_bundle];
+		
+		[new_bundle writeBundleTo:[[model preferences] saveLocation]];
+		
+		if([new_bundle path] == nil) {
+			[model setStatusMessage:@"Did not successfully write bundle"];
+		} else {
+			[operations_window_controller performSelectorOnMainThread:@selector(showWindow:)
+														   withObject:self
+														waitUntilDone:NO];
+			[fiducial_window_controller performSelectorOnMainThread:@selector(showWindow:)
+														 withObject:self
+													  waitUntilDone:NO];
+			[model setStatusMessage:@"X-ray completed"];
+		}
+		
+		[detector_1_image_window_controller performSelectorOnMainThread:@selector(showWindow:)
+															 withObject:self
+														  waitUntilDone:NO];
+		[detector_2_image_window_controller performSelectorOnMainThread:@selector(showWindow:)
+															 withObject:self
+														  waitUntilDone:NO];
+		
+		[model setXrayNotPrimed:YES];
+		[model setXrayNotOperating:YES];
 	
-	[self useNewBundle:new_bundle];
-	[bundles addObject:new_bundle];
-	
-	[new_bundle writeBundleTo:[[model preferences] saveLocation]];
-	
-	if([new_bundle path] == nil) {
-		[model setStatusMessage:@"Did not successfully write bundle"];
-	} else {
-		[operations_window_controller performSelectorOnMainThread:@selector(showWindow:)
-													   withObject:self
-													waitUntilDone:NO];
-		[fiducial_window_controller performSelectorOnMainThread:@selector(showWindow:)
-													 withObject:self
-												  waitUntilDone:NO];
-		[model setStatusMessage:@"X-ray completed"];
 	}
-	
-	[detector_1_image_window_controller performSelectorOnMainThread:@selector(showWindow:)
-														 withObject:self
-													  waitUntilDone:NO];
-	[detector_2_image_window_controller performSelectorOnMainThread:@selector(showWindow:)
-														 withObject:self
-													  waitUntilDone:NO];
-	
-	[model setXrayNotPrimed:YES];
-	[model setXrayNotOperating:YES];
-	
-	[pool release];
 }
 
 - (void)openNewXrayObjectWindow:(id)sender {

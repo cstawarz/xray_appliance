@@ -67,7 +67,7 @@
 			
 			mxArray *guess = mxGetField(calibration, 0, "guess");
 			mxArray *rotation_spread = mxGetField(guess, 0, "rotationSpread");
-			init_rotation_spread = mxGetScalar(rotation_spread);
+			guess_rotation_spread = mxGetScalar(rotation_spread);
 
 			mxArray *detector_distances = mxGetField(guess, 0, "detectorDistances");
 			mxArray *source_distances = mxGetField(guess, 0, "sourceDistances");
@@ -82,8 +82,8 @@
 				[temp_source_distances addObject:[NSNumber numberWithDouble:source_distances_ptr[i]]];
 			}
 			
-			init_detector_distances = [[NSArray alloc] initWithArray:temp_detector_distances];
-			init_source_distances = [[NSArray alloc] initWithArray:temp_source_distances];
+			guess_detector_distances = [[NSArray alloc] initWithArray:temp_detector_distances];
+			guess_source_distances = [[NSArray alloc] initWithArray:temp_source_distances];
 			
 			
 			mxDestroyArray(calibration);
@@ -168,17 +168,9 @@
 
 
 + (id)calibrationWithFile:(NSString *)calibration_mat_file {
-	return [[[self alloc] initWithFile:calibration_mat_file] autorelease];
+	return [[self alloc] initWithFile:calibration_mat_file];
 }
 
-- (void) dealloc {
-	[init_source_distances release];
-	[init_detector_distances release];
-	[sdps release];
-	[date release];
-	[name release];
-	[super dealloc];
-}
 
 - (TransformableObject *)createSDP:(CocoaMxArray *)calibration_array
 						 withIndex:(int) index {
@@ -215,9 +207,9 @@
 - (NSString *)name { return name; }
 - (NSDate *)date { return date; }
 - (NSArray *)sourceDetectorPairs { return sdps; }
-- (float)initRotationSpread { return init_rotation_spread; }
-- (NSArray *)initDetectorDistances { return init_detector_distances; }
-- (NSArray *)initSourceDistances { return init_source_distances; }
+- (float)guessRotationSpread { return guess_rotation_spread; }
+- (NSArray *)guessDetectorDistances { return guess_detector_distances; }
+- (NSArray *)guessSourceDistances { return guess_source_distances; }
 
 
 - (void)write:(NSString *)directory {
@@ -226,83 +218,83 @@
 	NSXMLElement *root = [[NSXMLElement alloc] initWithName:@"system_geometry"];
 	
 	{
-		NSXMLElement *XML_name = [[[NSXMLElement alloc] initWithName:@"Name" 
-														 stringValue:name] autorelease];
+		NSXMLElement *XML_name = [[NSXMLElement alloc] initWithName:@"Name" 
+														 stringValue:name];
 		[root addChild:XML_name];
 	}
 	
 	{
-		NSXMLElement *XML_date = [[[NSXMLElement alloc] initWithName:@"Date" 
+		NSXMLElement *XML_date = [[NSXMLElement alloc] initWithName:@"Date" 
 														 stringValue:[date descriptionWithCalendarFormat:@"%Y-%m-%d"
 																								timeZone:nil 
-																								  locale:[[NSUserDefaults standardUserDefaults] dictionaryRepresentation]]] autorelease];
+																								  locale:[[NSUserDefaults standardUserDefaults] dictionaryRepresentation]]];
 		[root addChild:XML_date];
 	}
 	
 	{
-		NSXMLElement *XML_time = [[[NSXMLElement alloc] initWithName:@"Time" 
+		NSXMLElement *XML_time = [[NSXMLElement alloc] initWithName:@"Time" 
 														 stringValue:[date descriptionWithCalendarFormat:@"%H:%M:%S"
 																								timeZone:nil 
-																								  locale:[[NSUserDefaults standardUserDefaults] dictionaryRepresentation]]] autorelease];
+																								  locale:[[NSUserDefaults standardUserDefaults] dictionaryRepresentation]]];
 		[root addChild:XML_time];
 	}
 	
-	NSXMLElement *sdps_xml = [[[NSXMLElement alloc] initWithName:@"SourceDetectorPairs"] autorelease];
+	NSXMLElement *sdps_xml = [[NSXMLElement alloc] initWithName:@"SourceDetectorPairs"];
 	NSEnumerator *sdp_enumerator = [sdps objectEnumerator];
 	SourceDetectorPair *sdp = nil;
 	while(sdp = [sdp_enumerator nextObject]) {
-		NSXMLElement *sdp_xml = [[[NSXMLElement alloc] initWithName:@"SourceDetectorPair"] autorelease];
+		NSXMLElement *sdp_xml = [[NSXMLElement alloc] initWithName:@"SourceDetectorPair"];
 		
 		// translation
 		double *translation = [sdp translation];
 		NSString *translation_string = [NSString stringWithFormat:@"%f %f %f", translation[0], translation[1], translation[2]]; 
-		NSXMLElement *sdp_translation_xml = [[[NSXMLElement alloc] initWithName:@"Translation" 
-																	stringValue:translation_string] autorelease];
+		NSXMLElement *sdp_translation_xml = [[NSXMLElement alloc] initWithName:@"Translation" 
+																	stringValue:translation_string];
 		[sdp_xml addChild:sdp_translation_xml];
 		
 		// rotation
 		double *rotation = [sdp rotation];
 		NSString *rotation_string = [NSString stringWithFormat:@"%f %f %f", rotation[0], rotation[1], rotation[2]]; 
-		NSXMLElement *sdp_rotation_xml = [[[NSXMLElement alloc] initWithName:@"Rotation" 
-																 stringValue:rotation_string] autorelease];
+		NSXMLElement *sdp_rotation_xml = [[NSXMLElement alloc] initWithName:@"Rotation" 
+																 stringValue:rotation_string];
 		[sdp_xml addChild:sdp_rotation_xml];
 		
 		// source
-		NSXMLElement *source_xml = [[[NSXMLElement alloc] initWithName:@"Source"] autorelease];
+		NSXMLElement *source_xml = [[NSXMLElement alloc] initWithName:@"Source"];
 		TransformableObject *source = [sdp source];
 		
 		// source translation
 		double *source_translation = [source translation];
 		NSString *source_translation_string = [NSString stringWithFormat:@"%f %f %f", source_translation[0], source_translation[1], source_translation[2]]; 
-		NSXMLElement *source_translation_xml = [[[NSXMLElement alloc] initWithName:@"Translation" 
-																	   stringValue:source_translation_string] autorelease];
+		NSXMLElement *source_translation_xml = [[NSXMLElement alloc] initWithName:@"Translation" 
+																	   stringValue:source_translation_string];
 		[source_xml addChild:source_translation_xml];
 		
 		// source rotation
 		double *source_rotation = [source rotation];
 		NSString *source_rotation_string = [NSString stringWithFormat:@"%f %f %f", source_rotation[0], source_rotation[1], source_rotation[2]]; 
-		NSXMLElement *source_rotation_xml = [[[NSXMLElement alloc] initWithName:@"Rotation" 
-																	stringValue:source_rotation_string] autorelease];
+		NSXMLElement *source_rotation_xml = [[NSXMLElement alloc] initWithName:@"Rotation" 
+																	stringValue:source_rotation_string];
 		[source_xml addChild:source_rotation_xml];
 		
 		[sdp_xml addChild:source_xml];
 		
 		// detector
-		NSXMLElement *detector_xml = [[[NSXMLElement alloc] initWithName:@"Detector"] autorelease];
+		NSXMLElement *detector_xml = [[NSXMLElement alloc] initWithName:@"Detector"];
 		TransformableObject *detector = [sdp detector];
 		
 		// detector translation
 		double *detector_translation = [detector translation];
 		NSString *detector_translation_string = [NSString stringWithFormat:@"%f %f %f", detector_translation[0], detector_translation[1], detector_translation[2]]; 
-		NSXMLElement *detector_translation_xml = [[[NSXMLElement alloc] initWithName:@"Translation" 
-																		 stringValue:detector_translation_string] autorelease];
+		NSXMLElement *detector_translation_xml = [[NSXMLElement alloc] initWithName:@"Translation" 
+																		 stringValue:detector_translation_string];
 		[detector_xml addChild:detector_translation_xml];
 		
 		// detector rotation
 		double *detector_rotation = [detector rotation];
 		NSString *detector_rotation_string = [NSString stringWithFormat:@"%f %f %f", detector_rotation[0], detector_rotation[1], detector_rotation[2]]; 
-		NSXMLElement *detector_rotation_xml = [[[NSXMLElement alloc] initWithName:@"Rotation" 
-																	  stringValue:detector_rotation_string] autorelease];
+		NSXMLElement *detector_rotation_xml = [[NSXMLElement alloc] initWithName:@"Rotation" 
+																	  stringValue:detector_rotation_string];
 		[detector_xml addChild:detector_rotation_xml];
 		
 		[sdp_xml addChild:detector_xml];
@@ -313,7 +305,7 @@
 	
 	[root addChild:sdps_xml];
 	
-	NSXMLDocument *doco = [[[NSXMLDocument alloc] initWithRootElement:root] autorelease];
+	NSXMLDocument *doco = [[NSXMLDocument alloc] initWithRootElement:root];
 	
 	[[doco XMLDataWithOptions:NSXMLNodePrettyPrint] writeToFile:[directory stringByAppendingPathComponent:@"calibration.xml"]
 														options:0

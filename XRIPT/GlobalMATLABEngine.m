@@ -43,8 +43,6 @@ static GlobalMATLABEngine *global_MATLAB_engine;
 
 - (void)dealloc {
 	engClose(matlab_engine);
-	[engine_lock release];
-	[super dealloc];
 }
 
 + (GlobalMATLABEngine *)lockedEngine {
@@ -68,22 +66,6 @@ static GlobalMATLABEngine *global_MATLAB_engine;
 }
 
 - (id)copyWithZone:(NSZone *)zone {
-    return self;
-}
-
-- (id)retain {
-    return self;
-}
-
-- (unsigned)retainCount {
-    return UINT_MAX;  //denotes an object that cannot be released
-}
-
-- (void)release {
-    //do nothing
-}
-
-- (id)autorelease {
     return self;
 }
 

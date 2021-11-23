@@ -28,12 +28,6 @@
 	return self;
 }
 
-- (void)dealloc {
-	[current_object_indexes release];
-	[xray_object_sets release];
-	[super dealloc];
-}
-
 - (void)addNFS:(CocoaNFS *)new_nfs {
 	NSMutableDictionary *new_set = [NSMutableDictionary dictionary];
 	NSMutableArray *fiducials = [NSMutableArray array];
@@ -45,7 +39,7 @@
 	while(f = [fiducial_enumerator nextObject]) {
 		Fiducial *new_fiducial = [f copy];
 		[[new_fiducial plotableObject] setColor:[ColorManager colorForIndex:fiducial_index++]];
-		[fiducials addObject:[new_fiducial autorelease]];
+		[fiducials addObject:new_fiducial];
 	}
 
 	[new_set setObject:fiducials forKey:XRAY_OBJECTS];
@@ -107,7 +101,6 @@
 
 - (NSIndexSet *)currentIndexes {return current_object_indexes;}
 - (void)setCurrentIndexes:(NSIndexSet *)new_index_set {
-	[current_object_indexes release];
 	current_object_indexes = [new_index_set copy];
 }
 

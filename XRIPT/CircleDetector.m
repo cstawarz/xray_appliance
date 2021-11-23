@@ -29,7 +29,7 @@
 	
 	GlobalMATLABEngine *engine = [GlobalMATLABEngine lockedEngine];
 	
-	NSImage *temp_image = [[[NSImage alloc] initWithData:image] autorelease];
+	NSImage *temp_image = [[NSImage alloc] initWithData:image];
 	
 	NSPoint converted_seed_point = [engine MATLABPointFromXrayPoint:seed
 													 usingImageSize:[temp_image size]];

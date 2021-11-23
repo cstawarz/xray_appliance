@@ -38,8 +38,8 @@
 	self = [super initWithWindowNibName:nib_name];
 	if(self != nil) {
 		title = [new_title copy];
-		preferences = [new_preferences retain];
-		xray_objects = [new_xray_objects retain];
+		preferences = new_preferences;
+		xray_objects = new_xray_objects;
 		detector = new_detector;
 		serial_number = [new_serial_number copy];
 	}
@@ -58,19 +58,6 @@
 	[NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(updateImageView:) userInfo:nil repeats:YES];
 }
  
-- (void)dealloc {
-	[cached_image release];
-	[full_sized_image release];
-	[raw_image_data release];
-	
-	[title release];
-	[serial_number release];
-	[preferences release];
-	[xray_objects release];
-	[current_bundle release];
-
-	[super dealloc];
-}
 
 - (IBAction)imageAdjusted:(id)sender {
 	[self setEnableControls:NO];
@@ -104,38 +91,32 @@
 
 - (NSData *)image {return cached_image;}
 - (void)setImage:(NSData *)new_image {
-	[cached_image release];
 	cached_image = [new_image copy];
 }
 
 - (NSString *)title {return title;}
 - (void)setTitle:(NSString *)new_title {
-	[title release];
 	title = [new_title copy];
 }
 
 - (NSString *)serialNumber {return serial_number;}
 - (void)setSerialNumber:(NSString *)new_serial_number {
-	[serial_number release];
 	serial_number = [new_serial_number copy];
 }
 
 - (XrayPreferences *)preferences {return preferences;}
 - (void)setPreferences:(XrayPreferences *)new_preferences {
-	[preferences release];
-	preferences = [new_preferences retain];
+	preferences = new_preferences;
 }
 
 - (XrayObjects *)xrayObjects {return xray_objects;}
 - (void)setXrayObjects:(XrayObjects *)new_xray_objects {
-	[xray_objects release];
-	xray_objects = [new_xray_objects retain];
+	xray_objects = new_xray_objects;
 }
 
 - (XrayBundle *)currentBundle { return current_bundle;}
 - (void)setCurrentBundle:(XrayBundle *)new_current_bundle {
-	[current_bundle release];
-	current_bundle = [new_current_bundle retain];
+	current_bundle = new_current_bundle;
 }
 
 - (Detector)detector {return detector;}
@@ -146,8 +127,7 @@
 }
 
 - (void)setImageData:(NSData *)new_raw_data {
-	[raw_image_data release];	
-	raw_image_data = [new_raw_data retain];
+	raw_image_data = new_raw_data;
 
 	NSBitmapImageRep *new_image = [self convertRawToImage:[self imageData] 
 											   withMaxLUT:[self maxLUT]
@@ -245,7 +225,7 @@
 	float actual_x_difference = current_subregion.size.width*x_difference;
 	float actual_y_difference = current_subregion.size.height*y_difference;
 
-	NSImage *current_image = [[[NSImage alloc] initWithData:[self image]] autorelease]; 
+	NSImage *current_image = [[NSImage alloc] initWithData:[self image]]; 
 	NSSize image_size = [current_image size];
 	
 
@@ -270,7 +250,7 @@
 - (void)pointsMovedByX:(float)x_difference andY:(float)y_difference {
 	float actual_x_difference = current_subregion.size.width*x_difference;
 	float actual_y_difference = current_subregion.size.height*y_difference;
-	NSImage *current_image = [[[NSImage alloc] initWithData:[self image]] autorelease]; 
+	NSImage *current_image = [[NSImage alloc] initWithData:[self image]]; 
 	NSSize image_size = [current_image size];
 	
 	// get the current list of xray objects
@@ -307,13 +287,13 @@
 									  ceil(current_subregion.size.height*selected_region.size.height));
 	
 	
-	NSImage *working_image = [[[NSImage alloc] initWithData:[[self fullSizedImage] TIFFRepresentation]] autorelease];
+	NSImage *working_image = [[NSImage alloc] initWithData:[[self fullSizedImage] TIFFRepresentation]];
 		
 	[working_image lockFocus];
-	NSBitmapImageRep *sub_image_rep = [[[NSBitmapImageRep alloc] initWithFocusedViewRect:new_subregion] autorelease];
+	NSBitmapImageRep *sub_image_rep = [[NSBitmapImageRep alloc] initWithFocusedViewRect:new_subregion];
 	[working_image unlockFocus];
 	
-	NSImage *sub_image = [[[NSImage alloc] initWithData:[sub_image_rep TIFFRepresentation]] autorelease];
+	NSImage *sub_image = [[NSImage alloc] initWithData:[sub_image_rep TIFFRepresentation]];
 	
 	// scale the visible image proportionatly so it takes up the whole window
 	float actual_height_width_ratio = [sub_image size].height/[sub_image size].width;
@@ -383,7 +363,6 @@
 
 - (NSBitmapImageRep *)fullSizedImage {return full_sized_image;}
 - (void)setFullSizedImage:(NSBitmapImageRep *)new_full_sized_image {
-	[full_sized_image release];
 	full_sized_image = [new_full_sized_image copy];
 }
 
@@ -418,35 +397,35 @@
 }
 
 - (void)refreshImage:(id)arg {
-	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];	
+	@autoreleasepool {	
 	
 	// make this smarter so it doesn't reset to the bigger image
-	NSBitmapImageRep *new_image = [self convertRawToImage:[self imageData] 
-											   withMaxLUT:[self maxLUT]
-											   withMinLUT:[self minLUT]
+		NSBitmapImageRep *new_image = [self convertRawToImage:[self imageData] 
+												   withMaxLUT:[self maxLUT]
+												   withMinLUT:[self minLUT]
                                           usingCorrection:([self pixelCorrect] == NSControlStateValueOn)
                                       andUsingCalibration:([self calibrate] == NSControlStateValueOn)];
-	
-	@synchronized(cached_image) {
-		[self setImage:[new_image TIFFRepresentation]];
+		
+		@synchronized(cached_image) {
+			[self setImage:[new_image TIFFRepresentation]];
+		}
+		
+		[self setFullSizedImage:new_image];
+		// shouldn't need to do this, but it recreates the larger image again, sothe subregion needs to be reset:
+		
+		
+		current_subregion = NSMakeRect(0,
+									   0,
+									   [new_image size].width,
+									   [new_image size].height);		
+		
+		[current_bundle setImage:[[self fullSizedImage] TIFFRepresentation] forDetector:[self detector]];
+		[current_bundle performSelectorOnMainThread:@selector(writeImages:)
+										 withObject:self
+									  waitUntilDone:YES];
+		
+		[self setEnableControls:YES];
 	}
-	
-	[self setFullSizedImage:new_image];
-	// shouldn't need to do this, but it recreates the larger image again, sothe subregion needs to be reset:
-	
-	
-	current_subregion = NSMakeRect(0,
-								   0,
-								   [new_image size].width,
-								   [new_image size].height);		
-	
-	[current_bundle setImage:[[self fullSizedImage] TIFFRepresentation] forDetector:[self detector]];
-	[current_bundle performSelectorOnMainThread:@selector(writeImages:)
-									 withObject:self
-								  waitUntilDone:YES];
-	
-	[self setEnableControls:YES];
-	[pool release];
 }
 
 - (void)updateImageView:(NSTimer *)the_timer {

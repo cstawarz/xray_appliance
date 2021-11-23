@@ -19,13 +19,9 @@
 	return self;
 }
 
-- (void)dealloc {
-	[po release];
-	[super dealloc];
-}
 
 + (id)electrodeWithName:(NSString *)_name {
-	return [[[self alloc] initWithName:_name] autorelease];	
+	return [[self alloc] initWithName:_name];	
 }
 
 - (id)copyWithZone:(NSZone *)zone {

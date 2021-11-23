@@ -16,9 +16,9 @@
 			   andNamedFiducialSetDirectory:(NSString *)nfs_directory {
 	self = [super init];
 	if (self != nil) {
-		NSXMLDocument *info_xml = [[[NSXMLDocument alloc] initWithData:[NSData dataWithContentsOfFile:ffor_path]
+		NSXMLDocument *info_xml = [[NSXMLDocument alloc] initWithData:[NSData dataWithContentsOfFile:ffor_path]
 															   options:0
-																 error:nil] autorelease];
+																 error:nil];
 		
 		
 		{
@@ -106,16 +106,10 @@
 
 + (id)fforWithFiducialFrameOfReferencePath:(NSString *)ffor_path 
 			  andNamedFiducialSetDirectory:(NSString *)nfs_directory {
-	return [[[self alloc] initWithFiducialFrameOfReferencePath:ffor_path 
-								  andNamedFiducialSetDirectory:nfs_directory] autorelease];
+	return [[self alloc] initWithFiducialFrameOfReferencePath:ffor_path 
+								  andNamedFiducialSetDirectory:nfs_directory];
 }
 
-- (void) dealloc {
-	[elements release];
-	[name release];
-	[nfs_name release];
-	[super dealloc];
-}
 
 - (NSString *)name {return name;}
 - (NSString *)nfsName {return nfs_name;}

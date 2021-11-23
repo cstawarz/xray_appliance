@@ -21,15 +21,11 @@
 			 andPreferences:(XrayPreferences *)new_preferences {
 	self = [super initWithWindowNibName:nib_name];
 	if(self != nil) {
-		preferences = [new_preferences retain];
+		preferences = new_preferences;
 	}
 	return self;
 }
 
-- (void)dealloc {
-	[preferences release];
-	[super dealloc];
-}
 
 - (void)awakeFromNib {
 	[self setWindowFrameAutosaveName:@"XRIPT - CalibrationWindow"];
@@ -45,8 +41,7 @@
 
 - (XrayPreferences *)preferences {return preferences;}
 - (void)setPreferences:(XrayPreferences *)new_preferences {
-	[preferences release];
-	preferences = [new_preferences retain];
+	preferences = new_preferences;
 }
 
 - (IBAction)useCalibration:(id)sender {

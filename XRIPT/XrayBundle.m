@@ -65,9 +65,9 @@ andDetector2ExposureTime:(NSTimeInterval)_detector_2_exposure_time
 		d2_image = [_d2_image copy];
 		d1_raw_data = [_d1_raw_data copy];
 		d2_raw_data = [_d2_raw_data copy];
-		calibration = [_calibration retain];
+		calibration = _calibration;
 		
-		xray_elements = [_xray_elements retain];
+		xray_elements = _xray_elements;
 		
 	}
 	return self;
@@ -95,7 +95,7 @@ andDetector2ExposureTime:(NSTimeInterval)_detector_2_exposure_time
 			   andD2Raw:(NSData *)_d2_raw_data
 		 andCalibration:(Calibration *)_calibration
 		 andXrayElements:(NSArray *)_xray_elements {	
-	return [[[self alloc] initWithSubject:_subject
+	return [[self alloc] initWithSubject:_subject
 						  andExperimenter:_experimenter
 				 andDetector1SerialNumber:_d1_serial_number
 				 andDetector2SerialNumber:_d2_serial_number
@@ -116,7 +116,7 @@ andDetector2ExposureTime:(NSTimeInterval)_detector_2_exposure_time
 								 andD1Raw:_d1_raw_data
 								 andD2Raw:_d2_raw_data
 						   andCalibration:_calibration
-						   andXrayElements:_xray_elements] autorelease];
+						   andXrayElements:_xray_elements];
 }
 
 
@@ -178,7 +178,7 @@ andDetector2ExposureTime:(NSTimeInterval)_detector_2_exposure_time
 		session_comment = [[doco valueStringForSingularXPath:@"./info/Session_Comment"] copy];
 		
 		if([[NSFileManager defaultManager] fileExistsAtPath:[bundle_path stringByAppendingPathComponent:@"calibration/calibration.mat"]]) {
-			calibration = [[Calibration calibrationWithFile:[bundle_path stringByAppendingPathComponent:@"calibration/calibration.mat"]] retain];
+			calibration = [Calibration calibrationWithFile:[bundle_path stringByAppendingPathComponent:@"calibration/calibration.mat"]];
 		} else {
 			calibration = nil;
 		}
@@ -186,42 +186,17 @@ andDetector2ExposureTime:(NSTimeInterval)_detector_2_exposure_time
 		xray_elements = [[NSArray alloc] initWithArray:[XrayBundleMATLABInterface xrayElementsFromBundle:bundle_path]];
 		
 		path = [bundle_path copy];
-		[d2 release];
-		[d1 release];
-		[doco release];
 	}
 	return self;
 }
 
 
 + (id)bundleAtPath:(NSString *)bundle_path {
-	return [[[self alloc] initFromPath:bundle_path] autorelease];
+	return [[self alloc] initFromPath:bundle_path];
 }
 
-- (void) dealloc {
-	[date release];
-	[subject release];
-	[experimenter release];
-	[d1_serial_number release];
-	[d2_serial_number release];
-	[image_comment release];
-	[session_comment release];
-	[d1_image release];
-	[d2_image release];
-	[d1_raw_data release];
-	[d2_raw_data release];
-	[calibration release];
-	[path release];
-
-	[xray_elements release];	
-	
-	[bundle_lock release];
-	
-	[super dealloc];
-}
 
 - (void)writeBundleTo:(NSString *)_path {
-	[path release];
 	path = [[_path stringByAppendingPathComponent:[self name]] copy];
 	
 	NSXMLElement *root = [[NSXMLElement alloc] initWithName:@"info"];
@@ -233,37 +208,37 @@ andDetector2ExposureTime:(NSTimeInterval)_detector_2_exposure_time
 		NSString *appVersion = [NSString stringWithFormat:@"%@ (%@)", shortVersion, buildVersion];
 		
 		
-		NSXMLElement *XML_appVersion = [[[NSXMLElement alloc] initWithName:@"ApplicationVersion" 
-															   stringValue:appVersion] autorelease];
+		NSXMLElement *XML_appVersion = [[NSXMLElement alloc] initWithName:@"ApplicationVersion" 
+															   stringValue:appVersion];
 		
 		[root addChild:XML_appVersion];
 	}
 	
 	{
-		NSXMLElement *XML_date = [[[NSXMLElement alloc] initWithName:@"Date" 
+		NSXMLElement *XML_date = [[NSXMLElement alloc] initWithName:@"Date" 
 														 stringValue:[date descriptionWithCalendarFormat:@"%Y-%m-%d"
 																								timeZone:nil 
-																								  locale:[[NSUserDefaults standardUserDefaults] dictionaryRepresentation]]] autorelease];
+																								  locale:[[NSUserDefaults standardUserDefaults] dictionaryRepresentation]]];
 		[root addChild:XML_date];
 	}
 	
 	{
-		NSXMLElement *XML_time = [[[NSXMLElement alloc] initWithName:@"Time" 
+		NSXMLElement *XML_time = [[NSXMLElement alloc] initWithName:@"Time" 
 														 stringValue:[date descriptionWithCalendarFormat:@"%H:%M:%S"
 																								timeZone:nil 
-																								  locale:[[NSUserDefaults standardUserDefaults] dictionaryRepresentation]]] autorelease];
+																								  locale:[[NSUserDefaults standardUserDefaults] dictionaryRepresentation]]];
 		[root addChild:XML_time];
 	}
 	
 	{
-		NSXMLElement *XML_subject = [[[NSXMLElement alloc] initWithName:@"Subject" 
-															stringValue:subject] autorelease];
+		NSXMLElement *XML_subject = [[NSXMLElement alloc] initWithName:@"Subject" 
+															stringValue:subject];
 		[root addChild:XML_subject];
 	}
 	
 	{
-		NSXMLElement *XML_experimenter = [[[NSXMLElement alloc] initWithName:@"Experimenter" 
-																 stringValue:experimenter] autorelease];
+		NSXMLElement *XML_experimenter = [[NSXMLElement alloc] initWithName:@"Experimenter" 
+																 stringValue:experimenter];
 		[root addChild:XML_experimenter];
 	}
 	
@@ -271,13 +246,13 @@ andDetector2ExposureTime:(NSTimeInterval)_detector_2_exposure_time
 	
 	// detector serial numbers
 	{
-		NSXMLElement *XML_serialNumbers = [[[NSXMLElement alloc] initWithName:@"Detector_ID"] autorelease];
-		NSXMLElement *XML_d1_serial_number = [[[NSXMLElement alloc] initWithName:@"Detector_1" 
-																	 stringValue:[self detector1SerialNumber]] autorelease];
+		NSXMLElement *XML_serialNumbers = [[NSXMLElement alloc] initWithName:@"Detector_ID"];
+		NSXMLElement *XML_d1_serial_number = [[NSXMLElement alloc] initWithName:@"Detector_1" 
+																	 stringValue:[self detector1SerialNumber]];
 		[XML_serialNumbers addChild:XML_d1_serial_number];
 		
-		NSXMLElement *XML_d2_serial_number = [[[NSXMLElement alloc] initWithName:@"Detector_2" 
-																	 stringValue:[self detector2SerialNumber]] autorelease];
+		NSXMLElement *XML_d2_serial_number = [[NSXMLElement alloc] initWithName:@"Detector_2" 
+																	 stringValue:[self detector2SerialNumber]];
 		[XML_serialNumbers addChild:XML_d2_serial_number];
 		
 		
@@ -286,14 +261,14 @@ andDetector2ExposureTime:(NSTimeInterval)_detector_2_exposure_time
 	
 	// detector exposure time
 	{
-		NSXMLElement *XML_exposureTime = [[[NSXMLElement alloc] initWithName:@"Exposure_Time"] autorelease];
-		NSXMLElement *XML_d1ExposureTime = [[[NSXMLElement alloc] initWithName:@"Detector_1" 
-																   stringValue:[[NSNumber numberWithFloat:[self detector1ExposureDuration]*1000] stringValue]] autorelease];
+		NSXMLElement *XML_exposureTime = [[NSXMLElement alloc] initWithName:@"Exposure_Time"];
+		NSXMLElement *XML_d1ExposureTime = [[NSXMLElement alloc] initWithName:@"Detector_1" 
+																   stringValue:[[NSNumber numberWithFloat:[self detector1ExposureDuration]*1000] stringValue]];
 		[XML_d1ExposureTime addAttribute:[NSXMLNode attributeWithName:@"units" stringValue:@"ms"]];
 		[XML_exposureTime addChild:XML_d1ExposureTime];
 		
-		NSXMLElement *XML_d2ExposureTime = [[[NSXMLElement alloc] initWithName:@"Detector_2" 
-																   stringValue:[[NSNumber numberWithFloat:[self detector2ExposureDuration]*1000] stringValue]] autorelease];
+		NSXMLElement *XML_d2ExposureTime = [[NSXMLElement alloc] initWithName:@"Detector_2" 
+																   stringValue:[[NSNumber numberWithFloat:[self detector2ExposureDuration]*1000] stringValue]];
 		[XML_d2ExposureTime addAttribute:[NSXMLNode attributeWithName:@"units" stringValue:@"ms"]];
 		[XML_exposureTime addChild:XML_d2ExposureTime];
 		
@@ -302,14 +277,14 @@ andDetector2ExposureTime:(NSTimeInterval)_detector_2_exposure_time
 	
 	// source voltage
 	{
-		NSXMLElement *XML_voltage = [[[NSXMLElement alloc] initWithName:@"Voltage"] autorelease];
-		NSXMLElement *XML_s1Voltage = [[[NSXMLElement alloc] initWithName:@"Source_1" 
-															  stringValue:[[NSNumber numberWithFloat:[self source1Voltage]] stringValue]] autorelease];
+		NSXMLElement *XML_voltage = [[NSXMLElement alloc] initWithName:@"Voltage"];
+		NSXMLElement *XML_s1Voltage = [[NSXMLElement alloc] initWithName:@"Source_1" 
+															  stringValue:[[NSNumber numberWithFloat:[self source1Voltage]] stringValue]];
 		[XML_s1Voltage addAttribute:[NSXMLNode attributeWithName:@"units" stringValue:@"V"]];
 		[XML_voltage addChild:XML_s1Voltage];
 		
-		NSXMLElement *XML_s2Voltage = [[[NSXMLElement alloc] initWithName:@"Source_2" 
-															  stringValue:[[NSNumber numberWithFloat:[self source2Voltage]] stringValue]] autorelease];
+		NSXMLElement *XML_s2Voltage = [[NSXMLElement alloc] initWithName:@"Source_2" 
+															  stringValue:[[NSNumber numberWithFloat:[self source2Voltage]] stringValue]];
 		[XML_s2Voltage addAttribute:[NSXMLNode attributeWithName:@"units" stringValue:@"V"]];
 		[XML_voltage addChild:XML_s2Voltage];
 		
@@ -318,14 +293,14 @@ andDetector2ExposureTime:(NSTimeInterval)_detector_2_exposure_time
 	
 	// source current
 	{
-		NSXMLElement *XML_current = [[[NSXMLElement alloc] initWithName:@"Current"] autorelease];
-		NSXMLElement *XML_s1Current = [[[NSXMLElement alloc] initWithName:@"Source_1" 
-															  stringValue:[[NSNumber numberWithFloat:[self source1Current]] stringValue]] autorelease];
+		NSXMLElement *XML_current = [[NSXMLElement alloc] initWithName:@"Current"];
+		NSXMLElement *XML_s1Current = [[NSXMLElement alloc] initWithName:@"Source_1" 
+															  stringValue:[[NSNumber numberWithFloat:[self source1Current]] stringValue]];
 		[XML_s1Current addAttribute:[NSXMLNode attributeWithName:@"units" stringValue:@"A"]];
 		[XML_current addChild:XML_s1Current];
 		
-		NSXMLElement *XML_s2Current = [[[NSXMLElement alloc] initWithName:@"Source_2" 
-															  stringValue:[[NSNumber numberWithFloat:[self source2Current]] stringValue]] autorelease];
+		NSXMLElement *XML_s2Current = [[NSXMLElement alloc] initWithName:@"Source_2" 
+															  stringValue:[[NSNumber numberWithFloat:[self source2Current]] stringValue]];
 		[XML_s2Current addAttribute:[NSXMLNode attributeWithName:@"units" stringValue:@"A"]];
 		[XML_current addChild:XML_s2Current];
 		
@@ -334,14 +309,14 @@ andDetector2ExposureTime:(NSTimeInterval)_detector_2_exposure_time
 	
 	// detector lag
 	{
-		NSXMLElement *XML_lagTime = [[[NSXMLElement alloc] initWithName:@"Lag_Time"] autorelease];
-		NSXMLElement *XML_d1lagTime = [[[NSXMLElement alloc] initWithName:@"Detector_1" 
-															  stringValue:[[NSNumber numberWithFloat:[self detector1Lag]*1000] stringValue]] autorelease];
+		NSXMLElement *XML_lagTime = [[NSXMLElement alloc] initWithName:@"Lag_Time"];
+		NSXMLElement *XML_d1lagTime = [[NSXMLElement alloc] initWithName:@"Detector_1" 
+															  stringValue:[[NSNumber numberWithFloat:[self detector1Lag]*1000] stringValue]];
 		[XML_d1lagTime addAttribute:[NSXMLNode attributeWithName:@"units" stringValue:@"ms"]];
 		[XML_lagTime addChild:XML_d1lagTime];
 		
-		NSXMLElement *XML_d2lagTime = [[[NSXMLElement alloc] initWithName:@"Detector_2" 
-															  stringValue:[[NSNumber numberWithFloat:[self detector2Lag]*1000] stringValue]] autorelease];
+		NSXMLElement *XML_d2lagTime = [[NSXMLElement alloc] initWithName:@"Detector_2" 
+															  stringValue:[[NSNumber numberWithFloat:[self detector2Lag]*1000] stringValue]];
 		[XML_d2lagTime addAttribute:[NSXMLNode attributeWithName:@"units" stringValue:@"ms"]];
 		[XML_lagTime addChild:XML_d2lagTime];
 		
@@ -350,14 +325,14 @@ andDetector2ExposureTime:(NSTimeInterval)_detector_2_exposure_time
 	
 	// source duration
 	{
-		NSXMLElement *XML_durationTime = [[[NSXMLElement alloc] initWithName:@"Source_Time"] autorelease];
-		NSXMLElement *XML_s1durationTime = [[[NSXMLElement alloc] initWithName:@"Source_1" 
-																   stringValue:[[NSNumber numberWithFloat:[self source1Duration]*1000] stringValue]] autorelease];
+		NSXMLElement *XML_durationTime = [[NSXMLElement alloc] initWithName:@"Source_Time"];
+		NSXMLElement *XML_s1durationTime = [[NSXMLElement alloc] initWithName:@"Source_1" 
+																   stringValue:[[NSNumber numberWithFloat:[self source1Duration]*1000] stringValue]];
 		[XML_s1durationTime addAttribute:[NSXMLNode attributeWithName:@"units" stringValue:@"ms"]];
 		[XML_durationTime addChild:XML_s1durationTime];
 		
-		NSXMLElement *XML_s2durationTime = [[[NSXMLElement alloc] initWithName:@"Source_2" 
-																   stringValue:[[NSNumber numberWithFloat:[self source2Duration]*1000] stringValue]] autorelease];
+		NSXMLElement *XML_s2durationTime = [[NSXMLElement alloc] initWithName:@"Source_2" 
+																   stringValue:[[NSNumber numberWithFloat:[self source2Duration]*1000] stringValue]];
 		[XML_s2durationTime addAttribute:[NSXMLNode attributeWithName:@"units" stringValue:@"ms"]];
 		[XML_durationTime addChild:XML_s2durationTime];
 		
@@ -366,15 +341,15 @@ andDetector2ExposureTime:(NSTimeInterval)_detector_2_exposure_time
 	
 	// image comment
 	{
-		NSXMLElement *XML_comment = [[[NSXMLElement alloc] initWithName:@"Image_Comment" 
-															stringValue:[self imageComment]] autorelease];
+		NSXMLElement *XML_comment = [[NSXMLElement alloc] initWithName:@"Image_Comment" 
+															stringValue:[self imageComment]];
 		[root addChild:XML_comment];
 	}
 	
 	// session comment
 	{
-		NSXMLElement *XML_comment = [[[NSXMLElement alloc] initWithName:@"Session_Comment" 
-															stringValue:[self sessionComment]] autorelease];
+		NSXMLElement *XML_comment = [[NSXMLElement alloc] initWithName:@"Session_Comment" 
+															stringValue:[self sessionComment]];
 		[root addChild:XML_comment];
 	}
 	
@@ -382,7 +357,6 @@ andDetector2ExposureTime:(NSTimeInterval)_detector_2_exposure_time
 						   withObject:root
 						waitUntilDone:YES];
 	
-	[root release];
 }
 
 - (NSString *)name {
@@ -438,28 +412,28 @@ andDetector2ExposureTime:(NSTimeInterval)_detector_2_exposure_time
 	NSData *image = nil;
 	switch(detector) {
 		case DETECTOR_1:
-			image = [d1_image retain];
+			image = d1_image;
 			break;
 		case DETECTOR_2:
-			image = [d2_image retain];
+			image = d2_image;
 			break;
 		default:
 			break;
 	}
 	
 	[bundle_lock unlock];
-	return [image autorelease];
+	return image;
 }
 - (void)setImage:(NSData *)new_image
 	 forDetector:(Detector)detector {
 	[bundle_lock lock];	
 	switch(detector) {
 		case DETECTOR_1:
-			[d1_image release];
+			d1_image;
 			d1_image = [new_image copy];
 			break;
 		case DETECTOR_2:
-			[d2_image release];
+			d2_image;
 			d2_image = [new_image copy];
 			break;
 		default:
@@ -496,14 +470,12 @@ andDetector2ExposureTime:(NSTimeInterval)_detector_2_exposure_time
 
 - (NSArray *)xrayElements {
 	[bundle_lock lock];
-	[xray_elements retain];
 	[bundle_lock unlock];
-	return [xray_elements autorelease];
+	return xray_elements;
 }
 - (void)setXrayElements:(NSArray *)new_xray_elements {
 	[bundle_lock lock];
-	[xray_elements release];
-	xray_elements = [new_xray_elements retain];
+	xray_elements = new_xray_elements;
 	[bundle_lock unlock];
 	[self writeXrayElements];
 }
@@ -550,7 +522,7 @@ andDetector2ExposureTime:(NSTimeInterval)_detector_2_exposure_time
 	}
 	
 	
-	NSXMLDocument *doco = [[[NSXMLDocument alloc] initWithRootElement:root] autorelease];
+	NSXMLDocument *doco = [[NSXMLDocument alloc] initWithRootElement:root];
 	
 	[[doco XMLDataWithOptions:NSXMLNodePrettyPrint] writeToFile:[path stringByAppendingPathComponent:@"info.xml"]
 														options:0

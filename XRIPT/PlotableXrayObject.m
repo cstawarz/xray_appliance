@@ -20,16 +20,10 @@
 	return self;
 }
 
-- (void)dealloc {
-	[points release];
-	[color release];
-	[super dealloc];
-}
 
 //@synthesize color=color;
 - (NSColor *)color {return color;}
 - (void)setColor:(NSColor *)new_color {
-	[color release];
 	color = [new_color copy];
 }
 

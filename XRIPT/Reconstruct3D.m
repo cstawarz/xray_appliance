@@ -36,11 +36,11 @@
 	NSString *system_geometry_variable = @"system_geometry";
 	NSString *recon_output_variable = @"recon_centers";
 
-	float rotation_spread = [[bundle calibration] initRotationSpread];
+	float rotation_spread = [[bundle calibration] guessRotationSpread];
 
 	
 	NSString *detector_distances_string = @"[";
-	NSEnumerator *detector_distances_enumerator = [[[bundle calibration] initDetectorDistances] objectEnumerator];
+	NSEnumerator *detector_distances_enumerator = [[[bundle calibration] guessDetectorDistances] objectEnumerator];
 	NSNumber *detector_distance = nil;
 	
 	while(detector_distance = [detector_distances_enumerator nextObject]) {
@@ -50,7 +50,7 @@
 	detector_distances_string = [detector_distances_string stringByAppendingString:@"]"];
 	
 	NSString *source_distances_string = @"[";
-	NSEnumerator *source_distances_enumerator = [[[bundle calibration] initSourceDistances] objectEnumerator];
+	NSEnumerator *source_distances_enumerator = [[[bundle calibration] guessSourceDistances] objectEnumerator];
 	NSNumber *source_distance = nil;
 	
 	while(source_distance = [source_distances_enumerator nextObject]) {

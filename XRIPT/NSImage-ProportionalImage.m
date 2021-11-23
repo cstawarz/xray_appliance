@@ -111,7 +111,7 @@
         
     }
 
-    return [newImage autorelease];
+    return newImage;
 }
 
 @end

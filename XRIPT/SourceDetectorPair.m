@@ -27,17 +27,12 @@
 				rotation:(double *)new_rotation
 				  source:(TransformableObject *)new_source 
 			 andDetector:(TransformableObject *)new_detector {
-	return [[[self alloc] initWithTranslation:new_translation
+	return [[self alloc] initWithTranslation:new_translation
 									 rotation:new_rotation
 									   source:new_source
-								  andDetector:new_detector] autorelease];
+								  andDetector:new_detector];
 }
 
-- (void)dealloc {
-	[detector release];
-	[source release];
-	[super dealloc];
-}
 
 - (TransformableObject *)source {
 	return source;

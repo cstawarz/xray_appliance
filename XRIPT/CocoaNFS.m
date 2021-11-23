@@ -15,9 +15,9 @@
 - (id) initWithNamedFiducialSetPath:(NSString *)nfs_path {
 	self = [super init];
 	if (self != nil) {
-		NSXMLDocument *info_xml = [[[NSXMLDocument alloc] initWithData:[NSData dataWithContentsOfFile:nfs_path]
+		NSXMLDocument *info_xml = [[NSXMLDocument alloc] initWithData:[NSData dataWithContentsOfFile:nfs_path]
 															   options:0
-																 error:nil] autorelease];
+																 error:nil];
 		
 		
 		{
@@ -73,25 +73,17 @@
 }
 
 + (id)nfsWithNamedFiducialSetPath:(NSString *)nfs_path {	
-	return [[[self alloc] initWithNamedFiducialSetPath:nfs_path] autorelease];
+	return [[self alloc] initWithNamedFiducialSetPath:nfs_path];
 }
 
-- (void) dealloc {
-	[name release];
-	[notes release];
-	[fiducials release];
-	[super dealloc];
-}
 
 - (NSString *)name {return name;}
 - (void)setName:(NSString *)new_name {
-	[name release];
 	name = [new_name copy];
 }
 
 - (NSString *)notes{return notes;}
 - (void)setNotes:(NSString *)new_notes {
-	[notes release];
 	notes = [new_notes copy];
 }
 

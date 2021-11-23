@@ -17,16 +17,11 @@
 			 andXrayObjects:(XrayObjects *)new_xray_objects {
 	self = [super initWithWindowNibName:nib_name];
 	if(self != nil) {
-		xray_objects = [new_xray_objects retain];
+		xray_objects = new_xray_objects;
 	}
 	return self;
 }
 
-- (void) dealloc {
-	[xray_objects release];
-	[name release];
-	[super dealloc];
-}
 
 
 - (void)awakeFromNib {
@@ -54,13 +49,11 @@
 //@synthesize xrayObjects=xray_objects, name=name;
 - (XrayObjects *)xrayObjects {return xray_objects;}
 - (void)setXrayObjects:(XrayObjects *)new_xray_objects {
-	[xray_objects release];
-	xray_objects = [new_xray_objects retain];
+	xray_objects = new_xray_objects;
 }
 
 - (NSString *)name {return name;}
 - (void)setName:(NSString *)new_name {
-	[name release];
 	name = [new_name copy];
 }
 

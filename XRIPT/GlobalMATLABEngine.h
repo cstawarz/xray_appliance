@@ -25,10 +25,6 @@
 + (GlobalMATLABEngine *)lockedEngine;
 + (id)allocWithZone:(NSZone *)zone;
 - (id)copyWithZone:(NSZone *)zone;
-- (id)retain;
-- (unsigned)retainCount;
-- (void)release;
-- (id)autorelease;
 - (void)evalString:(NSString *)cmd;
 - (void)setVariable:(CocoaMxArray *)value
 				 as:(NSString *)variable_name;

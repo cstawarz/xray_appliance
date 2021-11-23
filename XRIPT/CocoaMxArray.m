@@ -25,12 +25,11 @@
 }
 
 + (id)arrayWithMxArray:(mxArray *)new_array {	
-	return [[[self alloc] initWithMxArray:new_array] autorelease];
+	return [[self alloc] initWithMxArray:new_array];
 }
 
 - (void) dealloc {
 	mxDestroyArray(array);
-	[super dealloc];
 }
 
 - (mxArray *)array {

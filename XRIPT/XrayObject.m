@@ -21,11 +21,6 @@
 	return self;
 }
 
-- (void) dealloc {
-	[visibility release];
-	[name release];
-	[super dealloc];
-}
 
 - (NSString *)name {return name;}
 - (PlotableXrayObject *)plotableObject {return po;}

@@ -18,11 +18,6 @@
 	[self setWindowFrameAutosaveName:@"XRIPT - MainWindow"];	
 }
 
-- (void)dealloc {
-	[model release];
-	[super dealloc];
-}
-
 - (void)setDelegate:(id)new_delegate {
 	if (![new_delegate respondsToSelector:@selector(takeXray:)] ||
 		![new_delegate respondsToSelector:@selector(primeXray:)]) {
@@ -53,8 +48,7 @@
 
 - (XrayDataModel *)model {return model;}
 - (void)setModel:(XrayDataModel *)new_model {
-	[model release];
-	model = [new_model retain];
+    model = new_model;
 }
 
 

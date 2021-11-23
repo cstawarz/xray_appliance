@@ -170,7 +170,7 @@
 	}
 	
 	
-	return [corrected_data autorelease];
+    return corrected_data;
 }
 
 + (NSData *)calibrateRawImage:(NSData *)raw_data 
@@ -233,7 +233,7 @@
 		}
 	}
 		
-	return [new_data autorelease];
+    return new_data;
 }
 
 + (NSBitmapImageRep *)convertRawToImage:(NSData *)raw_data
@@ -295,7 +295,7 @@
 	}
 	
 	
-	return [raw_bitmap_rep autorelease];
+    return raw_bitmap_rep;
 }
 
 // private methods
@@ -375,7 +375,7 @@
 	[badPixels addObject:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:[NSNumber numberWithInt:899], [NSNumber numberWithInt:810], nil]
 													 forKeys:[NSArray arrayWithObjects:@"Y", @"X", nil]]];
 	
-	return [badPixels autorelease];
+    return badPixels;
 }
 
 + (NSArray *)badPixels_0299 {
@@ -401,7 +401,7 @@
 	[badPixels addObject:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:[NSNumber numberWithInt:810], [NSNumber numberWithInt:761], nil]
 													 forKeys:[NSArray arrayWithObjects:@"Y", @"X", nil]]];	
 	
-	return [badPixels autorelease];
+    return badPixels;
 }
 
 + (NSArray *)badColumns_0187 {
@@ -410,7 +410,7 @@
 	[badColumns addObject:[NSNumber numberWithInt:257]];
 	[badColumns addObject:[NSNumber numberWithInt:769]];
 	
-	return [badColumns autorelease];
+    return badColumns;
 }
 
 + (NSArray *)badColumns_0299 {

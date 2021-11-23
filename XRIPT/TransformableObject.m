@@ -26,8 +26,8 @@
 
 + (id)objectWithTranslation:(double *)new_translation 
 				andRotation:(double *)new_rotation {
-	return [[[self alloc] initWithTranslation:new_translation 
-								  andRotation:new_rotation] autorelease];
+	return [[self alloc] initWithTranslation:new_translation
+                                 andRotation:new_rotation];
 }
 
 - (double *)translation {

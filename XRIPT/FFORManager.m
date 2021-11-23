@@ -23,18 +23,10 @@
 	[all_ffors addObject:ffor];
 }
 
-- (void)dealloc {
-	[possible_ffors release];
-	
-	[current_xray_object_names release];
-	[all_ffors release];
-	[super dealloc];
-}
 
 - (NSArray *)currentXrayObjectNames {return current_xray_object_names;}
 - (void)setCurrentXrayObjectNames:(NSArray *)new_current_xray_object_names {
-	[current_xray_object_names release];
-	current_xray_object_names = [new_current_xray_object_names retain];
+	current_xray_object_names = new_current_xray_object_names;
 	
 	NSMutableArray *temp_current_ffors = [NSMutableArray array];
 	
@@ -84,8 +76,7 @@
 
 - (NSArray *)possibleFFORs {return possible_ffors;}
 - (void)setPossibleFFORs:(NSArray *)new_possible_ffors {
-	[possible_ffors release];
-	possible_ffors = [new_possible_ffors retain];
+	possible_ffors = new_possible_ffors;
 }
 
 //@synthesize possibleFFORs=possible_ffors, currentXrayObjectNames=current_xray_object_names;

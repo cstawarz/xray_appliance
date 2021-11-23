@@ -17,9 +17,9 @@
 	NSArray *sdps;
 
 	// guess
-	float init_rotation_spread;
-	NSArray *init_detector_distances;
-	NSArray *init_source_distances;
+	float guess_rotation_spread;
+	NSArray *guess_detector_distances;
+	NSArray *guess_source_distances;
 	
 	NSData *calibration_mat_file_contents;
 }
@@ -30,9 +30,9 @@
 - (NSString *)name;
 - (NSDate *)date;
 - (NSArray *)sourceDetectorPairs;
-- (float)initRotationSpread;
-- (NSArray *)initDetectorDistances;
-- (NSArray *)initSourceDistances;
+- (float)guessRotationSpread;
+- (NSArray *)guessDetectorDistances;
+- (NSArray *)guessSourceDistances;
 - (void)write:(NSString *)path;
 
 @end

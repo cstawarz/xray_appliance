@@ -79,10 +79,8 @@
     
 	shouldMonitorUpdate = NO;
     
-    dispatch_release(nidaqAPIQueue);
     nidaqAPIQueue = nil;
 
-    [super dealloc];
 }
 
 - (void)setVoltageControl:(NSNumber *)percentOfMax {
@@ -314,16 +312,16 @@
 }
 
 - (void)updateMonitorThread:(id)arg {
-	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-	while(shouldMonitorUpdate) {
-		usleep(400000);
+	@autoreleasepool {
+		while(shouldMonitorUpdate) {
+			usleep(400000);
         dispatch_sync(nidaqAPIQueue, ^{
             [stopMonitoringLock lock];
             [self updateMonitor:nil];
             [stopMonitoringLock unlock];
         });
+		}
 	}
-	[pool release];
 }
 
 - (void)updateMonitor:(id)arg {

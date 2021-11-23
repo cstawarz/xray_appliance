@@ -40,12 +40,6 @@
 	return self;
 }
 
-- (void)dealloc {
-	[serial_number release];
-	[volume_path release];
-	[device_path release];
-	[super dealloc];
-}
 
 - (NSString *)serialNumber {
 	return serial_number;
@@ -522,8 +516,6 @@
 		NSLog(@"connect Exception here: [self readSetupFileAndUpdateValues:nil];");
 	NS_ENDHANDLER
 	
-	[pipe release];
-	[diskutil release];
 }
 
 - (void)disconnect:(id)arg {
@@ -560,8 +552,6 @@
 		NSLog(@"disconnect Exception here: [diskutil waitUntilExit];");
 	NS_ENDHANDLER
 
-	[pipe release];
-	[diskutil release];
 }
 
 /////////////////////////////////////////////////////////////////////////////////
@@ -588,7 +578,6 @@
 	NSData *newRawImage = [NSData dataWithContentsOfFile:rawImagePath];
 
 	if(![newRawImage isEqualToData:raw_image]) {
-		[raw_image release];
 		raw_image = [newRawImage copy];	
 	}
 }
@@ -599,7 +588,6 @@
 	NSData *newRawOffset = [NSData dataWithContentsOfFile:rawOffsetPath];
 	
 	if(![newRawOffset isEqualToData:raw_offset]) {
-		[raw_offset release];
 		raw_offset = [newRawOffset copy];	
 	}
 }
@@ -619,22 +607,22 @@
 //	
 //}
 - (void)updateDevice:(id)arg {
-	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+	@autoreleasepool {
 	
-	[NSThread sleepUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.5]];
-	[self disconnect:nil];
+		[NSThread sleepUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.5]];
+		[self disconnect:nil];
 //	[self performSelectorOnMainThread:@selector(disconnect:)
 //						   withObject:nil
 //						waitUntilDone:YES];
-	
-	[NSThread sleepUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.2]];
-	
-	[self connect:nil];
+		
+		[NSThread sleepUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.2]];
+		
+		[self connect:nil];
 //	[self performSelectorOnMainThread:@selector(connect:)
 //						   withObject:nil
 //						waitUntilDone:YES];
-	[NSThread sleepUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.5]];	   
-	[pool release];
+		[NSThread sleepUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.5]];	   
+	}
 }
 
 // must happen on main thread
@@ -648,7 +636,6 @@
 	}
 	
 	if(![[file substringWithRange:NSMakeRange(11,4)] isEqualToString:serial_number]) {
-		[serial_number release];
 		
 		serial_number = [[file substringWithRange:NSMakeRange(11,4)] copy];
 	}

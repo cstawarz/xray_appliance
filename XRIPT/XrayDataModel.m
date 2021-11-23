@@ -22,12 +22,6 @@
 }
 
 
--(void)dealloc {
-	[xray_objects release];
-	[preferences release];
-	[ffor_manager release];
-	[super dealloc];
-}
 
 - (XrayObjects *)xrayObjects {return xray_objects;}
 - (XrayPreferences *)preferences {return preferences;}
@@ -38,13 +32,11 @@
 - (void)setXrayNotOperating:(BOOL)new_xray_not_operating {not_operating = new_xray_not_operating;}
 - (NSString *)statusMessage {return status_message;}
 - (void)setStatusMessage:(NSString *)new_status_message {
-	[status_message release];
 	status_message = [new_status_message copy];
 }
 - (XrayBundle *)currentBundle {return current_bundle;}
 - (void)setCurrentBundle:(XrayBundle *)new_current_bundle {
-	[current_bundle release];
-	current_bundle = [new_current_bundle retain];
+	current_bundle = new_current_bundle;
 }
 
 //@synthesize preferences=preferences, xrayObjects=xray_objects, fforManager=ffor_manager;

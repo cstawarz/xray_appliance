@@ -47,25 +47,6 @@
 	return self;
 }
 
-- (void) dealloc {
-	[ffors_to_use release];
-	
-	[principle_crv_path release];
-	[overlay_crv_path release];
-	
-	[object_to_project release];
-	[possible_projections release];
-	
-	[status_message release];
-	
-	[current_principal_crv release];
-	[current_overlay_crv release];
-	[op_lock release];
-
-	[bundle release];
-	[super dealloc];
-}
-
 - (float)overlayOpacity {return overlay_opacity;}
 - (void)setOverlayOpacity:(float)new_overlay_opacity {
 	overlay_opacity = new_overlay_opacity;
@@ -98,95 +79,79 @@
 
 - (XrayBundle *)bundle {return bundle;}
 - (void)setBundle:(XrayBundle *)new_bundle {
-	[bundle release];
-	bundle = [new_bundle retain];
+    bundle = new_bundle;
 }
 
 - (XrayObjects *)xrayObjects {return xray_objects;}
 - (void)setXrayObjects:(XrayObjects *)new_xray_objects {
-	[xray_objects release];
-	xray_objects = [new_xray_objects retain];
+    xray_objects = new_xray_objects;
 }
 
 - (XrayPreferences *)preferences {return preferences;}
 - (void)setPreferences:(XrayPreferences *)new_preferences {
-	[preferences release];
-	preferences = [new_preferences retain];
+    preferences = new_preferences;
 }
 
 - (NSString *)statusMessage {return status_message;}
 - (void)setStatusMessage:(NSString *)new_status_message {
-	[status_message release];
 	status_message = [new_status_message copy];
 }
 
 - (FFORManager *)fforManager {return ffor_manager;}
 - (void)setFforManager:(FFORManager *)new_ffor_manager {
-	[ffor_manager release];
-	ffor_manager = [new_ffor_manager retain];
+    ffor_manager = new_ffor_manager;
 }
 
 - (NSArray *)fforsToUse {return ffors_to_use;}
 - (void)setFforsToUse:(NSArray *)new_ffors_to_use {
-	[ffors_to_use release];
-	ffors_to_use = [new_ffors_to_use retain];
+    ffors_to_use = new_ffors_to_use;
 }
 
 - (NSArray *)possibleProjections {return possible_projections;}
 - (void)setPossibleProjections:(NSArray *)new_possible_projections {
-	[possible_projections release];
-	possible_projections = [new_possible_projections retain];
+    possible_projections = new_possible_projections;
 }
 
 - (NSString *)principleCRVPath {return principle_crv_path;}
 - (void)setPrincipleCRVPath:(NSString *)new_principle_crv_path {
-	[principle_crv_path release];
 	principle_crv_path = [new_principle_crv_path copy];
 	
 	// storing the CRV
-	[current_principal_crv autorelease];
-	current_principal_crv = [[OperationsWindowMATLABInterface getCRV:principle_crv_path] retain];
+    current_principal_crv = [OperationsWindowMATLABInterface getCRV:principle_crv_path];
 }
 
 - (NSString *)overlayCRVPath {return overlay_crv_path;}
 - (void)setOverlayCRVPath:(NSString *)new_overlay_crv_path {
-	[overlay_crv_path release];
-	overlay_crv_path = [new_overlay_crv_path copy];		
+	overlay_crv_path = [new_overlay_crv_path copy];
 
 	// storing the CRV
-	[current_overlay_crv autorelease];
-	current_overlay_crv = [[OperationsWindowMATLABInterface getCRV:overlay_crv_path] retain];
+    current_overlay_crv = [OperationsWindowMATLABInterface getCRV:overlay_crv_path];
 }
 
 - (NSString *)objectToProject {return object_to_project;}
 - (void)setObjectToProject:(NSString *)new_object_to_project {
-	[object_to_project release];
-	object_to_project = [new_object_to_project copy];		
+	object_to_project = [new_object_to_project copy];
 	
 }
 
 - (NSIndexSet *)currentPossibleIndexes {return current_possible_ffor_indexes;}
 - (void)setCurrentPossibleIndexes:(NSIndexSet *)new_current_possible_indexes {
-	[current_possible_ffor_indexes release];
 	current_possible_ffor_indexes = [new_current_possible_indexes copy];
 }
 
 - (NSIndexSet *)currentFFORsToUseIndexes {return current_ffor_to_use_indexes;}
 - (void)setCurrentFFORsToUseIndexes:(NSIndexSet *)new_index_set {
-	[current_ffor_to_use_indexes release];
-	current_ffor_to_use_indexes = [[NSIndexSet alloc] initWithIndexesInRange:NSMakeRange([new_index_set firstIndex], 
+	current_ffor_to_use_indexes = [[NSIndexSet alloc] initWithIndexesInRange:NSMakeRange([new_index_set firstIndex],
 																						 [[self fforsToUse] count]-[new_index_set firstIndex])];
 }
 
 - (NSColor *)projectionLabelColor { return projection_text_color; }
 - (void)setProjectionLabelColor:(NSColor *)new_color {
-	[projection_text_color release];
 	projection_text_color = [new_color copy];
 }
 
 - (NSColor *)coregistrationLabelColor  { return coregistration_text_color; }
 - (void)setCoregistrationLabelColor:(NSColor *)new_color {
-	[coregistration_text_color release];
 	coregistration_text_color = [new_color copy];	
 }
 
@@ -411,7 +376,7 @@
 }
 	
 - (void)performReconstruction:(NSString *)bundle_path {
-	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+    @autoreleasepool {
 	[self setButtonsEnabled:NO];
 	
 	[self setStatusMessage:@"Performing 3D reconstruction"];
@@ -427,11 +392,11 @@
 	}	
 	
 	[self setButtonsEnabled:YES];
-	[pool release];
+    }
 }
 
 - (void)performFindCenters:(id)arg {
-	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+    @autoreleasepool {
 	
 	[self setButtonsEnabled:NO];
 	
@@ -483,11 +448,11 @@
 	
 	[self setButtonsEnabled:YES];
 	
-	[pool release];
+    }
 }
 
 - (void)performCoregistration:(NSString *)bundle_path {
-	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+    @autoreleasepool {
 	[self setButtonsEnabled:NO];
 	[self setStatusMessage:@"Performing coregistration"];
 	
@@ -503,11 +468,11 @@
 		[self setStatusMessage:@"Could not coregister"];
 	}
 	[self setButtonsEnabled:YES];
-	[pool release];
+    }
 }
 
 - (void)performProjection:(NSString *)bundle_path {
-	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+    @autoreleasepool {
 	[self setButtonsEnabled:NO];
 
 	[self setStatusMessage:@"Performing projection"];
@@ -531,7 +496,7 @@
 	[self setStatusMessage:@"Projection complete"];
 
 	[self setButtonsEnabled:YES];
-	[pool release];
+    }
 }
 
 - (NSArray *)reconstructedXrayObjectNames {

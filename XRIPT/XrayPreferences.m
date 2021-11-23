@@ -64,17 +64,6 @@
 	[ud synchronize];
 }
 
-- (void)dealloc {
-	[subject release];
-	[image_comment release];
-	[experimenter release];
-	[session_comment release];
-	[save_location release];
-	[calibration release];
-	
-	[super dealloc];
-}
-
 ///////////////////////////////////////////////
 /////// Accessor methods
 ///////////////////////////////////////////////
@@ -91,38 +80,32 @@
 	// various strings
 - (NSString *)subject {return subject;}
 - (void)setSubject:(NSString *)new_subject {
-	[subject release];
 	subject = [new_subject copy];
 }
 
 - (NSString *)imageComment {return image_comment;}
 - (void)setImageComment:(NSString *)new_image_comment {
-	[image_comment release];
-	image_comment = [new_image_comment copy];	
+	image_comment = [new_image_comment copy];
 }
 
 - (NSString *)sessionComment {return session_comment;}
 - (void)setSessionComment:(NSString *)new_session_comment {
-	[session_comment release];
-	session_comment = [new_session_comment copy];	
+	session_comment = [new_session_comment copy];
 }
 - (NSString *)experimenter {return experimenter;}
 - (void)setExperimenter:(NSString *)new_experimenter {
-	[experimenter release];
 	experimenter = [new_experimenter copy];
 }
 
 - (NSString *)saveLocation {return save_location;}
 - (void)setSaveLocation:(NSString *)new_save_location {
-	[save_location release];
 	save_location = [new_save_location copy];
 }
 
 	// current calibration
 - (Calibration *)calibration {return calibration;}
 - (void)setCalibration:(Calibration *)new_calibration {
-	[calibration release];
-	calibration = [new_calibration retain];
+    calibration = new_calibration;
 	
 	if (calibration != nil) {
 		[self setCalibrationMessage:[[calibration date] descriptionWithCalendarFormat:@"Last Calibrated: %d %b, %Y"
@@ -135,7 +118,6 @@
 
 - (NSString *)calibrationMessage {return calibration_message;}
 - (void)setCalibrationMessage:(NSString *)new_calibration_message {
-	[calibration_message release];
 	calibration_message = [new_calibration_message copy];
 }
 
