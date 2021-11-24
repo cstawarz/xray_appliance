@@ -429,11 +429,9 @@ andDetector2ExposureTime:(NSTimeInterval)_detector_2_exposure_time
 	[bundle_lock lock];	
 	switch(detector) {
 		case DETECTOR_1:
-			d1_image;
 			d1_image = [new_image copy];
 			break;
 		case DETECTOR_2:
-			d2_image;
 			d2_image = [new_image copy];
 			break;
 		default:

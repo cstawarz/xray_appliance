@@ -48,7 +48,7 @@ static GlobalMATLABEngine *global_MATLAB_engine;
 + (GlobalMATLABEngine *)lockedEngine {
     @synchronized(self) {
         if (global_MATLAB_engine == nil) {
-            [[self alloc] init]; // assignment not done here
+            (void)[[self alloc] init]; // assignment not done here
         }
     }
 	[global_MATLAB_engine lock];

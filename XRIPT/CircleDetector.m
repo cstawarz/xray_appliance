@@ -90,7 +90,7 @@
 	if(![dfm removeFileAtPath:temp_image_file
 					  handler:nil]) {
 		[NSException raise:NSInternalInconsistencyException
-					format:@"[CircleDetector convertImageToMxArray:] can't delete file: @%", 
+					format:@"[CircleDetector convertImageToMxArray:] can't delete file: %@",
 			temp_image_file];
 	}
 	
