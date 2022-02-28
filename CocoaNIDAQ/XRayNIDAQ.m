@@ -8,25 +8,34 @@
 
 #import "XRayNIDAQ.h"
 
+#define MIN_OUT_VOLTAGE 0.0
+#define MAX_OUT_VOLTAGE 5.0
 
-@interface XRayNIDAQ(PrivateMethods)
-- (void)resetDevice:(id)arg;
-- (void)initAnalogOutChannel:(id)arg;
-- (void)initControlInChannel:(id)arg;
-- (void)initShutterDetectorChannel:(id)arg;
-- (void)setAnalogOut:(NSArray<NSNumber *> *)values;
-- (void)setDigitalOutput:(NSNumber *)value;
-- (void)checkError:(int32)errorValue;
-- (void)updateMonitorThread:(id)arg;
-- (void)updateMonitor:(id)arg;
-@end
 
-@implementation XRayNIDAQ
-- (id)initWithName:(NSString *)devName {
+@implementation XRayNIDAQ {
+    int handle;
+    
+    uint8_t digitalOutput;
+    double voltageOutput;
+    double currentOutput;
+    
+    NSLock *devLock;
+    NSLock *stopMonitoringLock;
+    NSLock *ssLock;
+    BOOL shouldMonitorUpdate;
+
+    double source1Current_A;
+    double source1Voltage_V;
+    double source2Current_A;
+    double source2Voltage_V;
+}
+
+
+- (id)init {
 	self = [super init];
 	if (self != nil) {
-		deviceName = [[NSString alloc] initWithString:devName];
-		
+        handle = -1;
+        
 		stopMonitoringLock = [[NSLock alloc] init];
 		devLock = [[NSLock alloc] init];
 		ssLock = [[NSLock alloc] init];
@@ -40,47 +49,39 @@
 		currentOutput = MIN_OUT_VOLTAGE;
 		
 		shouldMonitorUpdate = YES;
-        
-        nidaqAPIQueue = dispatch_queue_create_with_target(NULL,
-                                                          DISPATCH_QUEUE_SERIAL,
-                                                          dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0));
 		
-        dispatch_async(nidaqAPIQueue, ^{
-            @try {
-                [self resetDevice:nil];
-                
-                [self initAnalogOutChannel:nil];
-                [self initControlInChannel:nil];
-                [self initShutterDetectorChannel:nil];
-                
-            }
-            @catch (NSException * e) {
-                NSLog(@"XRayNIDAQ::initWithName: Caught %@: %@",
-                      [e name],
-                      [e reason]);
-                
-                @throw e;
-            }
-            @finally {
-            }
+        @try {
+            [self resetDevice:nil];
             
-            [NSThread detachNewThreadSelector:@selector(updateMonitorThread:)
-                                     toTarget:self
-                                   withObject:nil];
-        });
+            [self initAnalogOutChannel:nil];
+            [self initControlInChannel:nil];
+            [self initShutterDetectorChannel:nil];
+            
+        }
+        @catch (NSException * e) {
+            NSLog(@"XRayNIDAQ::initWithName: Caught %@: %@",
+                  [e name],
+                  [e reason]);
+            
+            @throw e;
+        }
+        @finally {
+        }
+        
+        [NSThread detachNewThreadSelector:@selector(updateMonitorThread:)
+                                 toTarget:self
+                               withObject:nil];
 	}
 	return self;
 }
 
 - (void)dealloc {
-    dispatch_sync(nidaqAPIQueue, ^{
-        [self resetDevice:nil];
-    });
+    if (-1 != handle) {
+        (void)LJM_eWriteName(handle, "LED_COMM", 0);
+        (void)LJM_Close(handle);
+    }
     
-	shouldMonitorUpdate = NO;
-    
-    nidaqAPIQueue = nil;
-
+    shouldMonitorUpdate = NO;
 }
 
 - (void)setVoltageControl:(NSNumber *)percentOfMax {
@@ -94,11 +95,9 @@
     NSArray<NSNumber *> *values = @[ @(voltageOutput), @(currentOutput) ];
 	[devLock unlock];
 
-    dispatch_async(nidaqAPIQueue, ^{
-        [stopMonitoringLock lock];
-        [self setAnalogOut:values];
-        [stopMonitoringLock unlock];
-    });
+    [stopMonitoringLock lock];
+    [self setAnalogOut:values];
+    [stopMonitoringLock unlock];
 }
 
 - (void)setCurrentControl:(NSNumber *)percentOfMax {
@@ -111,77 +110,57 @@
     NSArray<NSNumber *> *values = @[ @(voltageOutput), @(currentOutput) ];
 	[devLock unlock];
 	
-    dispatch_async(nidaqAPIQueue, ^{
-        [stopMonitoringLock lock];
-        [self setAnalogOut:values];
-        [stopMonitoringLock unlock];
-    });
+    [stopMonitoringLock lock];
+    [self setAnalogOut:values];
+    [stopMonitoringLock unlock];
 }
 
 - (void)energizeSources:(NSNumber *)on {
 	digitalOutput = [on boolValue] ? digitalOutput | 0x2 : digitalOutput & 0xFD;
     NSNumber *value = [NSNumber numberWithChar:digitalOutput];
 	
-    dispatch_async(nidaqAPIQueue, ^{
-        [stopMonitoringLock lock];
-        [self setDigitalOutput:value];
-        [stopMonitoringLock unlock];
-    });
+    [stopMonitoringLock lock];
+    [self setDigitalOutput:value];
+    [stopMonitoringLock unlock];
 }
 
 - (void)activateDetectors:(NSNumber *)on {
 	digitalOutput = [on boolValue] ? digitalOutput | 0x1 : digitalOutput & 0xFE;
     NSNumber *value = [NSNumber numberWithChar:digitalOutput];
     
-    dispatch_async(nidaqAPIQueue, ^{
-        [stopMonitoringLock lock];
-        [self setDigitalOutput:value];
-        [stopMonitoringLock unlock];
-    });
+    [stopMonitoringLock lock];
+    [self setDigitalOutput:value];
+    [stopMonitoringLock unlock];
 }
 
 - (void)setAnalogOut:(NSArray<NSNumber *> *)values {
-	[devLock lock];
-	int32 written;
-	float64 output[2];
-    output[0] = values[0].doubleValue;
-    output[1] = values[1].doubleValue;
-	
-	@try {
-		[self checkError:DAQmxBaseWriteAnalogF64(analogOutHandle,
-												 1,
-												 0,
-												 1,
-												 DAQmx_Val_GroupByChannel,
-												 output,
-												 &written,
-												 NULL)];
-	}
-	@catch (NSException * e) {
-		NSLog(@"XRayNIDAQ::setAnalogOut: Caught %@: %@", 
-			  [e name], 
-			  [e reason]);
-		
-		@throw e;
-	}
-	@finally {
-	}
-	[devLock unlock];
+    [devLock lock];
+    
+    const char * names[2] = { "DAC0", "DAC1" };
+    double output[2] = { values[0].doubleValue, values[1].doubleValue };
+    int errorAddress = -1;
+    
+    @try {
+        [self checkError:LJM_eWriteNames(handle, 2, names, output, &errorAddress)];
+    }
+    @catch (NSException * e) {
+        NSLog(@"XRayNIDAQ::setAnalogOut: Caught %@: %@",
+              [e name],
+              [e reason]);
+        
+        @throw e;
+    }
+    @finally {
+    }
+    
+    [devLock unlock];
 }
 
 - (void)setDigitalOutput:(NSNumber *)value {
-	int32 written;
-	uInt8 doData = [value shortValue];
+    uint8_t doData = [value shortValue];
 	
 	@try {
-		[self checkError:DAQmxBaseWriteDigitalU8(detectorShutterControlHandle,
-												 1,
-												 FALSE,
-												 1.0,
-												 DAQmx_Val_GroupByChannel,
-												 &doData,
-												 &written,
-												 NULL)];
+        [self checkError:LJM_eWriteName(handle, "DIO_STATE", doData)];
 	}
 	@catch (NSException * e) {
 		NSLog(@"XRayNIDAQ::setDigitalOutput: Caught %@: %@", [e name], [e reason]);
@@ -223,155 +202,103 @@
 
 // private methods
 - (void)resetDevice:(id)arg {
-	[devLock lock];
-	[self checkError:DAQmxBaseStopTask(analogOutHandle)];
-	[self checkError:DAQmxBaseStopTask(controlInHandle)];
-	[self checkError:DAQmxBaseStopTask(detectorShutterControlHandle)];
-	
-	[self checkError:DAQmxBaseCreateTask("",&analogOutHandle)];
-	[self checkError:DAQmxBaseCreateTask("",&controlInHandle)];
-	[self checkError:DAQmxBaseCreateTask("",&detectorShutterControlHandle)];
-	
-	[self checkError:DAQmxBaseClearTask(analogOutHandle)];
-	[self checkError:DAQmxBaseClearTask(controlInHandle)];
-	[self checkError:DAQmxBaseClearTask(detectorShutterControlHandle)];
-	
-//	[self checkError:DAQmxBaseResetDevice([deviceName cStringUsingEncoding:NSASCIIStringEncoding])];
-	[devLock unlock];
+    [devLock lock];
+    
+    [self checkError:LJM_Open(LJM_dtT7, LJM_ctUSB, "ANY", &handle)];
+    [self checkError:LJM_eWriteName(handle, "IO_CONFIG_SET_CURRENT_TO_FACTORY", 1)];
+    [self checkError:LJM_eWriteName(handle, "POWER_LED", 4)];  // Set LED operation to manual
+    [self checkError:LJM_eWriteName(handle, "LED_STATUS", 1)];
+    [self checkError:LJM_eWriteName(handle, "LED_COMM", 1)];
+    
+    [devLock unlock];
 }
 
 - (void)initAnalogOutChannel:(id)arg {
-	[devLock lock];
-	
-	[self checkError:DAQmxBaseCreateTask("",&analogOutHandle)];
-	NSString *analogOutName = [deviceName stringByAppendingString:@"/ao0:1"];
-	[self checkError:DAQmxBaseCreateAOVoltageChan(analogOutHandle,
-												  [analogOutName cStringUsingEncoding:NSASCIIStringEncoding],
-												  "",
-												  MIN_OUT_VOLTAGE,
-												  MAX_OUT_VOLTAGE,
-												  DAQmx_Val_Volts,
-												  NULL)];
-	[self checkError:DAQmxBaseStartTask(analogOutHandle)];
-	
-	int32 written;
-	float64 output[2];
-	output[0] = voltageOutput;
-	output[1] = currentOutput;
-	
-	[self checkError:DAQmxBaseWriteAnalogF64(analogOutHandle,
-											 1,
-											 0,
-											 1,
-											 DAQmx_Val_GroupByChannel,
-											 output,
-											 &written,
-											 NULL)];
-	[devLock unlock];
+    [devLock lock];
+    
+    const char * names[2] = { "DAC0", "DAC1" };
+    double output[2] = { voltageOutput, currentOutput };
+    int errorAddress = -1;
+    [self checkError:LJM_eWriteNames(handle, 2, names, output, &errorAddress)];
+    
+    [devLock unlock];
 }
 
 
 - (void)initControlInChannel:(id)arg {
-	[devLock lock];
-	[self checkError:DAQmxBaseCreateTask("",&controlInHandle)];
-	NSString *controlInName = [deviceName stringByAppendingString:@"/ai0:3"];
-	[self checkError:DAQmxBaseCreateAIVoltageChan(controlInHandle,
-												  [controlInName cStringUsingEncoding:NSASCIIStringEncoding],
-												  "",
-												  DAQmx_Val_Diff,
-												  MIN_IN_VOLTAGE,
-												  MAX_IN_VOLTAGE,
-												  DAQmx_Val_Volts,
-												  NULL)];
-	[self checkError:DAQmxBaseStartTask(controlInHandle)];
-	[devLock unlock];
+    [devLock lock];
+    
+    // Set all AIN's to differential
+    [self checkError:LJM_eWriteName(handle, "AIN_ALL_NEGATIVE_CH", 1)];
+    
+    // Set range of all AIN's to +/-10V
+    [self checkError:LJM_eWriteName(handle, "AIN_ALL_RANGE", 10)];
+    
+    [devLock unlock];
 }
 
 - (void)initShutterDetectorChannel:(id)arg {
-	[devLock lock];
-	[self checkError:DAQmxBaseCreateTask("",&detectorShutterControlHandle)];
-	NSString *detectorShutterName = [deviceName stringByAppendingString:@"/port0"];
-	[self checkError:DAQmxBaseCreateDOChan(detectorShutterControlHandle,
-										   [detectorShutterName cStringUsingEncoding:NSASCIIStringEncoding],
-										   "",
-										   DAQmx_Val_ChanForAllLines)];
-	[self checkError:DAQmxBaseStartTask(detectorShutterControlHandle)];
-	
-	int32 written;
-	uInt8 doData = LOGIC_0;
-	
-	[self checkError:DAQmxBaseWriteDigitalU8(detectorShutterControlHandle,
-											 1,
-											 FALSE,
-											 1.0,
-											 DAQmx_Val_GroupByChannel,
-											 &doData,
-											 &written,
-											 NULL)];
-	[devLock unlock];
+    [devLock lock];
+    
+    // Inhibit all DIO's except FIO0-1
+    [self checkError:LJM_eWriteName(handle, "DIO_INHIBIT", ~((uint32_t)0x3))];
+    
+    // Configure FIO0-1 as outputs
+    [self checkError:LJM_eWriteName(handle, "DIO_DIRECTION", 0x3)];
+    
+    // Set FIO0-1 low
+    [self checkError:LJM_eWriteName(handle, "DIO_STATE", 0)];
+    
+    [devLock unlock];
 }
 
 - (void)updateMonitorThread:(id)arg {
 	@autoreleasepool {
 		while(shouldMonitorUpdate) {
 			usleep(400000);
-        dispatch_sync(nidaqAPIQueue, ^{
             [stopMonitoringLock lock];
             [self updateMonitor:nil];
             [stopMonitoringLock unlock];
-        });
 		}
 	}
 }
 
 - (void)updateMonitor:(id)arg {
-		int32 pointsRead;
-		float64 data[4];
-		
-		[devLock lock];
-		@try {
-			[self checkError:DAQmxBaseReadAnalogF64(controlInHandle,
-													DAQmx_Val_Auto,
-													1.0,
-													DAQmx_Val_GroupByChannel,
-													data,
-													4,
-													&pointsRead,
-													NULL)];	
-		}
-		@catch (NSException * e) {
-			NSLog(@"XRayNIDAQ::updateMonitor: Caught %@: %@", [e name], [e reason]);
-			@throw e;
-		}
-		@finally {
-		}
-		
-		[devLock unlock];	
-		
-		[ssLock lock]; 
-		source1Voltage_V = 5000*data[2];
-		source1Current_A = 0.0001*data[3];
-		source2Voltage_V = 5000*data[0];
-		source2Current_A = 0.0001*data[1];
-		[ssLock unlock];
-	}
+    const char * names[4] = { "AIN0", "AIN2", "AIN4", "AIN6" };
+    double data[4];
+    int errorAddress = -1;
+    
+    [devLock lock];
+    @try {
+        [self checkError:LJM_eReadNames(handle, 4, names, data, &errorAddress)];
+    }
+    @catch (NSException * e) {
+        NSLog(@"XRayNIDAQ::updateMonitor: Caught %@: %@", [e name], [e reason]);
+        @throw e;
+    }
+    @finally {
+    }
+    [devLock unlock];
+    
+    [ssLock lock];
+    source1Voltage_V = 5000*data[2];
+    source1Current_A = 0.0001*data[3];
+    source2Voltage_V = 5000*data[0];
+    source2Current_A = 0.0001*data[1];
+    [ssLock unlock];
+}
 
-- (void)checkError:(int32)status {
-	if(status) { 
-		int32 bufferSize = DAQmxBaseGetExtendedErrorInfo(NULL,0);
-		char *errBuff=malloc(bufferSize); 
-		DAQmxBaseGetExtendedErrorInfo(errBuff,bufferSize); 
-        NSString *errorString = [[NSString alloc] initWithBytes:errBuff
-                                                         length:bufferSize
-                                                       encoding:NSASCIIStringEncoding];
-		free(errBuff);
-		
-		NSException *exception = [NSException exceptionWithName:@"NIDAQException"
-														 reason:errorString  
-													   userInfo:nil];
-		
-		@throw exception;
-	}
+- (void)checkError:(int)status {
+    if (LJME_NOERROR != status) {
+        char errBuff[LJM_MAX_NAME_SIZE];
+        LJM_ErrorToString(status, errBuff);
+        
+        NSException *exception = [NSException exceptionWithName:@"LabJackException"
+                                                         reason:@(errBuff)
+                                                       userInfo:nil];
+        
+        @throw exception;
+    }
 }
 
 @end

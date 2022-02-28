@@ -26,7 +26,7 @@
 	if(self) {
 		model = [[XrayDataModel alloc] init];
 #if XRAY_DEVICES_ATTACHED
-		daq = [[XRayNIDAQ alloc] initWithName:@"Dev1"];		
+        daq = [[XRayNIDAQ alloc] init];
 
 //		BOOL initializingNIDAQ = YES;
 //		int initializingNIDAQcount = 0;
